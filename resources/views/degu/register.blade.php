@@ -3,10 +3,10 @@
 @section('content') {{-- layouts/app.blade.phpで定義 --}}
 <div class="container">
   <div class="row">
-    <div class="col-md-12 bg-white mx-auto rounded-lg shadow-sm p-5">
+    <div class="col-md-8 bg-white mx-auto rounded-lg shadow-sm p-5">
       <img class="deguillust rounded-circle img-fluid" src="{{ asset('uploads/oyaji_square.jpg') }}" alt="" srcset="">
       <div class="row">
-        <div class="col-lg-6 mx-auto">
+        <div class="col-lg-12 mx-auto">
           <h1 class="text-center">{{ __('デグー情報の登録：') }}</h1>
           <form action="/degu/register/add" method="POST">
             {{ csrf_field() }}
