@@ -1,3 +1,4 @@
+{{-- レイアウトファイル --}}
 <!doctype html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 <head>
@@ -18,9 +19,12 @@
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    {{-- Custom CSS --}}
+    <link href="{{ asset('css/custom.css') }}" rel="stylesheet">
 </head>
 <body>
     <div id="app">
+        {{-- Navbarここから --}}
         <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
             <div class="container">
                 <a class="navbar-brand" href="{{ url('/') }}">
@@ -71,6 +75,7 @@
                 </div>
             </div>
         </nav>
+        {{-- Navbarここまで --}}
 
         <main class="py-4">
             @yield('content')
