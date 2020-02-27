@@ -3,8 +3,8 @@
 @section('content')
 <div class="container">
     <div class="row mt-1 degus-card">
-        <div class="col-lg-4 p-2 mx-auto">
-            <div class="row m-2 shadow-sm bg-white">
+        <div class="col-lg-4 col-md-6 p-2">
+            <div class="row m-2 shadow-sm rounded-lg bg-white">
                 <div class="col-md-12">
                     <div class="row">
                         <div class="col-md-12 m-3 mx-auto">
@@ -12,7 +12,7 @@
                                 class="img-fluid rounded mx-auto d-block" alt="デグーのさすけ">
                         </div>
                     </div>
-                    <div class="row p-2">
+                    <div class="row p-1">
                         <div class="col-md-12">
                             <div class="row">
                                 <div class="col-md-12">
@@ -29,8 +29,8 @@
                 </div>
             </div>
         </div>
-        <div class="col-lg-4 p-2 mx-auto">
-            <div class="row m-2 shadow-sm bg-white">
+        <div class="col-lg-4 col-md-6 p-2">
+            <div class="row m-2 shadow-sm rounded-lg bg-white">
                 <div class="col-md-12">
                     <div class="row">
                         <div class="col-md-12 m-3 mx-auto">
@@ -38,7 +38,7 @@
                                 class="img-fluid rounded mx-auto d-block" alt="デグーのさすけ">
                         </div>
                     </div>
-                    <div class="row p-2">
+                    <div class="row p-1">
                         <div class="col-md-12">
                             <div class="row">
                                 <div class="col-md-12">
@@ -55,8 +55,8 @@
                 </div>
             </div>
         </div>
-        <div class="col-lg-4 p-2 mx-auto">
-            <div class="row m-2 shadow-sm bg-white">
+        <div class="col-lg-4 col-md-6 p-2">
+            <div class="row m-2 shadow-sm rounded-lg bg-white">
                 <div class="col-md-12">
                     <div class="row">
                         <div class="col-md-12 m-3 mx-auto">
@@ -64,7 +64,7 @@
                                 class="img-fluid rounded mx-auto d-block" alt="デグーのさすけ">
                         </div>
                     </div>
-                    <div class="row p-2">
+                    <div class="row p-1">
                         <div class="col-md-12">
                             <div class="row">
                                 <div class="col-md-12">
