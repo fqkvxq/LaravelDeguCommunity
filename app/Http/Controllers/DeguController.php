@@ -3,32 +3,20 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-
 use App\Degu;
+use Illuminate\Support\Facades\DB;
+use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Validator;
 
 class DeguController extends Controller
 {
     /**
-     * Display a listing of the resource.
+     * ログイン済みのユーザーでないと認証画面が出る
      *
-     * @return \Illuminate\Http\Response
+     * @return void
      */
-    public function index()
-    {
-        //
-        $items = Degu::all();
-        return view('degu');
-    }
-
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
+    public function register(){
+        return view('degu/register');
     }
 
     /**
@@ -37,9 +25,8 @@ class DeguController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function add(Request $request)
     {
-        //
         $degu = new Degu; // Deguモデル
         $form = $request->all();
 
@@ -56,12 +43,12 @@ class DeguController extends Controller
         ];
         $validator = Validator::make($form, $rules, $message);
 
-        if($validator->fails()){
+        if ($validator->fails()) {
             dd($validator);
             return redirect('degu')
                 ->withErrors($validator)
                 ->withInput();
-        }else{
+        } else {
             unset($form['_token']);
             $degu->degu_name = $request->degu_name;
             $degu->degu_sex = $request->degu_sex;
@@ -71,49 +58,9 @@ class DeguController extends Controller
             dd($degu);
         }
     }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
+    public function index()
     {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $id)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
-    {
-        //
+        $degus = DB::table('degus')->get();
+        return view('degu/index', ['degus' => $degus]);
     }
 }

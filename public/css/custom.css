@@ -4,4 +4,9 @@
   bottom: 20px;
   right: 20px;
 }
+
+.degus-card a {
+  text-decoration: none;
+  color: initial;
+}
 /*# sourceMappingURL=custom.css.map */
