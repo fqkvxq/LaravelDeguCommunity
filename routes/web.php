@@ -11,9 +11,9 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+// トップページ
+Route::get('/', 'TopPageController@index')->name('toppage');
+
 
 // ユーザー登録画面
 Auth::routes(); //Laravelの認証
