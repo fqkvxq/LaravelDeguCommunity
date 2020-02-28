@@ -44,16 +44,20 @@ class LoginController extends Controller
     {
         $authUser = User::where('id', $twitterUser->id)->first();
         //dd($authUser);
+
+        // すでにログインしたことある人
         if ($authUser){
             return $authUser;
         }
+
+        // はじめてログインをする人
         return User::create([
             'name' => $twitterUser->name,
             'handle' => $twitterUser->nickname,
             'twitter_id' => $twitterUser->id,
-            'avatar' => $twitterUser->avatar_original,
-            'email' => Hash::make('email',['rounds' => 12]),
-            'password' => Hash::make('password',['rounds' => 12])
+            'avatar' => $twitterUser->avatar,
         ]);
+
+        // 初回ログイン者のプロフィールペ入力ページに遷移する処理をここに記載
     }
 }
