@@ -31,19 +31,18 @@ class LoginController extends Controller
     {  
         //ユーザー情報を取得
         $user = Socialite::driver('twitter')->user();
-        //dd($user);
         $authUser = $this->findOrCreateUser($user);
+        //dd($authUser);
         Auth::login($authUser, true);
         
-        $twitter_avatar = $user->avatar_original;
+        //$twitter_avatar = $user->avatar_original;
         // セッションに保存
-        $request->session()->put([ 'twitter_avatar' => $twitter_avatar ]);
+        //$request->session()->put([ 'twitter_avatar' => $twitter_avatar ]);
         return redirect()->route('home');
     }
     private function findOrCreateUser($twitterUser)
     {
         $authUser = User::where('id', $twitterUser->id)->first();
-        //dd($authUser);
 
         // すでにログインしたことある人
         if ($authUser){
@@ -57,7 +56,6 @@ class LoginController extends Controller
             'twitter_id' => $twitterUser->id,
             'avatar' => $twitterUser->avatar,
         ]);
-
         // 初回ログイン者のプロフィールペ入力ページに遷移する処理をここに記載
     }
 }
