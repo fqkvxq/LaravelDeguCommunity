@@ -57,6 +57,10 @@
                                     {{ __('ログイン') }}
                                 </button>
 
+                                <a href="{{ url('login/twitter') }}" type="" class="btn btn-primary">
+                                    {{ __('Twitterログイン') }}
+                                </a>
+
                                 @if (Route::has('password.request'))
                                     <a class="btn btn-link" href="{{ route('password.request') }}">
                                         {{ __('パスワードを再発行する') }}

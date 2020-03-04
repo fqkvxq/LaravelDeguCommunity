@@ -4,4 +4,14 @@
   bottom: 20px;
   right: 20px;
 }
+
+.degus-card a {
+  text-decoration: none;
+  color: initial;
+}
+
+.profile-image {
+  width: 23px;
+  height: 23px;
+}
 /*# sourceMappingURL=custom.css.map */
