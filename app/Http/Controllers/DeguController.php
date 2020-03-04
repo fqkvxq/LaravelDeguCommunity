@@ -11,7 +11,7 @@ use Illuminate\Support\Facades\Validator;
 class DeguController extends Controller
 {
     /**
-     * ログイン済みのユーザーでないと認証画面が出る
+     * ログイン済みのユーザーでないと認証画面が出る->web.phpで設定済み
      *
      * @return void
      */

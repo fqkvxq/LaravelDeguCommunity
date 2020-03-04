@@ -1,5 +1,5 @@
 @extends('layouts.app')
-
+@section('title', 'デグー一覧')
 @section('content')
 <div class="container">
     <div class="row mt-1 degus-card">
