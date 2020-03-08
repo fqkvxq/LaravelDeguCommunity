@@ -16,7 +16,7 @@ class CreateDegusTable extends Migration
         Schema::create('degus', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('degu_name');
-            $table->integer('degu_sex');
+            $table->string('degu_sex');
             $table->integer('degu_photo_id')->nullable();
             $table->string('degu_profile');
 

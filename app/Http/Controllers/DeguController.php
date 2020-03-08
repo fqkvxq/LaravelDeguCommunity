@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Degu;
+use App\User;
 use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Validator;
@@ -48,19 +49,25 @@ class DeguController extends Controller
             return redirect('degu')
                 ->withErrors($validator)
                 ->withInput();
-        } else {
+        } else { // バリデーションが通った時
             unset($form['_token']);
             $degu->degu_name = $request->degu_name;
             $degu->degu_sex = $request->degu_sex;
             $degu->degu_profile = $request->degu_profile;
             $degu->save();
             return redirect('degu');
-            dd($degu);
         }
     }
+
     public function index()
     {
         $degus = DB::table('degus')->get();
         return view('degu/index', ['degus' => $degus]);
+    }
+
+    public function page($id) {
+        $degu = Degu::find($id);
+        //dd($degu);
+        return view('degu/page',compact('degu'));
     }
 }

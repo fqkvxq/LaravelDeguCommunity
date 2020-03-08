@@ -26,15 +26,15 @@
             <div class="form-group">
               <h2 for="exampleInputEmail1">{{ __('デグーの性別') }}</h2>
               <div class="custom-control custom-radio custom-control-inline">
-                <input type="radio" value="1" id="customRadioInline1" name="degu_sex" class="custom-control-input" required>
+                <input type="radio" value="男の子" id="customRadioInline1" name="degu_sex" class="custom-control-input" required>
                 <label class="custom-control-label" for="customRadioInline1">{{ __('男の子') }}</label>
               </div>
               <div class="custom-control custom-radio custom-control-inline">
-                <input type="radio" value="2" id="customRadioInline2" name="degu_sex" class="custom-control-input" required>
+                <input type="radio" value="女の子" id="customRadioInline2" name="degu_sex" class="custom-control-input" required>
                 <label class="custom-control-label" for="customRadioInline2">{{ __('女の子') }}</label>
               </div>
               <div class="custom-control custom-radio custom-control-inline">
-                <input type="radio" value="3" id="customRadioInline3" name="degu_sex" class="custom-control-input" required>
+                <input type="radio" value="不明" id="customRadioInline3" name="degu_sex" class="custom-control-input" required>
                 <label class="custom-control-label" for="customRadioInline3">{{ __('不明') }}</label>
               </div>
             </div>
