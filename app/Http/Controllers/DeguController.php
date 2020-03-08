@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Degu;
 use App\User;
+use Auth;
+use Socialite;
 use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Validator;
@@ -16,7 +18,7 @@ class DeguController extends Controller
      *
      * @return void
      */
-    public function register(){
+    public function register(){ 
         return view('degu/register');
     }
 
@@ -29,6 +31,7 @@ class DeguController extends Controller
     public function add(Request $request)
     {
         $degu = new Degu; // Deguモデル
+        $user = Auth::user();
         $form = $request->all();
 
         // バリデーション
@@ -52,9 +55,11 @@ class DeguController extends Controller
         } else { // バリデーションが通った時
             unset($form['_token']);
             $degu->degu_name = $request->degu_name;
+            $user->twitter_id = $request->twitter_id;
             $degu->degu_sex = $request->degu_sex;
             $degu->degu_profile = $request->degu_profile;
             $degu->save();
+            //dd($user);
             return redirect('degu');
         }
     }

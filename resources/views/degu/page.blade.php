@@ -17,6 +17,10 @@
                                 <td>{{$degu->degu_name}}</td>
                             </tr>
                             <tr>
+                                <th>飼い主</th>
+                                <td>{{$degu->twitter_id}}</td>
+                            </tr>
+                            <tr>
                                 <th>性別</th>
                                 <td>{{$degu->degu_sex}}</td>
                             </tr>
