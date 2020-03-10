@@ -30,10 +30,12 @@
 <body>
     <div id="app">
         {{-- Navbarここから --}}
-        <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
+        <nav class="navbar navbar-expand-md navbar-light text-black bg-white shadow-sm">
             <div class="container">
                 <a class="navbar-brand" href="{{ url('/') }}">
-                    {{ config('app.name', '') }}
+                    <span class="appname">
+                        {{ config('app.name', '') }}
+                    </span>
                 </a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse"
                     data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
@@ -50,29 +52,53 @@
                     <!-- Right Side Of Navbar -->
                     <ul class="navbar-nav ml-auto">
                         <li>
-                            <a class="nav-link" href="{{ route('degu')}}">{{ __('登録デグー一覧') }}</a>
+                            <a class="nav-link" href="{{ route('degu')}}">
+                                <span class="nav-text">
+                                    <span class="list">
+                                        {{ __('登録デグー一覧') }}
+                                    </span>
+                                </span>
+                            </a>
                         </li>
                         <li>
-                            <a class="nav-link" href="{{ route('degu/register')}}">{{ __('デグーを登録する') }}</a>
+                            <a class="nav-link" href="{{ route('degu/register')}}">
+                                <span class="nav-text">
+                                    <span class="register">
+                                        {{ __('デグーを登録する') }}
+                                    </span>
+                                </span>
+                            </a>
                         </li>
                         <!-- Authentication Links -->
                         @guest
                         <li class="nav-item">
-                            <a class="nav-link" href="{{ route('login') }}">{{ __('ログイン') }}</a>
+                            <a class="nav-link" href="{{ route('login') }}">
+                                <span class="nav-text">
+                                    {{ __('ログイン') }}
+                                </span>
+                            </a>
                         </li>
                         @if (Route::has('register'))
                         <li class="nav-item">
-                            <a class="nav-link" href="{{ route('register') }}">{{ __('登録') }}</a>
+                            <a class="nav-link" href="{{ route('register') }}">
+                                <span class="nav-text">
+                                    {{ __('登録') }}
+                                </span>
+                            </a>
                         </li>
                         @endif
                         @else
                         <li class="nav-item dropdown">
-                            
+
                             <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button"
                                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                                {{ Auth::user()->name }} <span class="caret"></span>
+                                <span class="nav-text">
+                                    {{ Auth::user()->name }}
+                                </span>
+                                <span class="caret"></span>
                                 @if(Auth::user()->profile_image_url)
-                                    <img class="rounded-circle profile-image img-fluid" src="{{Auth::user()->profile_image_url }}">
+                                <img class="rounded-circle profile-image img-fluid"
+                                    src="{{Auth::user()->profile_image_url }}">
                                 @endif
                             </a>
 

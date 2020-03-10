@@ -1,4 +1,37 @@
 // ======================================
+// body
+// ======================================
+body {
+    background-color: #F9FBE7;
+}
+
+// ======================================
+// navbar
+// ======================================
+.navbar {
+    .navbar-brand {
+        .appname {
+            font-family: sans-serif;
+            font-weight: bold;
+        }
+    }
+    .navbar-nav {
+        .nav-link {
+         .nav-text {
+                font-weight: bold;
+                color: #000;
+                .register {
+                    background-color: #ff9800;
+                    color: #fff;
+                    padding: 10px;
+                    border-radius: 5px;
+                }
+            }
+        }
+    }
+}
+
+// ======================================
 // デグー一覧表示画面(index.blade.php)
 // ======================================
 .deguillust {
@@ -28,23 +61,23 @@
     }
     h2 {
         font-size: 20px;
-        border-left: 5px solid #FEECA4;
+        border-left: 5px solid #feeca4;
         padding-left: 5px;
     }
     button {
         margin-top: 50px;
-        background-color: #FF9800;
+        background-color: #ff9800;
         color: #ffffff;
         border: none;
         padding-left: 100px;
         padding-right: 100px;
     }
     button:active {
-        background-color: #FFA726;
+        background-color: #ffa726;
     }
     button:hover {
-        background-color: #FFA726;
+        background-color: #ffa726;
         color: #fff;
-        transform:translateY(1px);
+        transform: translateY(1px);
     }
 }

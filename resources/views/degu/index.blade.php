@@ -6,7 +6,7 @@
         @foreach($degus as $degu)
         <div class="col-lg-4 col-md-6 p-2">
             <a href="{{ url('degu').'/'.$degu->id }}">
-                <div class="row m-2 shadow-sm rounded-lg bg-white">
+                <div class="row m-2 shadow rounded-lg bg-white">
                     <div class="col-md-12">
                         <div class="row">
                             <div class="col-md-12 m-3 mx-auto">

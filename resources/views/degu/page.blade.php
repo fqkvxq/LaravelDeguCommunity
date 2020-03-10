@@ -14,11 +14,15 @@
                             </tr>
                             <tr>
                                 <th>お名前</th>
-                                <td>{{$degu->name}}</td>
+                                <td>
+                                    {{$degu->name}}
+                                </td>
                             </tr>
                             <tr>
                                 <th>飼い主</th>
-                                <td>{{$degu->owner_name}}</td>
+                                <td>
+                                    {{$degu->owner_name}}
+                                </td>
                             </tr>
                             <tr>
                                 <th>性別</th>
