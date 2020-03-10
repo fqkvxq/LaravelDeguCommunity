@@ -14,12 +14,11 @@ class CreateUsersTable extends Migration
     public function up()
     {
         Schema::create('users', function (Blueprint $table) {
-            $table->bigIncrements('id');
-            $table->string('name');
-            $table->string('handle')->nullable();
-            $table->string('twitter_id')->nullable();
-            $table->string('avatar')->nullable();
-            $table->string('email')->unique()->nullable();
+            $table->bigIncrements('id'); //固有のID
+            $table->string('name')->nullable(); //ユーザー名(あとから変更可能)
+            $table->string('twitter_id')->nullable(); //TwitterID
+            $table->string('profile_image_url')->nullable(); //飼い主プロフィール画像
+            $table->string('email')->unique()->nullable(); //メールアドレス
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password')->nullable();
             $table->rememberToken();

@@ -36,28 +36,29 @@ class DeguController extends Controller
 
         // バリデーション
         $rules = [
-            'id' => 'required',
+            'id' => 'required', //デグー
             'degu_name' => 'required',
             'degu_sex' => 'required',
             'degu_profile' => 'required',
         ];
         $message = [
-            'id.sex' => '性別が入力されていません。',
-            'd.profile' => 'プロフィールが入力されていません。',
+            'id.sex' => '性別が入力されていません。', //?後ほど修正
+            'd.profile' => 'プロフィールが入力されていません。', //?後ほど修正
         ];
         $validator = Validator::make($form, $rules, $message);
 
         if ($validator->fails()) {
-            dd($validator);
+            // dd($validator);
             return redirect('degu')
                 ->withErrors($validator)
                 ->withInput();
         } else { // バリデーションが通った時
             unset($form['_token']);
-            $degu->degu_name = $request->degu_name;
-            $user->twitter_id = $request->twitter_id;
-            $degu->degu_sex = $request->degu_sex;
-            $degu->degu_profile = $request->degu_profile;
+            $degu->name = $request->degu_name; //デグーの名前
+            $degu->sex = $request->degu_sex; //デグーの性別
+            $degu->profile_message = $request->degu_profile; //デグーのプロフィール文章
+            $degu->owner_id = $user->id; //飼い主固有のID
+            $degu->owner_name = $user->name; //飼い主の名前
             $degu->save();
             //dd($user);
             return redirect('degu');
@@ -72,7 +73,8 @@ class DeguController extends Controller
 
     public function page($id) {
         $degu = Degu::find($id);
+        $user = User::find($id);
         //dd($degu);
-        return view('degu/page',compact('degu'));
+        return view('degu/page',compact('degu','user'));
     }
 }

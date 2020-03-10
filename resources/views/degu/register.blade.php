@@ -42,7 +42,7 @@
               <h2 for="exampleInputEmail1">{{ __('デグーの写真') }}</h2>
               <div class="input-group mb-3">
                 <div class="custom-file">
-                  <input type="file" name="degu_photo" class="custom-file-input" id="inputDeguPhoto"
+                  <input type="file" name="photo_url" class="custom-file-input" id="inputDeguPhoto"
                     aria-describedby="inputGroupFileAddon01">
                   <label class="custom-file-label" for="inputGroupFile01">ファイルを選択してください。</label>
                 </div>

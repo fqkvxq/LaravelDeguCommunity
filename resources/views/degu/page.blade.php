@@ -14,19 +14,19 @@
                             </tr>
                             <tr>
                                 <th>お名前</th>
-                                <td>{{$degu->degu_name}}</td>
+                                <td>{{$degu->name}}</td>
                             </tr>
                             <tr>
                                 <th>飼い主</th>
-                                <td>{{$degu->twitter_id}}</td>
+                                <td>{{$degu->owner_name}}</td>
                             </tr>
                             <tr>
                                 <th>性別</th>
-                                <td>{{$degu->degu_sex}}</td>
+                                <td>{{$degu->sex}}</td>
                             </tr>
                             <tr>
                                 <th>ひとこと</th>
-                                <td>{{$degu->degu_profile}}</td>
+                                <td>{{$degu->profile_message}}</td>
                             </tr>
                         </tbody>
                     </table>

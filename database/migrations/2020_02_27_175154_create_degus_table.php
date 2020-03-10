@@ -14,13 +14,13 @@ class CreateDegusTable extends Migration
     public function up()
     {
         Schema::create('degus', function (Blueprint $table) {
-            $table->bigIncrements('id');
-            $table->integer('twitter_id')->nullable();
-            $table->string('degu_name');
-            $table->string('degu_sex');
-            $table->integer('degu_photo_id')->nullable();
-            $table->string('degu_profile');
-
+            $table->bigIncrements('id'); //デグー情報のID
+            $table->string('name'); //デグーの名前
+            $table->string('sex'); //デグーの性別
+            $table->string('profile_message'); //デグーのプロフィール文章
+            $table->integer('photo_url')->nullable(); //デグーの画像URL
+            $table->integer('owner_id'); //飼い主固有のID(ログインしているユーザーIDと紐付け)
+            $table->string('owner_name'); //飼い主の名前(表示用)
             $table->timestamps();
         });
     }

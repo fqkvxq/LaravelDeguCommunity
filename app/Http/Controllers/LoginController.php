@@ -32,7 +32,7 @@ class LoginController extends Controller
         //ユーザー情報を取得
         $user = Socialite::driver('twitter')->user();
         $authUser = $this->findOrCreateUser($user);
-        dd($authUser);
+        //dd($authUser);
         Auth::login($authUser, true);
         
         //$twitter_avatar = $user->avatar_original;
@@ -52,10 +52,9 @@ class LoginController extends Controller
 
         // はじめてログインをする人
         return User::create([
-            'name' => $twitterUser->name,
-            'handle' => $twitterUser->nickname,
-            'twitter_id' => $twitterUser->id,
-            'avatar' => $twitterUser->avatar,
+            'name' => $twitterUser->name, // デグーのさすけ
+            'twitter_id' => $twitterUser->nickname, // TwitterID
+            'profile_image_url' => $twitterUser->avatar //飼い主プロフィール画像
         ]);
         // 初回ログイン者のプロフィールペ入力ページに遷移する処理をここに記載
     }
