@@ -43,14 +43,15 @@ class DeguController extends Controller
             'photo_url' => 'required|file|image|mimes:jpeg,png,jpg,gif|max:2048'
         ];
         $message = [
-            'id.sex' => '性別が入力されていません。', //?後ほど修正
-            'd.profile' => 'プロフィールが入力されていません。', //?後ほど修正
+            'id.required' => '性別が入力されていません。', //
+            'degu_profile.required' => 'プロフィールが入力されていません。', //
+            'photo_url.required' => '画像が添付されていません。', //?後ほど修正
         ];
         $validator = Validator::make($form, $rules, $message);
 
         if ($validator->fails()) {
             // dd($validator);
-            return redirect('degu')
+            return redirect('degu/register')
                 ->withErrors($validator)
                 ->withInput();
         } else { // バリデーションが通った時
