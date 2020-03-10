@@ -71,8 +71,8 @@
                             <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button"
                                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                                 {{ Auth::user()->name }} <span class="caret"></span>
-                                @if(Auth::user()->avatar)
-                                    <img class="rounded-circle profile-image img-fluid" src="{{Auth::user()->avatar }}">
+                                @if(Auth::user()->profile_image_url)
+                                    <img class="rounded-circle profile-image img-fluid" src="{{Auth::user()->profile_image_url }}">
                                 @endif
                             </a>
 
