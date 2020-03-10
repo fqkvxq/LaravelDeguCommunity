@@ -18,7 +18,7 @@ class CreateDegusTable extends Migration
             $table->string('name'); //デグーの名前
             $table->string('sex'); //デグーの性別
             $table->string('profile_message'); //デグーのプロフィール文章
-            $table->integer('photo_url')->nullable(); //デグーの画像URL
+            $table->string('photo_url')->nullable(); //デグーの画像URL
             $table->integer('owner_id'); //飼い主固有のID(ログインしているユーザーIDと紐付け)
             $table->string('owner_name'); //飼い主の名前(表示用)
             $table->timestamps();

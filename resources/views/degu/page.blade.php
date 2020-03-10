@@ -9,7 +9,12 @@
                         <tbody>
                             <tr>
                                 <td colspan="2">
-                                    <img class="img-fluid" src="https://via.placeholder.com/1200x630" alt="">
+                                        @php
+                                        $deguImageUrl =  $degu->photo_url;
+                                        $deguImageUrl = str_replace('public','storage',$deguImageUrl);
+                                        @endphp
+                                        <img src="{{ url($deguImageUrl) }}" class="img-fluid rounded mx-auto d-block"
+                                            alt="デグーのさすけ">
                                 </td>
                             </tr>
                             <tr>

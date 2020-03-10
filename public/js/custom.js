@@ -7,7 +7,8 @@ $(function() {
     // アップロードするファイルを選択
     $('input[type=file]').change(function() {
       var file = $(this).prop('files')[0];
-      $('.custom-file-label').html(file.name);
+      console.log(file);
+      $('.custom-file-label').html(file.name+"("+file.size+"byte"+")");
     });
   });
   

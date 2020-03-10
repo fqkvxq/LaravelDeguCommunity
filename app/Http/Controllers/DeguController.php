@@ -40,6 +40,7 @@ class DeguController extends Controller
             'degu_name' => 'required',
             'degu_sex' => 'required',
             'degu_profile' => 'required',
+            'photo_url' => 'required|file|image|mimes:jpeg,png,jpg,gif|max:2048'
         ];
         $message = [
             'id.sex' => '性別が入力されていません。', //?後ほど修正
@@ -59,9 +60,11 @@ class DeguController extends Controller
             $degu->profile_message = $request->degu_profile; //デグーのプロフィール文章
             $degu->owner_id = $user->id; //飼い主固有のID
             $degu->owner_name = $user->name; //飼い主の名前
+            $imagefile = $request->file('photo_url');
+            $degu->photo_url = $imagefile->store('public/degu_images');
             $degu->save();
-            //dd($user);
-            return redirect('degu');
+            //dd($degu->photo_url);
+            return redirect('degu')->with('success', '新しくデグー情報を登録しました！');
         }
     }
 

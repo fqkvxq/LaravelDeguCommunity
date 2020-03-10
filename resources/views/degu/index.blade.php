@@ -2,6 +2,16 @@
 @section('title', 'デグー一覧')
 @section('content')
 <div class="container">
+    @if (session('success'))
+    <div class="row">
+        <div class="col-12">
+
+            <div class="alert alert-success">
+                {{ session('success') }}
+            </div>
+        </div>
+    </div>
+    @endif
     <div class="row mt-1 degus-card">
         @foreach($degus as $degu)
         <div class="col-lg-4 col-md-6 p-2">
@@ -10,8 +20,12 @@
                     <div class="col-md-12">
                         <div class="row">
                             <div class="col-md-12 m-3 mx-auto">
-                                <img src="https://via.placeholder.com/1200x630.png"
-                                    class="img-fluid rounded mx-auto d-block" alt="デグーのさすけ">
+                                @php
+                                $deguImageUrl =  $degu->photo_url;
+                                $deguImageUrl = str_replace('public','storage',$deguImageUrl);
+                                @endphp
+                                <img src="{{ $deguImageUrl }}" class="img-fluid rounded mx-auto d-block"
+                                    alt="デグーのさすけ">
                             </div>
                         </div>
                         <div class="row p-1">
