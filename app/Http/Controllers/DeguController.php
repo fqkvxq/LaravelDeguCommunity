@@ -59,8 +59,8 @@ class DeguController extends Controller
             $degu->name = $request->degu_name; //デグーの名前
             $degu->sex = $request->degu_sex; //デグーの性別
             $degu->profile_message = $request->degu_profile; //デグーのプロフィール文章
-            $degu->owner_id = $user->id; //飼い主固有のID
-            $degu->owner_name = $user->name; //飼い主の名前
+            $degu->user_id = $user->id; //飼い主固有のID
+            //$degu->owner_name = $user->name; //飼い主の名前
             $imagefile = $request->file('photo_url');
             $degu->photo_url = $imagefile->store('public/degu_images');
             $degu->save();

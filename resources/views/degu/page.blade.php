@@ -26,7 +26,7 @@
                             <tr>
                                 <th>飼い主</th>
                                 <td>
-                                    {{$degu->owner_name}}
+                                    {{$degu->user->name}}
                                 </td>
                             </tr>
                             <tr>
