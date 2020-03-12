@@ -1,4 +1,8 @@
 @extends('layouts.app')
+@php
+    $title = $degu->name
+@endphp
+@section('title', $title)
 @section('content')
 <div class="container">
     <div class="row">
@@ -39,7 +43,12 @@
                             </tr>
                         </tbody>
                     </table>
-                    <button class="btn btn-block btn-outline-primary">Twitter</button>
+                    @php
+                     $twitter_id =  $degu->user->twitter_id
+                    @endphp
+                    @if($twitter_id)
+                        <a href="{{__('https://twitter.com/')}}{{$twitter_id}}" class="btn btn-block btn-outline-primary">飼い主さんのTwitterをのぞく</a>
+                    @endif
                 </div>
             </div>
         </div>

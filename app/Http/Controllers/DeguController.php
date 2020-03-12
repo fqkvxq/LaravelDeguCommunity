@@ -40,7 +40,7 @@ class DeguController extends Controller
             'degu_name' => 'required',
             'degu_sex' => 'required',
             'degu_profile' => 'required',
-            'photo_url' => 'required|file|image|mimes:jpeg,png,jpg,gif|max:2048'
+            'photo_url' => 'required|file|image|mimes:jpeg,png,jpg,gif|max:4096'
         ];
         $message = [
             'id.required' => '性別が入力されていません。', //
