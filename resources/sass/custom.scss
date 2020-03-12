@@ -81,3 +81,43 @@ body {
         transform: translateY(1px);
     }
 }
+// ======================================
+// デグーQAトップ画面(index.blade.php)
+// ======================================
+.qa-index {
+    .col-md-8 {
+        .tag {
+            margin-bottom: 20px;
+            span {
+                margin: 0 5px;
+                border: 1px solid #000;
+                border-radius: 5px;
+                padding: 5px;
+            }
+            .viewcount {
+                background-color: #ffa726;
+                color: #fff;
+                font-weight: bold;
+                border: none;
+            }
+            .new {
+                background-color: #ffa726;
+                color: #fff;
+                border: none;
+            }
+        }
+        .question {
+            h2 {
+                font-size: 22px;
+            }
+        }
+    }
+    .col-md-4 {
+        h2 {
+            font-size: 22px;
+        }
+        ul {
+            padding-inline-start: 20px;
+        }
+    }
+}

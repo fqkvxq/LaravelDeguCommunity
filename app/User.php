@@ -46,4 +46,9 @@ class User extends Authenticatable
     public function degus(){
         return $this->hasMany('App\Degu');
     }
+
+    // Qaモデルとのリレーション(Qa:User = N:1)
+    public function qas(){
+        return $this->hasMany('App\Qa');
+    }
 }
