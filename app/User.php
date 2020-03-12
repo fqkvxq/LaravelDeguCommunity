@@ -42,6 +42,7 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
+    // Deguモデルとのリレーション(Degu:User = N:1)
     public function degus(){
         return $this->hasMany('App\Degu');
     }
