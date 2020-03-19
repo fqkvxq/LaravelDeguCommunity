@@ -4,12 +4,12 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Degu extends Model
+class Qa extends Model
 {
     //
-    protected $table = 'degus';
+    protected $table = 'qas';
 
-    // Userモデルとのリレーション(User:Degu = 1:N)
+    // Userモデルとのリレーション(User:Qa = 1:N)
     public function user(){
         return $this->belongsTo('App\User');
     }

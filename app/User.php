@@ -41,4 +41,14 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    // Deguモデルとのリレーション(Degu:User = N:1)
+    public function degus(){
+        return $this->hasMany('App\Degu');
+    }
+
+    // Qaモデルとのリレーション(Qa:User = N:1)
+    public function qas(){
+        return $this->hasMany('App\Qa');
+    }
 }

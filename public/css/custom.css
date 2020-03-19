@@ -67,4 +67,41 @@ body {
   -webkit-transform: translateY(1px);
           transform: translateY(1px);
 }
+
+.qa-index .col-md-8 .tag {
+  margin-bottom: 20px;
+}
+
+.qa-index .col-md-8 .tag span {
+  margin: 0 5px;
+  border: 1px solid #000;
+  border-radius: 5px;
+  padding: 5px;
+}
+
+.qa-index .col-md-8 .tag .viewcount {
+  background-color: #ffa726;
+  color: #fff;
+  font-weight: bold;
+  border: none;
+}
+
+.qa-index .col-md-8 .tag .new {
+  background-color: #ffa726;
+  color: #fff;
+  border: none;
+}
+
+.qa-index .col-md-8 .question h2 {
+  font-size: 22px;
+}
+
+.qa-index .col-md-4 h2 {
+  font-size: 22px;
+}
+
+.qa-index .col-md-4 ul {
+  -webkit-padding-start: 20px;
+          padding-inline-start: 20px;
+}
 /*# sourceMappingURL=custom.css.map */

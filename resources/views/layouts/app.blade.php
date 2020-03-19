@@ -69,6 +69,15 @@
                                 </span>
                             </a>
                         </li>
+                        <li>
+                        <a class="nav-link" href="{{route('qa')}}">
+                                <span class="nav-text">
+                                    <span class="">
+                                        {{ __('デグーQ&A') }}
+                                    </span>
+                                </span>
+                            </a>
+                        </li>
                         <!-- Authentication Links -->
                         @guest
                         <li class="nav-item">
@@ -106,6 +115,14 @@
                                 <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
                                     {{ __('ログアウト') }}
+                                </a>
+
+                                <a class="dropdown-item" href="#">
+                                    {{ __('ユーザー情報変更') }}
+                                </a>
+
+                                <a class="dropdown-item" href="#">
+                                    {{ __('デグー情報変更') }}
                                 </a>
 
                                 <form id="logout-form" action="{{ route('logout') }}" method="POST"
