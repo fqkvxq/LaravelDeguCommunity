@@ -14,7 +14,7 @@
                                         $deguImageUrl = str_replace('public','storage',$deguImageUrl);
                                         @endphp
                                         <img src="{{ url($deguImageUrl) }}" class="img-fluid rounded mx-auto d-block"
-                                            alt="デグーのさすけ">
+                                            alt="{{$degu->name}}">
                                 </td>
                             </tr>
                             <tr>
