@@ -75,12 +75,13 @@ class QaController extends Controller
         $user = Auth::user();
         $form = $request->all();
 
+
         // Validation
         $rules = [
             'answer_text' => 'required'
         ];
         $message = [
-            'answer_text.required' => '質問文を入力してください。'
+            'answer_text.required' => '回答を入力してください。'
         ];
         $validator = Validator::make($form, $rules, $message);
 
