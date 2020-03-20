@@ -167,9 +167,11 @@
                         >みんなが回答を待っています！回答してね！</small
                     >
                     <ul>
-                        @foreach($qas as $qa)
+                        @foreach($questions as $question)
                         <li>
-                            {{ Str::limit($qa->question_text,60) }}
+                            <a href="{{ url('qa').'/'.$question->id }}">
+                                {{ Str::limit($question->text,60) }}
+                            </a>
                         </li>
                         @endforeach
                     </ul>

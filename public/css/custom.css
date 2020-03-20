@@ -2,6 +2,12 @@ body {
   background-color: #F9FBE7;
 }
 
+@media (max-width: 992px) {
+  .container {
+    width: 100%;
+  }
+}
+
 .navbar .navbar-brand .appname {
   font-family: sans-serif;
   font-weight: bold;

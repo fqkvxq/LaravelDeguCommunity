@@ -5,6 +5,12 @@ body {
     background-color: #F9FBE7;
 }
 
+@media (max-width: 992px) {
+    .container {
+        width: 100%;
+    }
+}
+
 // ======================================
 // navbar
 // ======================================

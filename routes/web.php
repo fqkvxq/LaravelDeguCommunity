@@ -45,4 +45,6 @@ Route::get('/degu/{id}','DeguController@page');// 詳細画面
 // Q&A関連ページ
 // ============================
 Route::get('/qa', 'QaController@index')->name('qa'); //一覧画面
-Route::post('/qa/addQuestion', 'QaController@addQuestion')->name('qa/addQuestion'); //一覧画面
+Route::get('/qa/{id}', 'QaController@page'); //一覧画面
+Route::post('/qa/addQuestion', 'QaController@addQuestion')->name('qa/addQuestion');
+Route::post('/qa/addAnswer', 'QaController@addAnswer')->name('qa/addAnswer');

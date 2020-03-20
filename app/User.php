@@ -47,8 +47,12 @@ class User extends Authenticatable
         return $this->hasMany('App\Degu');
     }
 
-    // Qaモデルとのリレーション(Qa:User = N:1)
-    public function qas(){
-        return $this->hasMany('App\Qa');
+    // Questionモデルとのリレーション(Question:User = N:1)
+    public function questions(){
+        return $this->hasMany('App\Question');
+    }
+
+    public function answers(){
+        return $this->hasMany('App\Answer');
     }
 }
