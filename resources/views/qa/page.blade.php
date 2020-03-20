@@ -16,8 +16,9 @@
                             <form action="/qa/addAnswer" method="POST">
                                 {{ csrf_field() }}
                                 <input type="hidden" name="answer_flg" value="1" />
-                                @if($question->answer_flg == "0")
-                                <h2>まだ回答がありません。</h2>
+                                <input type="hidden" name="question_id" value="{{$question->id}}" />
+                                @if($question->answer_flg == 0)
+                                    <h2>まだ回答がありません。</h2>
                                 @endif
                                 <div class="form-group">
                                     <label for="QuestionFrom"
