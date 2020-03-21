@@ -86,6 +86,11 @@ body {
         color: #fff;
         transform: translateY(1px);
     }
+    .alert {
+        ul {
+            margin-bottom: 0;
+        }
+    }
 }
 // ======================================
 // デグーQAトップ画面(index.blade.php)

@@ -74,6 +74,10 @@ body {
           transform: translateY(1px);
 }
 
+.register-degu .alert ul {
+  margin-bottom: 0;
+}
+
 .qa-index .col-md-8 .tag {
   margin-bottom: 20px;
 }
