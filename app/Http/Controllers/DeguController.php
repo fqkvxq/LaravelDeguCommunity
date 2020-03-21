@@ -40,12 +40,14 @@ class DeguController extends Controller
             'degu_name' => 'required',
             'degu_sex' => 'required',
             'degu_profile' => 'required',
-            'photo_url' => 'required|file|image|mimes:jpeg,png,jpg,gif|max:4096'
+            'photo_url' => 'required|file|image|mimes:jpeg,png,jpg,gif|max:4096',
+            'confirmcheckbox' => 'required'
         ];
         $message = [
             'id.required' => '性別が入力されていません。', //
             'degu_profile.required' => 'プロフィールが入力されていません。', //
             'photo_url.required' => '画像が添付されていません。', //?後ほど修正
+            'confirmcheckbox.required' => '内容確認のチェックを入れてください'
         ];
         $validator = Validator::make($form, $rules, $message);
 
