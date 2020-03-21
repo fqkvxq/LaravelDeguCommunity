@@ -60,7 +60,7 @@
               <p class="text-right small">あと300文字</p>
             </div>
             <div class="form-group form-check">
-              <input type="checkbox" class="form-check-input" id="exampleCheck1">
+              <input type="checkbox" name="confirmcheckbox" class="form-check-input" id="exampleCheck1">
               <label class="form-check-label" for="exampleCheck1">{{ __('上記内容に間違いはありません。') }}</label>
             </div>
             @if ($errors->any())
