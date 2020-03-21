@@ -1,5 +1,6 @@
 body {
   background-color: #F9FBE7;
+  font-family: "Helvetica Neue", Arial, "Hiragino Kaku Gothic ProN", "Hiragino Sans", Meiryo, sans-serif;
 }
 
 @media (max-width: 992px) {
@@ -9,7 +10,6 @@ body {
 }
 
 .navbar .navbar-brand .appname {
-  font-family: sans-serif;
   font-weight: bold;
 }
 
