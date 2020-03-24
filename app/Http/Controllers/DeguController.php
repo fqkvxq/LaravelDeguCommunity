@@ -10,6 +10,7 @@ use Socialite;
 use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Validator;
+use Storage;
 
 class DeguController extends Controller
 {
@@ -64,8 +65,11 @@ class DeguController extends Controller
             $degu->user_id = $user->id; //飼い主固有のID
             //$degu->owner_name = $user->name; //飼い主の名前
             $imagefile = $request->file('photo_url');
-            $degu->photo_url = $imagefile->store('public/degu_images');
+            //$degu->photo_url = $imagefile->store('public/degu_images');
+            $degu->photo_url = Storage::disk('s3')->putFile('degiita', $imagefile, 'public');
             $degu->save();
+
+            dd($degu);
             //dd($degu->photo_url);
             return redirect('degu')->with('success', '新しくデグー情報を登録しました！');
         }

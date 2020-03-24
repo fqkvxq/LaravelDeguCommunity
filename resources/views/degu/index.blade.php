@@ -22,7 +22,7 @@
                             <div class="col-md-12 m-3 mx-auto">
                                 @php
                                 $deguImageUrl =  $degu->photo_url;
-                                $deguImageUrl = str_replace('public','storage',$deguImageUrl);
+                                $deguImageUrl = 'https://degiita.s3-ap-northeast-1.amazonaws.com/'.str_replace('public','storage',$deguImageUrl);
                                 @endphp
                                 <img src="{{ $deguImageUrl }}" class="img-fluid rounded mx-auto d-block"
                                     alt="デグーのさすけ">
