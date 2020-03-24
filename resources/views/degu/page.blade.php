@@ -1,6 +1,6 @@
 @extends('layouts.app')
 @php
-    $title = $degu->name
+$title = $degu->name
 @endphp
 @section('title', $title)
 @section('content')
@@ -13,12 +13,13 @@
                         <tbody>
                             <tr>
                                 <td colspan="2">
-                                        @php
-                                        $deguImageUrl =  $degu->photo_url;
-                                        $deguImageUrl = str_replace('public','storage',$deguImageUrl);
-                                        @endphp
-                                        <img src="{{ url($deguImageUrl) }}" class="img-fluid rounded mx-auto d-block"
-                                            alt="{{$degu->name}}">
+                                    @php
+                                    $deguImageUrl = $degu->photo_url;
+                                    $deguImageUrl =
+                                    'https://degiita.s3-ap-northeast-1.amazonaws.com/'.str_replace('public','storage',$deguImageUrl);
+                                    @endphp
+                                    <img src="{{ url($deguImageUrl) }}" class="img-fluid rounded mx-auto d-block"
+                                        alt="{{$degu->name}}">
                                 </td>
                             </tr>
                             <tr>
@@ -44,10 +45,11 @@
                         </tbody>
                     </table>
                     @php
-                     $twitter_id =  $degu->user->twitter_id
+                    $twitter_id = $degu->user->twitter_id
                     @endphp
                     @if($twitter_id)
-                        <a href="{{__('https://twitter.com/')}}{{$twitter_id}}" class="btn btn-block btn-outline-primary">飼い主さんのTwitterをのぞく</a>
+                    <a href="{{__('https://twitter.com/')}}{{$twitter_id}}"
+                        class="btn btn-block btn-outline-primary">飼い主さんのTwitterをのぞく</a>
                     @endif
                 </div>
             </div>
