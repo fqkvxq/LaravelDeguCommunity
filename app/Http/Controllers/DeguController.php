@@ -68,8 +68,6 @@ class DeguController extends Controller
             //$degu->photo_url = $imagefile->store('public/degu_images');
             $degu->photo_url = Storage::disk('s3')->putFile('degiita', $imagefile, 'public');
             $degu->save();
-
-            dd($degu);
             //dd($degu->photo_url);
             return redirect('degu')->with('success', '新しくデグー情報を登録しました！');
         }
