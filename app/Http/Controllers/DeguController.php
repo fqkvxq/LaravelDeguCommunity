@@ -14,15 +14,6 @@ use Storage;
 
 class DeguController extends Controller
 {
-
-    //環境を判別するbool値を設定するプロパティを定義
-    protected $is_production;
-
-    public function __construct() {
-        //__construct内で環境を判別してプロパティに値をセット
-        $this->is_production = env('APP_ENV') === 'production' ? true : false;
-    }
-
     /**
      * ログイン済みのユーザーでないと認証画面が出る->web.phpで設定済み
      *
@@ -38,7 +29,6 @@ class DeguController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    
     public function add(Request $request)
     {
         $degu = new Degu; // Deguモデル
@@ -64,7 +54,7 @@ class DeguController extends Controller
 
         if ($validator->fails()) {
             // dd($validator);
-            return redirect('degu/register',$this->is_production)
+            return redirect('degu/register')
                 ->withErrors($validator)
                 ->withInput();
         } else { // バリデーションが通った時
@@ -81,7 +71,7 @@ class DeguController extends Controller
             //dd($degu->photo_url);
             // 二重送信対策
             $request->session()->regenerateToken();
-            return redirect('degu',$this->is_production)->with('success', '新しくデグー情報を登録しました！',$this->is_production);
+            return redirect('degu')->with('success', '新しくデグー情報を登録しました！');
         }
     }
 
