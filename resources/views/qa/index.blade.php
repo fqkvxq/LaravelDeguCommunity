@@ -144,7 +144,7 @@
                     <ul>
                         @foreach($questions as $question)
                         <li>
-                            <a href="{{ url('qa',$is_production).'/'.$question->id }}">
+                            <a href="{{ url('qa').'/'.$question->id }}">
                                 {{ Str::limit($question->text,60) }}
                             </a>
                         </li>

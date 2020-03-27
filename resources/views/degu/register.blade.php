@@ -1,16 +1,16 @@
 @extends('layouts.app')
 @push('js')
-<script src="{{ asset('/js/croppie.js',$is_production) }}"></script>
+<script src="{{ asset('/js/croppie.js') }}"></script>
 @endpush
 @push('css')
-<script src="{{ asset('/css/croppie.css',$is_production) }}"></script>
+<script src="{{ asset('/css/croppie.css') }}"></script>
 @endpush
 @section('title', 'デグーの登録')
 @section('content') {{-- layouts/app.blade.phpで定義 --}}
 <div class="container register-degu">
   <div class="row">
     <div class="col-md-8 bg-white mx-auto rounded-lg shadow-sm p-5">
-      <img class="deguillust rounded-circle img-fluid" src="{{ asset('uploads/oyaji_square.jpg',$is_production) }}" alt="" srcset="">
+      <img class="deguillust rounded-circle img-fluid" src="{{ asset('uploads/oyaji_square.jpg') }}" alt="" srcset="">
       <div class="row">
         <div class="col-lg-12 mx-auto">
           <h1 class="text-center">{{ __('デグー情報の登録') }}</h1>
