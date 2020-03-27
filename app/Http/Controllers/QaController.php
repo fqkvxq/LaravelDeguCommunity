@@ -14,6 +14,14 @@ use Illuminate\Support\Facades\Validator;
 
 class QaController extends Controller
 {
+    //環境を判別するbool値を設定するプロパティを定義
+    protected $is_production;
+
+    public function __construct()
+    {
+        //__construct内で環境を判別してプロパティに値をセット
+        $this->is_production = env('APP_ENV') === 'production' ? true : false;
+    }
     // ================================================
     // 質問一覧画面
     // ================================================
@@ -56,7 +64,7 @@ class QaController extends Controller
 
         if ($validator->fails()) {
             // dd($validator);
-            return redirect('qa/index')
+            return redirect('qa/index',$this->is_production)
                 ->withErrors($validator)
                 ->withInput();
         } else { // バリデーションが通った時
@@ -66,7 +74,7 @@ class QaController extends Controller
             $question->answer_flg = $request->answer_flg;
             $question->save();
             //dd($degu->photo_url);
-            return redirect('qa')->with('success', '新しく質問を登録しました！');
+            return redirect('qa')->with('success', '新しく質問を登録しました！',$this->is_production);
         }
     }
 
@@ -90,7 +98,7 @@ class QaController extends Controller
 
         if ($validator->fails()) {
             // dd($validator);
-            return redirect('qa/page')
+            return redirect('qa/page',$this->is_production)
                 ->withErrors($validator)
                 ->withInput();
         } else { // バリデーションが通った時
@@ -106,7 +114,7 @@ class QaController extends Controller
             // 二重送信対策
             $request->session()->regenerateToken();
             //dd($degu->photo_url);
-            return redirect('qa')->with('success', '新しく回答を登録しました！');
+            return redirect('qa',$this->is_production)->with('success', '新しく回答を登録しました！');
         }
     }
 }

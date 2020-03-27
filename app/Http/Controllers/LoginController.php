@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
+
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\User;
@@ -11,6 +12,14 @@ use Illuminate\Foundation\Auth\AuthenticatesUsers;
 
 class LoginController extends Controller
 {
+    //環境を判別するbool値を設定するプロパティを定義
+    protected $is_production;
+
+    public function __construct()
+    {
+        //__construct内で環境を判別してプロパティに値をセット
+        $this->is_production = env('APP_ENV') === 'production' ? true : false;
+    }
     /**
      * Redirect the user to the Twitter authentication page.
      *
@@ -18,7 +27,7 @@ class LoginController extends Controller
      */
     public function redirectToProvider()
     {
-        return Socialite::driver('twitter')->redirect();
+        return Socialite::driver('twitter')->redirect($this->is_production);
     }
 
     /**
@@ -28,25 +37,25 @@ class LoginController extends Controller
      * 
      */
     public function handleProviderCallback(Request $request)
-    {  
+    {
         //ユーザー情報を取得
         $user = Socialite::driver('twitter')->user();
         $authUser = $this->findOrCreateUser($user);
         //dd($authUser);
         Auth::login($authUser, true);
-        
+
         //$twitter_avatar = $user->avatar_original;
         // セッションに保存
         //$request->session()->put([ 'twitter_avatar' => $twitter_avatar ]);
-        return redirect()->route('home')->with('status', __('ログインしました。'));;
+        return redirect($this->is_production)->route('home')->with('status', __('ログインしました。'));;
     }
     private function findOrCreateUser($twitterUser)
     {
         $authUser = User::where('id', $twitterUser->id)->first();
         //dd($twitterUser);
-        
+
         // すでにログインしたことある人
-        if ($authUser){
+        if ($authUser) {
             return $authUser;
         }
 
