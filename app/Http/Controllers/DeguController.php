@@ -77,7 +77,7 @@ class DeguController extends Controller
 
     public function index()
     {
-        $degus = DB::table('degus')->get();
+        $degus = DB::table('degus')->orderBy('created_at', 'desc')->get();
         return view('degu/index', ['degus' => $degus]);
     }
 
