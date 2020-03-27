@@ -57,7 +57,7 @@
                                     {{ __('ログイン') }}
                                 </button>
 
-                                <a href="{{ url('login/twitter') }}" type="" class="btn btn-primary">
+                                <a href="{{ url('login/twitter',$is_production) }}" type="" class="btn btn-primary">
                                     {{ __('Twitterログイン') }}
                                 </a>
 

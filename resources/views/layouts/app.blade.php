@@ -12,8 +12,8 @@
     <title>@yield('title') | {{ config('app.title') }}</title>
 
     <!-- Scripts -->
-    <script src="{{ asset('js/app.js') }}" defer></script>
-    <script src="{{ asset('js/custom.js') }}" defer></script>
+    <script src="{{ asset('js/app.js',$is_production) }}" defer></script>
+    <script src="{{ asset('js/custom.js',$is_production) }}" defer></script>
     @stack('js')
 
     <!-- Fonts -->
@@ -21,9 +21,9 @@
     <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
 
     <!-- Styles -->
-    <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/app.css',$is_production) }}" rel="stylesheet">
     {{-- Custom CSS --}}
-    <link href="{{ asset('css/custom.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/custom.css',$is_production) }}" rel="stylesheet">
     @stack('css')
 </head>
 
@@ -32,7 +32,7 @@
         {{-- Navbarここから --}}
         <nav class="navbar navbar-expand-md navbar-light text-black bg-white shadow-sm">
             <div class="container">
-                <a class="navbar-brand" href="{{ url('/') }}">
+                <a class="navbar-brand" href="{{ url('/',$is_production) }}">
                     <span class="appname">
                         {{ config('app.name', '') }}
                     </span>
