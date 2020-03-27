@@ -8,6 +8,6 @@ class TopPageController extends Controller
 {
     public function index()
     {
-        return view('toppage');
+        return redirect('degu');
     }
 }
