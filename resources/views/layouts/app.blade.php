@@ -106,8 +106,12 @@
                                 </span>
                                 <span class="caret"></span>
                                 @if(Auth::user()->profile_image_url)
+                                    @php
+                                        $twitter_image_url = Auth::user()->profile_image_url;
+                                        $twitter_image_url = str_replace('http','https',$twitter_image_url);
+                                    @endphp
                                 <img class="rounded-circle profile-image img-fluid"
-                                    src="{{Auth::user()->profile_image_url }}">
+                                    src="{{ $twitter_image_url }}">
                                 @endif
                             </a>
 
