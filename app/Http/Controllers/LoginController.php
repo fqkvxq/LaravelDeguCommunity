@@ -32,7 +32,6 @@ class LoginController extends Controller
         //ユーザー情報を取得
         $user = Socialite::driver('twitter')->user();
         $authUser = $this->findOrCreateUser($user);
-        //dd($authUser);
         Auth::login($authUser, true);
         
         //$twitter_avatar = $user->avatar_original;
@@ -42,8 +41,7 @@ class LoginController extends Controller
     }
     private function findOrCreateUser($twitterUser)
     {
-        $authUser = User::where('id', $twitterUser->id)->first();
-        //dd($twitterUser);
+        $authUser = User::where('twitter_id', $twitterUser->nickname)->first();
         
         // すでにログインしたことある人
         if ($authUser){
