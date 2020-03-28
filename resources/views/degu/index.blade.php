@@ -49,15 +49,15 @@
     {{-- Widjet --}}
     <div class="row">
         {{-- Left Widjet --}}
-        <div class="col-12 col-md-6 col-lg-4 my-3">
+        <div class="col-12 col-md-4 col-lg-4 my-3">
             <img class="img-fluid d-block mx-auto" src="https://via.placeholder.com/336x280.png?text=Ad" alt="">
         </div>
         {{-- Center Widjet --}}
-        <div class="col-12 col-md-6 col-lg-4 my-3">
+        <div class="col-12 col-md-4 col-lg-4 my-3">
             <img class="img-fluid d-block mx-auto" src="https://via.placeholder.com/336x280.png?text=Ad" alt="">
         </div>
         {{-- Right Widjet --}}
-        <div class="col-12 col-md-6 col-lg-4 my-3">
+        <div class="col-12 col-md-4 col-lg-4 my-3">
             <img class="img-fluid d-block mx-auto" src="https://via.placeholder.com/336x280.png?text=Ad" alt="">
         </div>
     </div>
