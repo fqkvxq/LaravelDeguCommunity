@@ -18,18 +18,12 @@
                                 <input type="hidden" name="answer_flg" value="1" />
                                 <input type="hidden" name="question_id" value="{{$question->id}}" />
                                 @if($question->answer_flg == 0)
-                                    <h2>まだ回答がありません。</h2>
+                                <h2>まだ回答がありません。</h2>
                                 @endif
                                 <div class="form-group">
-                                    <label for="QuestionFrom"
-                                        >回答を入力してください。</label
-                                    >
-                                    <textarea
-                                        class="form-control"
-                                        id="QuestionFrom"
-                                        name="answer_text"
-                                        rows="7"
-                                    ></textarea>
+                                    <label for="QuestionFrom">回答を入力してください。</label>
+                                    <textarea class="form-control" id="QuestionFrom" name="answer_text"
+                                        rows="7"></textarea>
                                 </div>
                                 <button type="submit" class="btn btn-primary btn-lg btn-block">回答する</button>
                             </form>
@@ -40,9 +34,7 @@
                     <div class="row p-1 answer">
                         <div class="col-md-12 bg-white shadow-sm rounded-sm p-3">
                             <h2 class="text-center">まだ回答されていない質問</h2>
-                            <small class="d-block text-center"
-                                >みんなが回答を待っています！回答してね！</small
-                            >
+                            <small class="d-block text-center">みんなが回答を待っています！回答してね！</small>
                             <ul>
                                 @foreach($questions as $question)
                                 <li>
@@ -52,6 +44,15 @@
                                 </li>
                                 @endforeach
                             </ul>
+                        </div>
+                    </div>
+                    <div class="row my-3">
+                        <div class="col-md-12">
+                            <div class="row p-3">
+                                <div class="col-md-12">
+                                    <img class="img-fluid" src="https://via.placeholder.com/336x280.png?text=Ad" alt="">
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
