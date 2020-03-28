@@ -24,7 +24,14 @@ body {
     .navbar-brand {
          .appname {
              font-weight: bold;
+             color: #FF9800;
+             background: -webkit-linear-gradient(45deg, #FF9800, #E91E63);
+             -webkit-background-clip: text;
+             -webkit-text-fill-color: transparent;
          }
+    }
+    .navbar-toggler {
+        border: none;
     }
     .navbar-nav {
         .nav-link {
@@ -32,7 +39,9 @@ body {
                 font-weight: bold;
                 color: #000;
                 .register {
-                    background-color: #ff9800;
+                    background: -moz-linear-gradient(left, #FF9800, #E91E63);
+                    background: -webkit-linear-gradient(left, #FF9800, #E91E63);
+                    background: linear-gradient(to right, #FF9800, #E91E63);
                     color: #fff;
                     padding: 10px;
                     border-radius: 5px;
