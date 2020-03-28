@@ -6,9 +6,9 @@ $title = $degu->name
 @section('content')
 <div class="container">
     <div class="row">
-        <div class="col-md-12 bg-white shadow-sm">
+        <div class="col-md-8 bg-white shadow-sm">
             <div class="row">
-                <div class="col-md-6 mx-auto py-5">
+                <div class="col-md-12 mx-auto py-5">
                     <table class="table">
                         <tbody>
                             <tr>
@@ -51,6 +51,26 @@ $title = $degu->name
                     <a href="{{__('https://twitter.com/')}}{{$twitter_id}}"
                         class="btn btn-block btn-outline-primary">飼い主さんのTwitterをのぞく</a>
                     @endif
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="row my-3">
+                <div class="col-md-12">
+                    <div class="row p-3">
+                        <div class="col-md-12">
+                            <img class="img-fluid" src="https://via.placeholder.com/336x280.png?text=Ad" alt="">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row my-3">
+                <div class="col-md-12">
+                    <div class="row p-3">
+                        <div class="col-md-12">
+                            <img class="img-fluid" src="https://via.placeholder.com/336x280.png?text=Ad" alt="">
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>

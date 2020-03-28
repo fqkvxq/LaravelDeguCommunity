@@ -14,7 +14,7 @@
     @endif
     <div class="row mt-1 degus-card">
         @foreach($degus as $degu)
-        <div class="col-lg-4 col-md-6 p-2">
+        <div class="col-lg-4 col-6 p-2">
             <a href="{{ url('degu').'/'.$degu->id }}">
                 <div class="row m-2 shadow rounded-lg bg-white">
                     <div class="col-md-12">
@@ -45,6 +45,21 @@
             </a>
         </div>
         @endforeach
+    </div>
+    {{-- Widjet --}}
+    <div class="row">
+        {{-- Left Widjet --}}
+        <div class="col-12 col-md-6 col-lg-4 my-3">
+            <img class="img-fluid d-block mx-auto" src="https://via.placeholder.com/336x280.png?text=Ad" alt="">
+        </div>
+        {{-- Center Widjet --}}
+        <div class="col-12 col-md-6 col-lg-4 my-3">
+            <img class="img-fluid d-block mx-auto" src="https://via.placeholder.com/336x280.png?text=Ad" alt="">
+        </div>
+        {{-- Right Widjet --}}
+        <div class="col-12 col-md-6 col-lg-4 my-3">
+            <img class="img-fluid d-block mx-auto" src="https://via.placeholder.com/336x280.png?text=Ad" alt="">
+        </div>
     </div>
 </div>
 @endsection
