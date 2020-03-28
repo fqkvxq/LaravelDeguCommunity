@@ -25,6 +25,7 @@
     {{-- Custom CSS --}}
     <link href="{{ asset('css/custom.css') }}" rel="stylesheet">
     @stack('css')
+    @trixassets
 </head>
 
 <body>

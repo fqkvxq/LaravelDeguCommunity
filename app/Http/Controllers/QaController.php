@@ -11,6 +11,7 @@ use Socialite;
 use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Validator;
+use Te7aHoudini\LaravelTrix\Traits\HasTrixRichText;
 
 class QaController extends Controller
 {
