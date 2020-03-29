@@ -141,6 +141,47 @@
         <main class="py-4">
             @yield('content')
         </main>
+
+        {{-- Footerここから --}}
+        <footer class="container-fluid footer">
+            <div class="container">
+                <div class="row">
+                    {{-- フッター左部分 --}}
+                    <div class="col text-white">
+                        <div class="row py-2">
+                            <div class="col">
+                                <span class="appname h2 footer-title">
+                                        {{ config('app.name', '') }}
+                                </span>
+                            </div>
+                        </div>
+                        <div class="row py-2">
+                            <div class="col">
+                                <span>
+                                        デグーのSNS
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                    {{-- フッター右部分 --}}
+                    <div class="col-4 text-white justify-content-right">
+                        <div class="row">
+                            <div class="col">
+                                <span class="d-inline h4">Services</span>
+                                <ul class="services pl-0 my-3">
+                                    <li>登録</li>
+                                    <li>ログイン</li>
+                                    <li>デグーを登録する</li>
+                                    <li>デグーQ&A</li>
+                                    <li>プライバシーポリシー</li>
+                                </ul>   
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </footer>
+        {{-- Footerここまで --}}
     </div>
 </body>
 
