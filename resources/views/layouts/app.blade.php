@@ -147,7 +147,7 @@
             <div class="container">
                 <div class="row">
                     {{-- フッター左部分 --}}
-                    <div class="col text-white">
+                    <div class="col-sm-12 text-white">
                         <div class="row py-2">
                             <div class="col">
                                 <span class="appname h2 footer-title">
@@ -164,7 +164,7 @@
                         </div>
                     </div>
                     {{-- フッター右部分 --}}
-                    <div class="col-4 text-white justify-content-right">
+                    <div class="col-md-4 col-sm-12 text-white justify-content-right">
                         <div class="row">
                             <div class="col">
                                 <span class="d-inline h4">Services</span>
