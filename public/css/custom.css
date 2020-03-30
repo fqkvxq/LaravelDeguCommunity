@@ -34,6 +34,17 @@ body {
   border-radius: 5px;
 }
 
+.header-area {
+  background: -webkit-gradient(linear, left top, right top, from(#FF9800), to(#E91E63));
+  background: linear-gradient(to right, #FF9800, #E91E63);
+}
+
+.header-area .btn {
+  background-color: #00B900;
+  color: white;
+  font-weight: bold;
+}
+
 .deguillust {
   width: 150px;
   position: absolute;
