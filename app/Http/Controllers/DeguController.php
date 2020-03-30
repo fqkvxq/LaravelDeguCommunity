@@ -41,7 +41,7 @@ class DeguController extends Controller
             'degu_name' => 'required',
             'degu_sex' => 'required',
             'degu_profile' => 'required',
-            'photo_url' => 'required|file|image|mimes:jpeg,png,jpg,gif|max:5000000',
+            'photo_url' => 'required|file|image|mimes:jpeg,png,jpg,gif|max:10000000',
             'confirmcheckbox' => 'required'
         ];
         $message = [
