@@ -19,6 +19,7 @@ class User extends Authenticatable
         'id',
         'name',
         'twitter_id',
+        'twitter_unique_id',
         'profile_image_url',
         'email',
         'password',

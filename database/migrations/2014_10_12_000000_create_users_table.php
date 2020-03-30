@@ -17,6 +17,7 @@ class CreateUsersTable extends Migration
             $table->bigIncrements('id'); //固有のID
             $table->string('name')->nullable(); //ユーザー名(あとから変更可能)
             $table->string('twitter_id')->nullable(); //TwitterID
+            $table->string('twitter_unique_id')->nullable(); //TwitterID
             $table->string('profile_image_url')->nullable(); //飼い主プロフィール画像
             $table->string('email')->unique()->nullable(); //メールアドレス
             $table->timestamp('email_verified_at')->nullable();
