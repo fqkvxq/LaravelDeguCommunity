@@ -41,8 +41,10 @@ class LoginController extends Controller
     }
     private function findOrCreateUser($twitterUser)
     {
-        $authUser = User::where('twitter_id', $twitterUser->nickname)->first();
-        
+    
+
+        $authUser = User::where('twitter_unique_id', $twitterUser->id)->first();
+
         // すでにログインしたことある人
         if ($authUser){
             return $authUser;
@@ -55,6 +57,7 @@ class LoginController extends Controller
         return User::create([
             'name' => $twitterUser->name, // デグーのさすけ
             'twitter_id' => $twitterUser->nickname, // TwitterID
+            'twitter_unique_id' => $twitterUser->id, // TwitterユニークID
             'profile_image_url' => $twitter_avatar //飼い主プロフィール画像
         ]);
         // 初回ログイン者のプロフィールペ入力ページに遷移する処理をここに記載
