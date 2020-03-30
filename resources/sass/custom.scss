@@ -54,6 +54,16 @@ body {
 // ======================================
 // デグー一覧表示画面(index.blade.php)
 // ======================================
+.header-area {
+    background: -moz-linear-gradient(left, #FF9800, #E91E63);
+    background: -webkit-linear-gradient(left, #FF9800, #E91E63);
+    background: linear-gradient(to right, #FF9800, #E91E63);
+    .btn {
+        background-color: #00B900;
+        color: white;
+        font-weight: bold;
+    }
+}
 .deguillust {
     width: 150px;
     position: absolute;

@@ -1,6 +1,16 @@
 @extends('layouts.app')
 @section('title', 'デグー一覧')
 @section('content')
+<div class="container-fluid mt-0 py-5 header-area">
+    <div class="row ">
+        <div class="col-md-12">
+            <h1 class="text-center text-white">登録デグー</h1>
+            <div class="text-center mt-4">
+                <a href="./degu/register" type="button" class="btn">デグーを登録する</a>
+            </div>
+        </div>
+    </div>
+</div>
 <div class="container">
     @if (session('success'))
     <div class="row">
