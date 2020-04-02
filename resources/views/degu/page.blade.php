@@ -55,7 +55,6 @@ $title = $degu->name;
                     @endif
                 </div>
             </div>
-            .row>.col-md-12
         </div>
         {{-- 右サイドバー --}}
         <div class="col-md-4">
