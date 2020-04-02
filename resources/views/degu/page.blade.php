@@ -1,10 +1,8 @@
 @extends('layouts.app')
 @php
 $title = $degu->name;
-$ogp = deguImageUrl;
 @endphp
 @section('title', $title)
-@section('ogp', $ogp)
 @section('content')
 <div class="container">
     <div class="row">
@@ -19,7 +17,9 @@ $ogp = deguImageUrl;
                                     $deguImageUrl = $degu->photo_url;
                                     $deguImageUrl =
                                     'https://degiita.s3-ap-northeast-1.amazonaws.com/'.str_replace('public','storage',$deguImageUrl);
+                                    $ogp = $deguImageUrl;
                                     @endphp
+                                    @section('ogp', $ogp)
                                     <img src="{{ url($deguImageUrl) }}" class="img-fluid rounded mx-auto d-block"
                                         alt="{{$degu->name}}">
                                 </td>
