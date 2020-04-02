@@ -121,6 +121,10 @@ body {
 // ======================================
 .qa-index {
     .col-md-8 {
+        a{
+            color: initial;
+            text-decoration: none;
+        }
         .tag {
             margin-bottom: 20px;
             span {

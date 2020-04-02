@@ -56,8 +56,10 @@
                     </div>
                 </div>
             </div>
-            <!-- カード -->
-            <div class="row p-1">
+            {{-- カード --}}
+            @foreach($questions as $question)
+            <a href="{{ url('qa').'/'.$question->id }}">
+            <div class="row p-1 question-card">
                 <div class="col-md-12 bg-white shadow-sm rounded p-3">
                     <div class="row">
                         <div class="col-md-12 tag">
@@ -69,7 +71,7 @@
                     <div class="row">
                         <div class="col-md-12 question">
                             <h2>
-                                デグーが夜うるさいときにはどうすれば良いでしょうか？
+                                {{ Str::limit($question->text,60) }}
                             </h2>
                         </div>
                     </div>
@@ -80,61 +82,12 @@
                             </p>
                         </div>
                     </div>
-                    <span class="details d-block text-right"><a href="#">>>続きを読む</a></span>
+                    <span class="details d-block text-right">>>続きを読む</span>
                 </div>
             </div>
-            <div class="row p-1">
-                <div class="col-md-12 bg-white shadow-sm rounded p-3">
-                    <div class="row">
-                        <div class="col-md-12 tag">
-                            <span>回答のある質問</span>
-                            <span class="viewcount">閲覧数：333</span>
-                            <span class="new">新着</span>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-md-12 question">
-                            <h2>
-                                デグーが夜うるさいときにはどうすれば良いでしょうか？
-                            </h2>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-md-12 answer">
-                            <p>
-                                回答回答回答回答回答回答回答回答回答回答回答回答回答回答回答回答回答回答回答回答回答回答回答回答回答回答回答
-                            </p>
-                        </div>
-                    </div>
-                    <span class="details d-block text-right"><a href="#">>>続きを読む</a></span>
-                </div>
-            </div>
-            <div class="row p-1">
-                <div class="col-md-12 bg-white shadow-sm rounded-sm p-3">
-                    <div class="row">
-                        <div class="col-md-12 tag">
-                            <span>回答のある質問</span>
-                            <span class="viewcount">閲覧数：333</span>
-                            <span class="new">新着</span>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-md-12 question">
-                            <h2>
-                                デグーが夜うるさいときにはどうすれば良いでしょうか？
-                            </h2>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-md-12 answer">
-                            <p>
-                                回答回答回答回答回答回答回答回答回答回答回答回答回答回答回答回答回答回答回答回答回答回答回答回答回答回答回答
-                            </p>
-                        </div>
-                    </div>
-                    <span class="details d-block text-right"><a href="#">>>続きを読む</a></span>
-                </div>
-            </div>
+            </a>
+            @endforeach
+            {{-- カードここまで --}}
         </div>
         <div class="col-md-4">
             <div class="row p-1">
