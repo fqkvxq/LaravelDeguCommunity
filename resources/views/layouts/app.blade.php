@@ -14,6 +14,7 @@
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}" defer></script>
     <script src="{{ asset('js/custom.js') }}" defer></script>
+    <script src="{{ asset('js/croppie.js') }}" defer></script>
     @stack('js')
 
     <!-- Global site tag (gtag.js) - Google Analytics -->
@@ -33,6 +34,7 @@
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     {{-- Custom CSS --}}
     <link href="{{ asset('css/custom.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/croppie.css') }}" rel="stylesheet">
     @stack('css')
 
     <!-- ※基本共通設定 -->
@@ -41,7 +43,7 @@
     <meta property="og:title" content="@yield('title') | {{ config('app.title') }}" />
     <meta property="og:type" content="website" />
     <meta property="og:url" content="https://degiita.com/" />
-    <meta property="og:image" content="https://degiita.s3-ap-northeast-1.amazonaws.com/degiita/ogp_default.jpeg" />
+    <meta property="og:image" content="@yield('ogp','https://degiita.s3-ap-northeast-1.amazonaws.com/degiita/ogp_default.jpeg')" />
     <meta property="og:site_name" content="@yield('title') | {{ config('app.title') }}" />
     <meta property="og:description" content="デグーのSNS。お互いのデグーを紹介したり、デグー飼育ノウハウを共有しよう。" />
     

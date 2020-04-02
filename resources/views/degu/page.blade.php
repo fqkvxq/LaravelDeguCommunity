@@ -1,8 +1,10 @@
 @extends('layouts.app')
 @php
-$title = $degu->name
+$title = $degu->name;
+$ogp = deguImageUrl;
 @endphp
 @section('title', $title)
+@section('ogp', $ogp)
 @section('content')
 <div class="container">
     <div class="row">
@@ -53,7 +55,9 @@ $title = $degu->name
                     @endif
                 </div>
             </div>
+            .row>.col-md-12
         </div>
+        {{-- 右サイドバー --}}
         <div class="col-md-4">
             <div class="row my-3">
                 <div class="col-md-12">
