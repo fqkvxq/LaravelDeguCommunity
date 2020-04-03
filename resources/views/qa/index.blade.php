@@ -58,12 +58,19 @@
             </div>
             {{-- カード --}}
             @foreach($questions as $question)
+            @php
+                if($question->answer_flg == 1){
+                    $isAnswer = "回答のある質問";
+                }else{
+                    $isAnswer = "未回答の質問";
+                }
+            @endphp
             <a href="{{ url('qa').'/'.$question->id }}">
             <div class="row p-1 question-card">
                 <div class="col-md-12 bg-white shadow-sm rounded p-3">
                     <div class="row">
                         <div class="col-md-12 tag">
-                            <span>回答のある質問</span>
+                            <span>{{$isAnswer}}</span>
                             <span class="viewcount">閲覧数：333</span>
                             <span class="new">新着</span>
                         </div>
@@ -78,7 +85,7 @@
                     <div class="row">
                         <div class="col-md-12 answer">
                             <p>
-                                回答回答回答回答回答回答回答回答回答回答回答回答回答回答回答回答回答回答回答回答回答回答回答回答回答回答回答
+                                {{$question->answers[0]->text}}
                             </p>
                         </div>
                     </div>
@@ -92,26 +99,36 @@
         <div class="col-md-4">
             <div class="row p-1">
                 <div class="col-md-12 bg-white shadow-sm rounded-sm p-3">
-                    <h2 class="text-center">まだ回答されていない質問</h2>
+                    <h2 class="text-center">回答のある質問</h2>
                     <small class="d-block text-center">みんなが回答を待っています！回答してね！</small>
                     <ul>
                         @foreach($questions as $question)
-                        <li>
-                            <a href="{{ url('qa').'/'.$question->id }}">
-                                {{ Str::limit($question->text,60) }}
-                            </a>
-                        </li>
+                            @php
+                            if($question->answer_flg == 1){
+                                echo "<li>";
+                                echo "<a href=".url('qa')."/".$question->id.">".Str::limit($question->text,60)."</a>";
+                                echo "</li>";
+                            } 
+                            @endphp
                         @endforeach
                     </ul>
                 </div>
             </div>
-            <div class="row my-3">
-                <div class="col-md-12">
-                    <div class="row p-3">
-                        <div class="col-md-12">
-                            <img class="img-fluid" src="https://via.placeholder.com/336x280.png?text=Ad" alt="">
-                        </div>
-                    </div>
+            <div class="row p-1">
+                <div class="col-md-12 bg-white shadow-sm rounded-sm p-3">
+                    <h2 class="text-center">まだ回答されていない質問</h2>
+                    <small class="d-block text-center">みんなが回答を待っています！回答してね！</small>
+                    <ul>
+                        @foreach($questions as $question)
+                            @php
+                            if($question->answer_flg == 0){
+                                echo "<li>";
+                                echo "<a href=".url('qa')."/".$question->id.">".Str::limit($question->text,60)."</a>";
+                                echo "</li>";
+                            } 
+                            @endphp
+                        @endforeach
+                    </ul>
                 </div>
             </div>
         </div>

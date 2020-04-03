@@ -19,8 +19,10 @@ class QaController extends Controller
     // ================================================
     public function index()
     {
-        $questions = DB::table('questions')->orderBy('created_at', 'desc')->get(); //取得順番を逆に
-        return view('qa/index', ['questions' => $questions]);
+        $questions = Question::orderBy('created_at', 'desc')->get(); //取得順番を逆に
+        return view('qa/index',[
+            'questions' => $questions,
+        ]);
     }
 
     // ================================================
@@ -28,7 +30,7 @@ class QaController extends Controller
     // ================================================
     public function page($id)
     {
-        $questions = DB::table('questions')->orderBy('created_at', 'desc')->get(); //取得順番を逆に
+        $questions = Question::orderBy('created_at', 'desc')->get(); //取得順番を逆に
         $question = Question::find($id);
         $answer = Answer::find($id);
         $user = User::find($id);
@@ -65,6 +67,11 @@ class QaController extends Controller
             $question->user_id = $user->id;
             $question->answer_flg = $request->answer_flg;
             $question->save();
+
+            $answer->text = "No Answer";
+            $answer->user_id = $user->id;
+            $answer->question_id = $question->id;
+            $answer->save();
             //dd($degu->photo_url);
             return redirect('qa')->with('success', '新しく質問を登録しました！');
         }
@@ -95,13 +102,12 @@ class QaController extends Controller
                 ->withInput();
         } else { // バリデーションが通った時
             unset($form['_token']);
+
             $answer->text = $request->answer_text; //デグーの名前
             $answer->user_id = $user->id;
             $answer->question_id = $request->question_id;
-            DB::table('questions')->where(
-                'id',
-                $answer->question_id
-            )->update(['answer_flg' => '1']);
+            // Question::where('id',$answer->question_id)->update(['answer_flg' => '1']);
+            Question::find($answer->question_id)->update(['answer_flg' => '1']);
             $answer->save();
             // 二重送信対策
             $request->session()->regenerateToken();

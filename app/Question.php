@@ -8,6 +8,7 @@ class Question extends Model
 {
     //
     protected $table = 'questions';
+    protected $fillable = ['answer_flg'];
 
     // 質問:回答=1:N
     public function answers(){
