@@ -17,6 +17,9 @@
     <script src="{{ asset('js/croppie.js') }}" defer></script>
     @stack('js')
 
+    <!-- favicon -->
+    <link rel="shortcut icon" href="{{ asset('/favicon.ico') }}">
+
     <!-- Global site tag (gtag.js) - Google Analytics -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=UA-90454441-26"></script>
     <script>
