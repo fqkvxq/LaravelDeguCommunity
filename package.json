@@ -25,6 +25,6 @@
     "dependencies": {
         "acorn": ">=6.4.1",
         "croppie": "^2.6.4",
-        "minimist": ">=1.2.2"
+        "minimist": ">=1.2.3"
     }
 }
