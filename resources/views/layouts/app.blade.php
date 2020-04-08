@@ -165,7 +165,7 @@
         </nav>
         {{-- Navbarここまで --}}
 
-        <main class="py-4">
+        <main class="pb-4">
             @yield('content')
         </main>
 
@@ -174,7 +174,7 @@
             <div class="container">
                 <div class="row">
                     {{-- フッター左部分 --}}
-                    <div class="col-sm-12 text-white">
+                    <div class="col-md-4 col-sm-12 text-white">
                         <div class="row py-2">
                             <div class="col">
                                 <span class="appname h2 footer-title">
