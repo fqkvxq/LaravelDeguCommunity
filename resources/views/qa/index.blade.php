@@ -34,35 +34,39 @@
 
             {{-- modal --}}
             <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-            <div class="modal-dialog" role="document">
-                <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">質問を入力してください。</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-                <div class="modal-body p-1">
-                    <div class="form-group mb-1">
-                        <select class="form-control" id="exampleFormControlSelect1">
-                          <option>タップして質問カテゴリを選択</option>
-                          <option>食事</option>
-                          <option>飼育環境</option>
-                          <option>掃除</option>
-                          <option>ふれあい</option>
-                          <option>健康</option>
-                        </select>
-                      </div>
-                    <div class="form-group mb-1">
-                        <textarea class="form-control" id="exampleFormControlTextarea1" placeholder="質問文をこちらへ入力してください。" rows="10"></textarea>
-                      </div>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">閉じる</button>
-                    <button type="button" class="btn btn-danger">送信</button>
-                </div>
-                </div>
-            </div>
+                <form method="POST" action="/qa/addQuestion">
+                    {{ csrf_field() }}
+                    <input type="hidden" name="answer_flg" value="0" />
+                    <div class="modal-dialog" role="document">
+                        <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalLabel">質問を入力してください。</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body p-1">
+                            <div class="form-group mb-1">
+                                <select class="form-control" id="exampleFormControlSelect1">
+                                <option>タップして質問カテゴリを選択</option>
+                                <option>食事</option>
+                                <option>飼育環境</option>
+                                <option>掃除</option>
+                                <option>ふれあい</option>
+                                <option>健康</option>
+                                </select>
+                            </div>
+                            <div class="form-group mb-1">
+                                <textarea class="form-control" id="exampleFormControlTextarea1" name="question_text" placeholder="質問文をこちらへ入力してください。" rows="10"></textarea>
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">閉じる</button>
+                            <button type="submit" class="btn btn-danger">送信</button>
+                        </div>
+                        </div>
+                    </div>
+                </form>
             </div>
             {{--  --}}
             {{-- カード --}}
