@@ -24,7 +24,7 @@
     <div class="row">
         <div class="col-md-8">
             <div class="row">
-                <div class="col-md-12 px-1 py-3 my-1 bg-white">
+                <div class="col-md-12 px-1 py-3 mt-1 bg-white">
                     <!-- Button trigger modal -->
                     <div type="button" class="question_button btn-block" data-toggle="modal" data-target="#exampleModal">
                         <p class="px-2 mb-0">こちらをタップして質問を入力してください。<span class="text-cursor"></span></p>
@@ -72,7 +72,7 @@
             {{-- カード --}}
             @foreach($questions as $question)
             <a href="{{ url('qa').'/'.$question->id }}">
-            <div class="row question-card">
+            <div class="row question-card mt-1">
                 <div class="col-md-12 bg-white shadow-sm p-3">
                     <div class="row">
                         <div class="col-md-12 tag">
@@ -103,7 +103,7 @@
             {{-- カードここまで --}}
         </div>
         <div class="col-md-4">
-            <div class="row py-1">
+            <div class="row my-1">
                 <div class="col-md-12 bg-white shadow-sm p-3">
                     <h2 class="text-center">まだ回答されていない質問</h2>
                     <small class="d-block text-center">みんなが回答を待っています！回答してね！</small>
