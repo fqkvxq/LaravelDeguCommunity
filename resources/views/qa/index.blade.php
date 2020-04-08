@@ -27,7 +27,7 @@
                 <div class="col-md-12 px-1 py-3 my-1 bg-white">
                     <!-- Button trigger modal -->
                     <div type="button" class="question_button btn-block" data-toggle="modal" data-target="#exampleModal">
-                        <p class="px-2 mb-0">こちらをタップして質問を入力してください。</p>
+                        <p class="px-2 mb-0">こちらをタップして質問を入力してください。<span class="text-cursor"></span></p>
                     </div>
                 </div>
             </div>
