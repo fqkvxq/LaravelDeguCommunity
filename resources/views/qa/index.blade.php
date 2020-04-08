@@ -42,12 +42,24 @@
                     <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
-                <div class="modal-body">
-                    ...
+                <div class="modal-body p-1">
+                    <div class="form-group mb-1">
+                        <select class="form-control" id="exampleFormControlSelect1">
+                          <option>タップして質問カテゴリを選択</option>
+                          <option>食事</option>
+                          <option>飼育環境</option>
+                          <option>掃除</option>
+                          <option>ふれあい</option>
+                          <option>健康</option>
+                        </select>
+                      </div>
+                    <div class="form-group mb-1">
+                        <textarea class="form-control" id="exampleFormControlTextarea1" placeholder="質問文をこちらへ入力してください。" rows="10"></textarea>
+                      </div>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                    <button type="button" class="btn btn-primary">Save changes</button>
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">閉じる</button>
+                    <button type="button" class="btn btn-danger">送信</button>
                 </div>
                 </div>
             </div>
