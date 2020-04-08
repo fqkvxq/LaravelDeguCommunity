@@ -72,7 +72,7 @@
             {{-- カード --}}
             @foreach($questions as $question)
             <a href="{{ url('qa').'/'.$question->id }}">
-            <div class="row question-card">
+            <div class="row question-card mb-1">
                 <div class="col-md-12 bg-white shadow-sm p-3">
                     <div class="row">
                         <div class="col-md-12 tag">
