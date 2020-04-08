@@ -127,9 +127,10 @@ body {
         }
         .tag {
             margin-bottom: 20px;
+            font-size: 8px;
             span {
-                margin: 0 5px;
-                border: 1px solid #000;
+                margin: 0 3px;
+                border: .5px solid #000;
                 border-radius: 5px;
                 padding: 5px;
             }
@@ -147,8 +148,17 @@ body {
         }
         .question {
             h2 {
-                font-size: 22px;
+                font-size: 15px;
             }
+        }
+        .answer {
+            p {
+                font-size: 12px;
+            }
+        }
+        .readdetail {
+            font-size: 8px;
+            color: #c0c0c0;
         }
     }
     .col-md-4 {

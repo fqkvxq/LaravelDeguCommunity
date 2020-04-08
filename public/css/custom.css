@@ -105,11 +105,12 @@ body {
 
 .qa-index .col-md-8 .tag {
   margin-bottom: 20px;
+  font-size: 8px;
 }
 
 .qa-index .col-md-8 .tag span {
-  margin: 0 5px;
-  border: 1px solid #000;
+  margin: 0 3px;
+  border: .5px solid #000;
   border-radius: 5px;
   padding: 5px;
 }
@@ -128,7 +129,16 @@ body {
 }
 
 .qa-index .col-md-8 .question h2 {
-  font-size: 22px;
+  font-size: 15px;
+}
+
+.qa-index .col-md-8 .answer p {
+  font-size: 12px;
+}
+
+.qa-index .col-md-8 .readdetail {
+  font-size: 8px;
+  color: #c0c0c0;
 }
 
 .qa-index .col-md-4 h2 {

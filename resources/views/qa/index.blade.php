@@ -24,43 +24,40 @@
     <div class="row">
         <div class="col-md-8">
             <div class="row">
-                <div class="col-md-12 mx-auto px-0">
-                    <div class="row p-1">
-                        <div class="col-md-12">
-                            <div class="row">
-                                <div class="col-md-12">
-                                    <p>
-                                        <button class="btn btn-lg btn-block btn-success" type="button"
-                                            data-toggle="collapse" data-target="#QuestionCollapse" aria-expanded="false"
-                                            aria-controls="QuestionCollapse">
-                                            質問を追加する！
-                                        </button>
-                                    </p>
-                                    <div class="collapse" id="QuestionCollapse">
-                                        <form method="POST" action="/qa/addQuestion">
-                                            {{ csrf_field() }}
-                                            <input type="hidden" name="answer_flg" value="0" />
-                                            <div class="form-group">
-                                                <label for="QuestionFrom">質問を入力してください。</label>
-                                                <textarea class="form-control" id="QuestionFrom" name="question_text"
-                                                    rows="7"></textarea>
-                                            </div>
-                                            <button type="submit" class="btn btn-block btn-primary">
-                                                質問を投稿する！
-                                            </button>
-                                        </form>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+                <div class="col-md-12 px-1 py-3 my-1 bg-white">
+                    <!-- Button trigger modal -->
+                    <div type="button" class="question_button btn-block" data-toggle="modal" data-target="#exampleModal">
+                        <p class="px-2 mb-0">こちらをタップして質問を入力してください。</p>
                     </div>
                 </div>
             </div>
+
+            {{-- modal --}}
+            <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">質問を入力してください。</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    ...
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary">Save changes</button>
+                </div>
+                </div>
+            </div>
+            </div>
+            {{--  --}}
             {{-- カード --}}
             @foreach($questions as $question)
             <a href="{{ url('qa').'/'.$question->id }}">
-            <div class="row p-1 question-card">
-                <div class="col-md-12 bg-white shadow-sm rounded p-3">
+            <div class="row question-card">
+                <div class="col-md-12 bg-white shadow-sm p-3">
                     <div class="row">
                         <div class="col-md-12 tag">
                             <span>回答のある質問</span>
@@ -82,7 +79,7 @@
                             </p>
                         </div>
                     </div>
-                    <span class="details d-block text-right">>>続きを読む</span>
+                    <span class="details d-block text-right readdetail">続きを読む</span>
                 </div>
             </div>
             </a>
@@ -90,8 +87,8 @@
             {{-- カードここまで --}}
         </div>
         <div class="col-md-4">
-            <div class="row p-1">
-                <div class="col-md-12 bg-white shadow-sm rounded-sm p-3">
+            <div class="row py-1">
+                <div class="col-md-12 bg-white shadow-sm p-3">
                     <h2 class="text-center">まだ回答されていない質問</h2>
                     <small class="d-block text-center">みんなが回答を待っています！回答してね！</small>
                     <ul>
