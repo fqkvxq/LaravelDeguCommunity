@@ -37,7 +37,7 @@ class LoginController extends Controller
         //$twitter_avatar = $user->avatar_original;
         // セッションに保存
         //$request->session()->put([ 'twitter_avatar' => $twitter_avatar ]);
-        return redirect()->route('degu')->with('status', __('ログインしました。'));;
+        return redirect()->route('qa')->with('status', __('ログインしました。'));;
     }
     private function findOrCreateUser($twitterUser)
     {
