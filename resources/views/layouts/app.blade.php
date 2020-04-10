@@ -78,7 +78,7 @@
 
                     <!-- Right Side Of Navbar -->
                     <ul class="navbar-nav ml-auto">
-                        <li>
+                        {{-- <li>
                             <a class="nav-link" href="{{ route('degu')}}">
                                 <span class="nav-text">
                                     <span class="list">
@@ -86,8 +86,8 @@
                                     </span>
                                 </span>
                             </a>
-                        </li>
-                        <li>
+                        </li> --}}
+                        {{-- <li>
                             <a class="nav-link" href="{{ route('degu/register')}}">
                                 <span class="nav-text">
                                     <span class="register">
@@ -95,7 +95,7 @@
                                     </span>
                                 </span>
                             </a>
-                        </li>
+                        </li> --}}
                         <li>
                         <a class="nav-link" href="{{route('qa')}}">
                                 <span class="nav-text">

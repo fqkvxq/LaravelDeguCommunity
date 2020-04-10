@@ -35,10 +35,10 @@ Route::get('/home', 'HomeController@index')->name('home');
 // ============================
 // デグー関連ページ
 // ============================
-Route::get('/degu/register', 'DeguController@register')->name('degu/register')->middleware('auth'); //登録画面
-Route::post('/degu/register/add', 'DeguController@add'); //登録処理
-Route::get('/degu', 'DeguController@index')->name('degu'); //一覧画面
-Route::get('/degu/{id}','DeguController@page');// 詳細画面
+// Route::get('/degu/register', 'DeguController@register')->name('degu/register')->middleware('auth'); //登録画面
+// Route::post('/degu/register/add', 'DeguController@add'); //登録処理
+// Route::get('/degu', 'DeguController@index')->name('degu'); //一覧画面
+// Route::get('/degu/{id}','DeguController@page');// 詳細画面
 // Route::get('/degu/{id}/profile', '')->name('user.profile'); //プロフィール画面(未実装)
 
 // ============================
