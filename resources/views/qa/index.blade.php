@@ -101,6 +101,7 @@
             </a>
             @endforeach
             {{-- カードここまで --}}
+            {{ $questions->links('pagination::bootstrap-4') }}
         </div>
         <div class="col-md-4">
             <div class="row my-1">
@@ -130,4 +131,5 @@
         </div>
     </div>
 </div>
+
 @endsection
