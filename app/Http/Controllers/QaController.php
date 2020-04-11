@@ -19,7 +19,7 @@ class QaController extends Controller
     // ================================================
     public function index()
     {
-        $questions = DB::table('questions')->orderBy('created_at', 'desc')->get(); //取得順番を逆に
+        $questions = DB::table('questions')->orderBy('created_at', 'desc')->paginate(10); //取得順番を逆に
         return view('qa/index', ['questions' => $questions]);
     }
 
