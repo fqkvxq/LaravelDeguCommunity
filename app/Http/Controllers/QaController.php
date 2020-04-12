@@ -47,10 +47,12 @@ class QaController extends Controller
 
         // Validation
         $rules = [
-            'question_text' => 'required'
+            'question_text' => 'required',
+            'question_category' => 'required'
         ];
         $message = [
-            'question_text.required' => '質問文を入力してください。'
+            'question_text.required' => '質問文を入力してください。',
+            'question_category.required' => '質問カテゴリを入力してください。'
         ];
         $validator = Validator::make($form, $rules, $message);
 
@@ -61,9 +63,10 @@ class QaController extends Controller
                 ->withInput();
         } else { // バリデーションが通った時
             unset($form['_token']);
-            $question->text = $request->question_text;
-            $question->user_id = $user->id;
-            $question->answer_flg = $request->answer_flg;
+            $question->category = $request->question_category;  // 質問カテゴリ
+            $question->text = $request->question_text;          // 質問テキスト
+            $question->user_id = $user->id;                     // ユーザーID
+            $question->answer_flg = $request->answer_flg;       // 回答フラグ
             $question->save();
             //dd($degu->photo_url);
             return redirect('qa')->with('success', '新しく質問を登録しました！');

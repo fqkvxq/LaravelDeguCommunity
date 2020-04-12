@@ -47,13 +47,14 @@
                         </div>
                         <div class="modal-body p-1">
                             <div class="form-group mb-1">
-                                <select class="form-control" id="exampleFormControlSelect1">
-                                <option>タップして質問カテゴリを選択</option>
-                                <option>食事</option>
-                                <option>飼育環境</option>
-                                <option>掃除</option>
-                                <option>ふれあい</option>
-                                <option>健康</option>
+                                <select name="question_category" class="form-control" id="exampleFormControlSelect1">
+                                <option value="">タップして質問カテゴリを選択</option>
+                                <option value="food">食事</option>
+                                <option value="feed">飼育環境</option>
+                                <option value="clean">掃除</option>
+                                <option value="skinship">ふれあい</option>
+                                <option value="health">健康</option>
+                                <option value="other">その他</option>
                                 </select>
                             </div>
                             <div class="form-group mb-1">
@@ -82,6 +83,24 @@
                             @endif
                             @if($question->answer_flg == 0)
                             <span>未回答の質問</span>
+                            @endif
+                            @if($question->category == "food")
+                            <span class="question_category">食事</span>
+                            @endif
+                            @if($question->category == "feed")
+                            <span class="question_category">飼育環境</span>
+                            @endif
+                            @if($question->category == "clean")
+                            <span class="question_category">掃除</span>
+                            @endif
+                            @if($question->category == "skinship")
+                            <span class="question_category">ふれあい</span>
+                            @endif
+                            @if($question->category == "health")
+                            <span class="question_category">健康</span>
+                            @endif
+                            @if($question->category == "other")
+                            <span class="question_category">その他</span>
                             @endif
                             <span class="viewcount">閲覧数：333</span>
                             <span class="new">新着</span>

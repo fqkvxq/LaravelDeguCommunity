@@ -19,4 +19,8 @@ class Question extends Model
         return $this->belongsTo('App\User');
     }
 
+    public function qacategory(){
+        return $this->belongsTo('App\Qacategory');
+    }
+
 }
