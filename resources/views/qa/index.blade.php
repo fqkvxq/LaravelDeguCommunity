@@ -31,7 +31,6 @@
                     </div>
                 </div>
             </div>
-
             {{-- modal --}}
             <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                 <form method="POST" action="/qa/addQuestion">
@@ -84,7 +83,9 @@
                             <span>未回答の質問</span>
                             @endif
                             <span class="viewcount">閲覧数：333</span>
+                            @if(date("d") - date("d",strtotime($question->created_at)) <= 3)
                             <span class="new">新着</span>
+                            @endif
                         </div>
                     </div>
                     <div class="row">
