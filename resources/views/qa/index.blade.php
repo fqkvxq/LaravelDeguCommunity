@@ -58,7 +58,7 @@
                                 </select>
                             </div>
                             <div class="form-group mb-1">
-                                <textarea class="form-control" id="exampleFormControlTextarea1" name="question_text" placeholder="質問文をこちらへ入力してください。" rows="10"></textarea>
+                                <textarea required class="form-control" id="exampleFormControlTextarea1" name="question_text" placeholder="質問文をこちらへ入力してください。" rows="10"></textarea>
                             </div>
                         </div>
                         <div class="modal-footer">
