@@ -76,7 +76,13 @@
                 <div class="col-md-12 bg-white shadow-sm p-3">
                     <div class="row">
                         <div class="col-md-12 tag">
+                            <!-- {{ $question->answer_flg }} -->
+                            @if($question->answer_flg == 1)
                             <span>回答のある質問</span>
+                            @endif
+                            @if($question->answer_flg == 0)
+                            <span>未回答の質問</span>
+                            @endif
                             <span class="viewcount">閲覧数：333</span>
                             <span class="new">新着</span>
                         </div>
