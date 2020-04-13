@@ -56,6 +56,9 @@
                                 </select>
                             </div>
                             <div class="form-group mb-1">
+                                <input name="question_title" class="form-control" placeholder="質問タイトルを入力してください" type="text" id="">
+                            </div>
+                            <div class="form-group mb-1">
                                 <textarea class="form-control" id="exampleFormControlTextarea1" name="question_text" placeholder="質問文をこちらへ入力してください。" rows="10"></textarea>
                             </div>
                         </div>
@@ -91,14 +94,14 @@
                     <div class="row">
                         <div class="col-md-12 question">
                             <h2>
-                                {{ Str::limit($question->text,60) }}
+                                {{ Str::limit($question->title,60) }}
                             </h2>
                         </div>
                     </div>
                     <div class="row">
                         <div class="col-md-12 answer">
                             <p>
-                                質問内容をここに入力　質問内容をここに入力　質問内容をここに入力　質問内容をここに入力　質問内容をここに入力　質問内容をここに入力　質問内容をここに入力　質問内容をここに入力　
+                                {{ Str::limit($question->text,300) }}
                             </p>
                         </div>
                     </div>
