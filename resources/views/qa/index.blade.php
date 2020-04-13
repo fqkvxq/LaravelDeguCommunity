@@ -56,6 +56,9 @@
                                 </select>
                             </div>
                             <div class="form-group mb-1">
+                                <input class="form-control" placeholder="質問タイトルを入力してください" type="text" name="question_title" id="">
+                            </div>
+                            <div class="form-group mb-1">
                                 <textarea class="form-control" id="exampleFormControlTextarea1" name="question_text" placeholder="質問文をこちらへ入力してください。" rows="10"></textarea>
                             </div>
                         </div>
