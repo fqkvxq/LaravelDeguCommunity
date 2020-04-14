@@ -104,7 +104,7 @@
                             <span class="noanswertag">未回答の質問</span>
                             @endif
                             <span class="viewcount">閲覧数：333</span>
-                            @if(date("d") - date("d",strtotime($question->created_at)) <= 3)
+                            @if(date("d") - date("d",strtotime($question->created_at)) <= 1)
                             <span class="new">新着</span>
                             @endif
                         </div>
