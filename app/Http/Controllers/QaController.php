@@ -30,9 +30,9 @@ class QaController extends Controller
     {
         $questions = DB::table('questions')->orderBy('created_at', 'desc')->get(); //取得順番を逆に
         $question = Question::find($id);
-        $answer = Answer::find($id);
+        $answers = Answer::with('user')->where('question_id',$id)->get();
         $user = User::find($id);
-        return view('qa/page', compact('questions', 'question', 'answer', 'user'));
+        return view('qa/page', compact('questions', 'question', 'answers', 'user'));
     }
 
     // ================================================

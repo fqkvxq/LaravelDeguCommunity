@@ -27,6 +27,25 @@
                                 </div>
                                 <button type="submit" class="btn btn-primary btn-lg btn-block">回答する</button>
                             </form>
+                            @foreach($answers as $answer)
+                            <div class="row answer-card mt-1">
+                                <div class="col-md-12 bg-white shadow-sm p-3">
+                                    <div class="row">
+                                        <div class="col-md-12 answer">
+                                            <h4>{{ $answer->user->name }}</h4>
+                                            <p>{{ $answer->updated_at }}</p>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-12 answer">
+                                            <p>
+                                                {{ $answer->text }}
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            @endforeach
                         </div>
                     </div>
                 </div>
