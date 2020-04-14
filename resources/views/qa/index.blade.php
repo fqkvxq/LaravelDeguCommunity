@@ -98,10 +98,10 @@
                         <div class="col-md-12 tag">
                             <!-- {{ $question->answer_flg }} -->
                             @if($question->answer_flg == 1)
-                            <span>回答のある質問</span>
+                            <span class="hasanswertag">回答のある質問</span>
                             @endif
                             @if($question->answer_flg == 0)
-                            <span>未回答の質問</span>
+                            <span class="noanswertag">未回答の質問</span>
                             @endif
                             <span class="viewcount">閲覧数：333</span>
                             @if(date("d") - date("d",strtotime($question->created_at)) <= 3)
