@@ -184,6 +184,25 @@ body {
     }
 }
 // ======================================
+// デグーQA回答画面(qa/page.php)
+// ======================================
+.answerform {
+    .answer-button {
+        button {
+            background: -o-linear-gradient(45deg, #FF9800, #E91E63);
+            background: linear-gradient(45deg, #FF9800, #E91E63);
+            color: #fff;
+        }
+    }
+}
+.answer-card {
+    .date {
+        font-size:15px;
+        color: #616161;
+    }
+}
+
+// ======================================
 // Footer
 // ======================================
 footer {

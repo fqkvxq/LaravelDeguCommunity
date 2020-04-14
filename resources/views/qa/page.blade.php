@@ -8,7 +8,31 @@
                 <div class="col-md-8">
                     <div class="row p-1 question">
                         <div class="col-md-12 bg-white shadow-sm rounded-sm p-3">
-                            <h2>#{{$question->id}}: {{$question->text}}</h2>
+                            <h2>#{{$question->id}}: {{$question->title}}</h2>
+                            <p>{{$question->text}}</p>
+                        </div>
+                    </div>
+                    <div class="row p-1 answerlist">
+                        <div class="col-md-12">
+                            @foreach($answers as $answer)
+                            <div class="row answer-card mt-1">
+                                <div class="col-md-12 bg-white rounded-sm shadow-sm p-3">
+                                    <div class="row">
+                                        <div class="col-md-12 answer">
+                                            <h3 class="h5 answerername mb-0">{{ $answer->user->name }}<span class="h6">さんの回答：</span></h3>
+                                            <span class="date d-block mb-3">{{\Carbon\Carbon::parse($answer->updated_at)->format("n月j日")}}</span>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-12 answer">
+                                            <p>
+                                                {{ $answer->text }}
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            @endforeach
                         </div>
                     </div>
                     <div class="row answerform">
@@ -23,9 +47,11 @@
                                 <div class="form-group">
                                     <label for="QuestionFrom">回答を入力してください。</label>
                                     <textarea class="form-control" id="QuestionFrom" name="answer_text"
-                                        rows="7"></textarea>
+                                        rows="7" required></textarea>
                                 </div>
-                                <button type="submit" class="btn btn-primary btn-lg btn-block">回答する</button>
+                                <div class="text-center mb-3 answer-button">
+                                    <button type="submit" class="btn  btn-lg">質問にこたえる！</button>
+                                </div>
                             </form>
                         </div>
                     </div>

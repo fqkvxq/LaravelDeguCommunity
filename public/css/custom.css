@@ -174,6 +174,16 @@ body {
           padding-inline-start: 20px;
 }
 
+.answerform .answer-button button {
+  background: linear-gradient(45deg, #FF9800, #E91E63);
+  color: #fff;
+}
+
+.answer-card .date {
+  font-size: 15px;
+  color: #616161;
+}
+
 footer {
   background-color: #3E3E3E;
   padding: 100px 0;

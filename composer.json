@@ -16,6 +16,7 @@
         "laravel/socialite": "^4.3",
         "laravel/tinker": "^2.0",
         "league/flysystem-aws-s3-v3": "^1.0",
+        "nesbot/carbon": "^2.32",
         "tcg/voyager": "^1.4",
         "te7a-houdini/laravel-trix": "^2.0"
     },
