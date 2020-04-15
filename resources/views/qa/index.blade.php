@@ -98,7 +98,7 @@
                         <div class="col-md-12 tag">
                             <!-- {{ $question->answer_flg }} -->
                             @if($question->answer_flg == 1)
-                            <span class="hasanswertag">回答のある質問</span>
+                            <span class="hasanswertag"><span class="answerscount mb-0">{{count(App\Question::find($question->id)->answers)}}</span>件の回答のある質問</span>
                             @endif
                             @if($question->answer_flg == 0)
                             <span class="noanswertag">未回答の質問</span>
