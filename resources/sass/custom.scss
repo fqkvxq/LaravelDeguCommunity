@@ -153,6 +153,13 @@ body {
                 font-weight: bold;
                 border: none;
             }
+            .answerscount {
+                font-size:20px;
+                border: none;
+                padding:0;
+                position: relative;
+                bottom: -3px;
+            }
         }
         .question {
             h2 {
