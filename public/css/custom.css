@@ -137,11 +137,11 @@ body {
 }
 
 .qa-index .col-md-8 .tag .answerscount {
-  font-size: 20px;
+  font-size: 15px;
   border: none;
   padding: 0;
   position: relative;
-  bottom: -3px;
+  bottom: -2px;
 }
 
 .qa-index .col-md-8 .question h2 {
