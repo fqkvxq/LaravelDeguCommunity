@@ -39,7 +39,8 @@
                         </div>
                     </div>
                     <div class="row answerform">
-                        <div class="col-md-12">
+                        <div class="col-md-12 px-0">
+                            @auth
                             <form action="/qa/addAnswer" method="POST">
                                 {{ csrf_field() }}
                                 <input type="hidden" name="answer_flg" value="1" />
@@ -56,6 +57,10 @@
                                     <button type="submit" class="btn  btn-lg">質問にこたえる！</button>
                                 </div>
                             </form>
+                            @endauth
+                            @guest
+                            <a href="/login"><img class="img-fluid mx-auto d-block" src="https://degiita.s3-ap-northeast-1.amazonaws.com/degiita/answer_needlogin.jpeg" alt="質問に回答するためにはログインが必要となります。"></a>
+                            @endguest
                         </div>
                     </div>
                 </div>
