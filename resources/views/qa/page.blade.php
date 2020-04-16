@@ -9,6 +9,9 @@
                     <div class="row p-1 question">
                         <div class="col-md-12 bg-white shadow-sm rounded-sm p-3">
                             <h2>#{{$question->id}}: {{$question->title}}</h2>
+                            <img src="{{ $question->user->profile_image_url }}" alt="プロフィール写真">
+                            <h3>{{ $question->user->name }}<span class='h6'>さんからの質問：</span></h3>
+                            <p>{{ $question->user->created_at->format('n月j日') }}</p>
                             <p>{{$question->text}}</p>
                         </div>
                     </div>
