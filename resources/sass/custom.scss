@@ -120,7 +120,7 @@ body {
 // デグーQAトップ画面(index.blade.php)
 // ======================================
 .qa-index {
-    .col-md-8 { //メインカラム
+    .col-md-8 {
         a{
             color: initial;
             text-decoration: none;
@@ -146,17 +146,16 @@ body {
                 border: none;
             }
             .hasanswertag {
-                background: -moz-linear-gradient(left, #FF9800, #E91E63);
-                background: -webkit-linear-gradient(left, #FF9800, #E91E63);
+                background: -webkit-gradient(linear, left top, right top, from(#FF9800), to(#E91E63));
                 background: linear-gradient(to right, #FF9800, #E91E63);
                 color: #fff;
                 font-weight: bold;
                 border: none;
             }
             .answerscount {
-                font-size:15px;
+                font-size: 15px;
                 border: none;
-                padding:0;
+                padding: 0;
                 position: relative;
                 bottom: -2px;
             }
@@ -189,7 +188,7 @@ body {
             }
           }
     }
-    .col-md-4 { //サイドバー
+    .col-md-4 {
         h2 {
             font-size: 22px;
         }
@@ -201,6 +200,12 @@ body {
 // ======================================
 // デグーQA回答画面(qa/page.php)
 // ======================================
+.question {
+    .questionerinfo {
+        font-size: 15px;
+        color: #616161;
+    }
+}
 .answerform {
     .answer-button {
         button {

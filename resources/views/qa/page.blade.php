@@ -4,19 +4,21 @@
 <div class="container">
     <div class="row">
         <div class="col-md-12">
-            <div class="row">
+            <div class="row px-0 pt-1">
                 <div class="col-md-8">
-                    <div class="row p-1 question">
-                        <div class="col-md-12 bg-white shadow-sm rounded-sm p-3">
-                            <h2>#{{$question->id}}: {{$question->title}}</h2>
+                    <div class="row question">
+                        <div class="col-md-12 bg-white shadow-sm p-3">
+                            <h2 class="h3">{{$question->title}}</h2>
+                            {{-- <img src="{{ $question->user->profile_image_url }}" alt="プロフィール写真"> --}}
+                            <span class="h6 questionerinfo d-block mb-3">{{ $question->user->name }}さん, {{ $question->user->created_at->format('n月j日') }}</span>
                             <p>{{$question->text}}</p>
                         </div>
                     </div>
-                    <div class="row p-1 answerlist">
+                    <div class="row answerlist">
                         <div class="col-md-12">
                             @foreach($answers as $answer)
                             <div class="row answer-card mt-1">
-                                <div class="col-md-12 bg-white rounded-sm shadow-sm p-3">
+                                <div class="col-md-12 bg-white shadow-sm p-3">
                                     <div class="row">
                                         <div class="col-md-12 answer">
                                             <h3 class="h5 answerername mb-0">{{ $answer->user->name }}<span class="h6">さんの回答：</span></h3>
@@ -36,7 +38,7 @@
                         </div>
                     </div>
                     <div class="row answerform">
-                        <div class="col-md-12 px-0">
+                        <div class="col-md-12 px-1">
                             @auth
                             <form action="/qa/addAnswer" method="POST">
                                 {{ csrf_field() }}
@@ -45,10 +47,9 @@
                                 @if($question->answer_flg == 0)
                                 <h2>まだ回答がありません。</h2>
                                 @endif
-                                <div class="form-group">
-                                    <label for="QuestionFrom">回答を入力してください。</label>
+                                <div class="form-group mt-1">
                                     <textarea class="form-control" id="QuestionFrom" name="answer_text"
-                                        rows="7" required></textarea>
+                                        rows="7" placeholder="回答を入力し、交流をしましょう！" required></textarea>
                                 </div>
                                 <div class="text-center mb-3 answer-button">
                                     <button type="submit" class="btn  btn-lg">質問にこたえる！</button>
@@ -62,9 +63,9 @@
                     </div>
                 </div>
                 <div class="col-md-4">
-                    <div class="row p-1 answer">
+                    <div class="row answer">
                         <div class="col-md-12 bg-white shadow-sm rounded-sm p-3">
-                            <h2 class="text-center">まだ回答されていない質問</h2>
+                            <h2 class="h3 text-center">質問一覧</h2>
                             <small class="d-block text-center">みんなが回答を待っています！回答してね！</small>
                             <ul>
                                 @foreach($questions as $question)
