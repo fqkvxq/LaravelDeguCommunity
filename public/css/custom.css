@@ -181,6 +181,10 @@ body {
   }
 }
 
+.qa-index .col-md-8 .pagination nav .pagination {
+  margin: 0;
+}
+
 .qa-index .col-md-4 h2 {
   font-size: 22px;
 }

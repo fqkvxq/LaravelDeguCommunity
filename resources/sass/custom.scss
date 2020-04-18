@@ -120,7 +120,7 @@ body {
 // デグーQAトップ画面(index.blade.php)
 // ======================================
 .qa-index {
-    .col-md-8 {
+    .col-md-8 { //メインカラム
         a{
             color: initial;
             text-decoration: none;
@@ -187,6 +187,14 @@ body {
               opacity: 0;
             }
           }
+        //ページネーション
+        .pagination {
+            nav {
+                .pagination {
+                    margin:0
+                }
+            }
+        }
     }
     .col-md-4 {
         h2 {
