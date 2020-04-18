@@ -129,8 +129,12 @@
             </a>
             @endforeach
             {{-- カードここまで --}}
-            {{ $questions->links('pagination::bootstrap-4') }}
+            {{-- pagination --}}
+            <div class="pagination justify-content-center my-4">
+                {{ $questions->links('pagination::bootstrap-4') }}
+            </div>
         </div>
+        {{-- 以下、サイドバー --}}
         <div class="col-md-4">
             <div class="row my-1">
                 <div class="col-md-12 bg-white shadow-sm p-3">
