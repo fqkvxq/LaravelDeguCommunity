@@ -2,6 +2,15 @@
 @section('title', 'デグーQ&A')
 @section('content')
 <div class="container">
+    @if (session('success'))
+    <div class="row">
+        <div class="col-12">
+            <div class="alert alert-success">
+                {{ session("success") }}
+            </div>
+        </div>
+    </div>
+    @endif
     <div class="row">
         <div class="col-md-12">
             <div class="row px-0 pt-1">

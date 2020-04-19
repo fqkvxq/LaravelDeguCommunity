@@ -108,7 +108,7 @@ class QaController extends Controller
             // 二重送信対策
             $request->session()->regenerateToken();
             //dd($degu->photo_url);
-            return redirect('qa')->with('success', '新しく回答を登録しました！');
+            return redirect('qa/'.$answer->question_id)->with('success', '新しく回答を登録しました！');
         }
     }
 }
