@@ -220,6 +220,11 @@ body {
           padding-inline-start: 20px;
 }
 
+.alert.alert-rainbow {
+  background: linear-gradient(45deg, #FF9800, #E91E63);
+  color: #fff;
+}
+
 .question .questionerinfo {
   font-size: 15px;
   color: #616161;
