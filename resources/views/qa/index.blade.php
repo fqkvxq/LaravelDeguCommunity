@@ -123,7 +123,11 @@
                             </p>
                         </div>
                     </div>
-                    <span class="details d-block text-right readdetail">続きを読む</span>
+                    <div class="row mx-auto fonticons">
+                        <div class="col-4 text-center"><i class="far fa-comment"></i><span class="icon-count comment-count">{{count(App\Question::find($question->id)->answers)}}</span></div>
+                        <div class="col-4 text-center"><i class="far fa-heart"></i><span class="icon-count fav-count">999</span></div>
+                        <div class="col-4 text-center"><i class="fas fa-share-alt"></i><span class="icon-count fav-count">SHARE</span></div>
+                    </div>
                 </div>
             </div>
             </a>

@@ -181,6 +181,28 @@ body {
   }
 }
 
+.qa-index .col-md-8 .fonticons svg {
+  font-size: 18px;
+  color: #616161;
+  -webkit-transform: scale(1);
+          transform: scale(1);
+  -webkit-transition: all 0.3s ease;
+  transition: all 0.3s ease;
+}
+
+.qa-index .col-md-8 .fonticons svg:hover {
+  -webkit-transform: scale(1.2);
+          transform: scale(1.2);
+  -webkit-transition: all 0.3s ease;
+  transition: all 0.3s ease;
+}
+
+.qa-index .col-md-8 .fonticons .icon-count {
+  font-size: 18px;
+  padding: 10px;
+  color: #616161;
+}
+
 .qa-index .col-md-8 .pagination nav .pagination {
   margin: 0;
 }

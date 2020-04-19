@@ -187,6 +187,25 @@ body {
               opacity: 0;
             }
           }
+        .fonticons {
+            svg {
+                font-size: 18px;
+                color: #616161;
+                transform: scale(1);
+                -moz-transition: all 0.3s ease;
+                transition: all 0.3s ease;
+                &:hover {
+                    transform: scale(1.2);
+                    -moz-transition: all 0.3s ease;
+	                transition: all 0.3s ease;
+                }
+            }
+            .icon-count {
+                font-size: 18px;
+                padding: 10px;
+                color: #616161;
+            }
+        }
         //ページネーション
         .pagination {
             nav {
