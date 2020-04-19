@@ -126,7 +126,11 @@
                     <div class="row mx-auto fonticons">
                         <div class="col-4 text-center"><i class="far fa-comment"></i><span class="icon-count comment-count">{{count(App\Question::find($question->id)->answers)}}</span></div>
                         <div class="col-4 text-center"><i class="far fa-heart"></i><span class="icon-count fav-count">999</span></div>
-                        <div class="col-4 text-center"><i class="fas fa-share-alt"></i><span class="icon-count fav-count">SHARE</span></div>
+                        <div class="col-4 text-center">
+                            <a href="//twitter.com/share" class="twitter-share-button" data-text="{{ Str::limit($question->title,60) }}" data-url="{{ url('qa').'/'.$question->id }}" data-lang="ja">
+                                <i class="fas fa-share-alt"></i><span class="icon-count fav-count">SHARE</span>
+                            </a>
+                        </div>
                     </div>
                 </div>
             </div>

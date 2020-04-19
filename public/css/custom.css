@@ -203,6 +203,10 @@ body {
   color: #616161;
 }
 
+.qa-index .col-md-8 .fonticons a {
+  display: contents;
+}
+
 .qa-index .col-md-8 .pagination nav .pagination {
   margin: 0;
 }
