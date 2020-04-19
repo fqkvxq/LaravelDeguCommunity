@@ -182,7 +182,7 @@ body {
 }
 
 .qa-index .col-md-8 .fonticons svg {
-  font-size: 18px;
+  font-size: 15px;
   color: #616161;
   -webkit-transform: scale(1);
           transform: scale(1);
@@ -198,7 +198,7 @@ body {
 }
 
 .qa-index .col-md-8 .fonticons .icon-count {
-  font-size: 18px;
+  font-size: 15px;
   padding: 10px;
   color: #616161;
 }
