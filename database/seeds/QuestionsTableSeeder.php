@@ -18,6 +18,7 @@ class QuestionsTableSeeder extends Seeder
                 'user_id' => 1,
                 'text' => Str::random(20),
                 'answer_flg' => 0,
+                'title' => Str::random(10),
                 'category' => Str::random(5),
                 'created_at' => new DateTime(),
                 'updated_at' => new DateTime(),
