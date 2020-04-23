@@ -19,7 +19,7 @@
                         <div class="col-md-12 bg-white shadow-sm p-3">
                             <h2 class="h3">{{$question->title}}</h2>
                             {{-- <img src="{{ $question->user->profile_image_url }}" alt="プロフィール写真"> --}}
-                            <span class="h6 questionerinfo d-block mb-3">{{ $question->user->name }}さん, {{ $question->user->created_at->format('n月j日') }}</span>
+                            <span class="h6 questionerinfo d-block mb-3">{{ $question->user->name }}さん, {{ $question->created_at->format('n月j日') }}</span>
                             <p>{{$question->text}}</p>
                         </div>
                     </div>
