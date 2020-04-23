@@ -50,9 +50,11 @@ class QaController extends Controller
         $rules = [
             'question_text' => 'required',
             'question_title' => 'required',
+            'category' => 'required',
         ];
         $message = [
-            'question_text.required' => '質問文を入力してください。'
+            'question_text.required' => '質問文を入力してください。',
+            'category.required' =>'カテゴリーを選んでください。',
         ];
         $validator = Validator::make($form, $rules, $message);
 
@@ -67,6 +69,7 @@ class QaController extends Controller
             $question->text = $request->question_text;
             $question->user_id = $user->id;
             $question->answer_flg = $request->answer_flg;
+            $question->category = $request->category;
             $question->save();
             return redirect('qa')->with('success', '新しく質問を登録しました！');
         }

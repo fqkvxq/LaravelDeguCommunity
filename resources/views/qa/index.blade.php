@@ -54,13 +54,13 @@
                                         @auth
                                         <div class="modal-body p-1">
                                             <div class="form-group mb-1">
-                                                <select class="form-control" id="exampleFormControlSelect1">
-                                                <option>タップして質問カテゴリを選択</option>
-                                                <option>食事</option>
-                                                <option>飼育環境</option>
-                                                <option>掃除</option>
-                                                <option>ふれあい</option>
-                                                <option>健康</option>
+                                                <select class="form-control" id="exampleFormControlSelect1" name="category">
+                                                <option value="null">タップして質問カテゴリを選択</option>
+                                                <option value="1">食事</option>
+                                                <option value="2">飼育環境</option>
+                                                <option value="3">掃除</option>
+                                                <option value="4">ふれあい</option>
+                                                <option value="5">健康</option>
                                                 </select>
                                             </div>
                                             <div class="form-group mb-1">
@@ -104,6 +104,17 @@
                             <span class="noanswertag">未回答の質問</span>
                             @endif
                             <span class="viewcount">閲覧数：333</span>
+                            @if($question->category == 1)
+                            <span>食事</span>
+                            @elseif($question->category == 2)
+                            <span>飼育環境</span>
+                            @elseif($question->category == 3)
+                            <span>掃除</span>
+                            @elseif($question->category == 4)
+                            <span>ふれあい</span>
+                            @elseif($question->category == 5)
+                            <span>健康</span>
+                            @endif
                             @if(date("d") - date("d",strtotime($question->created_at)) <= 1)
                             <span class="new">新着</span>
                             @endif
