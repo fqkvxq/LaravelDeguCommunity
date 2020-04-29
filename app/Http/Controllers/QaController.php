@@ -31,7 +31,7 @@ class QaController extends Controller
     {
         $questions = DB::table('questions')->orderBy('created_at', 'desc')->get(); //取得順番を逆に
         $question = Question::with('user')->find($id);
-        $answers = Answer::with('user')->where('question_id',$id)->get();
+        $answers = Answer::with('user')->where('question_id', $id)->get();
         $user = User::find($id);
         return view('qa/page', compact('questions', 'question', 'answers', 'user'));
     }
@@ -67,6 +67,22 @@ class QaController extends Controller
             $question->user_id = $user->id;
             $question->answer_flg = $request->answer_flg;
             $question->save();
+            $webhook_url = 'https://hooks.slack.com/services/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';
+            $options = array(
+                'http' => array(
+                    'method' => 'POST',
+                    'header' => 'Content-Type: application/json',
+                    'content' => json_encode($message),
+                )
+            );
+            $response = file_get_contents($webhook_url, false, stream_context_create($options)); //要求を$webhook_urlのURLに投げて結果を受け取る
+            return $response === 'ok'; //$responseの値がokならtrueを返す
+            //メッセージの内容を定義
+            $message = array(
+                'username' => '【質問追加】送付元として表示するユーザー名',
+                'text' => 'メッセージ内容', //Slackの場合
+                //'content' => 'メッセージ内容', //Discordの場合
+            );
             return redirect('qa')->with('success', '新しく質問を登録しました！');
         }
     }
@@ -106,8 +122,24 @@ class QaController extends Controller
             $answer->save();
             // 二重送信対策
             $request->session()->regenerateToken();
+            $webhook_url = 'https://hooks.slack.com/services/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';
+            $options = array(
+                'http' => array(
+                    'method' => 'POST',
+                    'header' => 'Content-Type: application/json',
+                    'content' => json_encode($message),
+                )
+            );
+            $response = file_get_contents($webhook_url, false, stream_context_create($options)); //要求を$webhook_urlのURLに投げて結果を受け取る
+            return $response === 'ok'; //$responseの値がokならtrueを返す
+            //メッセージの内容を定義
+            $message = array(
+                'username' => '【回答追加】送付元として表示するユーザー名',
+                'text' => '【回答追加】メッセージ内容', //Slackの場合
+                //'content' => 'メッセージ内容', //Discordの場合
+            );
             //dd($degu->photo_url);
-            return redirect('qa/'.$answer->question_id)->with('success', '新しく回答を登録しました！');
+            return redirect('qa/' . $answer->question_id)->with('success', '新しく回答を登録しました！');
         }
     }
 }
