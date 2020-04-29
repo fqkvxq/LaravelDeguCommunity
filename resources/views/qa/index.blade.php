@@ -12,15 +12,9 @@
             </div>
         </div>
     </div>
-    @endif @if (session('success'))
-    <div class="row">
-        <div class="col-12">
-            <div class="alert alert-success">
-                {{ session("success") }}
-            </div>
-        </div>
-    </div>
     @endif
+    @component('component/success')
+    @endcomponent
     <div class="row">
         <div class="col-md-8">
             <div class="row">
