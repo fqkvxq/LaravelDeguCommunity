@@ -182,7 +182,7 @@ body {
             0%,100% {
               opacity: 1;
             }
-          
+
             50% {
               opacity: 0;
             }
@@ -270,4 +270,12 @@ footer {
     .services {
         list-style: none;
     }
+}
+
+// ======================================
+// pagination
+// ======================================
+.page-item.active .page-link {
+    background-color:#ffa151;
+    border-color:#ffa151;
 }
