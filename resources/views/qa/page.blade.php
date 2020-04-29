@@ -20,7 +20,7 @@
                             <h2 class="h3">{{$question->title}}</h2>
                             {{-- <img src="{{ $question->user->profile_image_url }}" alt="プロフィール写真"> --}}
                             <span class="h6 questionerinfo d-block mb-3">{{ $question->user->name }}さん, {{ $question->created_at->format('n月j日') }}</span>
-                            <p>{{$question->text}}</p>
+                            <p>{{App\Library\BaseClass::eReplaceUrl($question->text)}}</p>
                             <div class="row mx-auto fonticons">
                                 <div class="col-12 text-right">
                                     <a href="//twitter.com/share?url={{ url('qa/'.$question->id) }}&text={{Str::limit($question->text,100)}}" class="twitter-share-button" data-text="{{ Str::limit($question->title,60) }}" data-url="{{ url('qa/'.$question->id) }}" data-lang="ja">
@@ -44,7 +44,7 @@
                                     <div class="row">
                                         <div class="col-md-12 answer">
                                             <p>
-                                                {{ $answer->text }}
+                                                {{ App\Library\BaseClass::eReplaceUrl($answer->text) }}
                                             </p>
                                             <div class="row mx-auto fonticons">
                                                 <div class="col-12 text-right">
