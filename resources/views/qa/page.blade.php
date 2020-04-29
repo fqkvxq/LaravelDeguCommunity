@@ -21,6 +21,13 @@
                             {{-- <img src="{{ $question->user->profile_image_url }}" alt="プロフィール写真"> --}}
                             <span class="h6 questionerinfo d-block mb-3">{{ $question->user->name }}さん, {{ $question->created_at->format('n月j日') }}</span>
                             <p>{{$question->text}}</p>
+                            <div class="row mx-auto fonticons">
+                                <div class="col-12 text-right">
+                                    <a href="//twitter.com/share?url={{ url('qa/'.$question->id) }}&text={{Str::limit($question->text,100)}}" class="twitter-share-button" data-text="{{ Str::limit($question->title,60) }}" data-url="{{ url('qa/'.$question->id) }}" data-lang="ja">
+                                        <i class="fas fa-share-alt"></i><span class="icon-count fav-count">SHARE</span>
+                                    </a>
+                                </div>
+                            </div>
                         </div>
                     </div>
                     <div class="row answerlist">
@@ -39,6 +46,13 @@
                                             <p>
                                                 {{ $answer->text }}
                                             </p>
+                                            <div class="row mx-auto fonticons">
+                                                <div class="col-12 text-right">
+                                                   <a href="//twitter.com/share?url={{ url('qa/'.$question->id) }}&text={{Str::limit($question->text,100)}}" class="twitter-share-button" data-text="{{ Str::limit($question->title,60) }}" data-url="{{ url('qa/'.$question->id) }}" data-lang="ja">
+                                                        <i class="fas fa-share-alt"></i><span class="icon-count fav-count">SHARE</span>
+                                                    </a>
+                                                </div>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
