@@ -42,7 +42,6 @@ class QaController extends Controller
     public function addQuestion(Request $request)
     {
         $question = new Question;
-        $answer = new Answer;
         $user = Auth::user();
         $form = $request->all();
 
