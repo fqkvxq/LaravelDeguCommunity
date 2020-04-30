@@ -1,5 +1,5 @@
 @extends('layouts.app')
-@section('title', 'デグーQ&A')
+@section('title', $question->title."｜デグーQ&A")
 @section('content')
 <div class="container">
     @component('component/success')
