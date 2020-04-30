@@ -181,6 +181,36 @@ body {
   }
 }
 
+.qa-index .col-md-8 .fonticons svg {
+  font-size: 15px;
+  color: #616161;
+  -webkit-transform: scale(1);
+          transform: scale(1);
+  -webkit-transition: all 0.3s ease;
+  transition: all 0.3s ease;
+}
+
+.qa-index .col-md-8 .fonticons svg:hover {
+  -webkit-transform: scale(1.2);
+          transform: scale(1.2);
+  -webkit-transition: all 0.3s ease;
+  transition: all 0.3s ease;
+}
+
+.qa-index .col-md-8 .fonticons .icon-count {
+  font-size: 15px;
+  padding: 10px;
+  color: #616161;
+}
+
+.qa-index .col-md-8 .fonticons a {
+  display: contents;
+}
+
+.qa-index .col-md-8 .pagination nav .pagination {
+  margin: 0;
+}
+
 .qa-index .col-md-4 h2 {
   font-size: 22px;
 }
@@ -188,6 +218,16 @@ body {
 .qa-index .col-md-4 ul {
   -webkit-padding-start: 20px;
           padding-inline-start: 20px;
+}
+
+.alert.alert-rainbow {
+  background: linear-gradient(45deg, #FF9800, #E91E63);
+  color: #fff;
+}
+
+.question .questionerinfo {
+  font-size: 15px;
+  color: #616161;
 }
 
 .answerform .answer-button button {
@@ -207,5 +247,10 @@ footer {
 
 footer .services {
   list-style: none;
+}
+
+.page-item.active .page-link {
+  background-color: #ffa151;
+  border-color: #ffa151;
 }
 /*# sourceMappingURL=custom.css.map */

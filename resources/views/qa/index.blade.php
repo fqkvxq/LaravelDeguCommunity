@@ -12,15 +12,9 @@
             </div>
         </div>
     </div>
-    @endif @if (session('success'))
-    <div class="row">
-        <div class="col-12">
-            <div class="alert alert-success">
-                {{ session("success") }}
-            </div>
-        </div>
-    </div>
     @endif
+    @component('component/success')
+    @endcomponent
     <div class="row">
         <div class="col-md-8">
             <div class="row">
@@ -134,14 +128,26 @@
                             </p>
                         </div>
                     </div>
-                    <span class="details d-block text-right readdetail">続きを読む</span>
+                    <div class="row mx-auto fonticons">
+                        <div class="col-4 text-center"><i class="far fa-comment"></i><span class="icon-count comment-count">{{count(App\Question::find($question->id)->answers)}}</span></div>
+                        <div class="col-4 text-center"><i class="far fa-heart"></i><span class="icon-count fav-count">999</span></div>
+                        <div class="col-4 text-center">
+                            <a href="//twitter.com/share?url={{ url('qa/'.$question->id) }}&text={{Str::limit($question->text,100)}}" class="twitter-share-button" data-text="{{ Str::limit($question->title,60) }}" data-url="{{ url('qa/'.$question->id) }}" data-lang="ja">
+                                <i class="fas fa-share-alt"></i><span class="icon-count fav-count">SHARE</span>
+                            </a>
+                        </div>
+                    </div>
                 </div>
             </div>
             </a>
             @endforeach
             {{-- カードここまで --}}
-            {{ $questions->links('pagination::bootstrap-4') }}
+            {{-- pagination --}}
+            <div class="pagination justify-content-center my-4">
+                {{ $questions->links('pagination::bootstrap-4') }}
+            </div>
         </div>
+        {{-- 以下、サイドバー --}}
         <div class="col-md-4">
             <div class="row my-1">
                 <div class="col-md-12 bg-white shadow-sm p-3">

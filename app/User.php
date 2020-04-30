@@ -56,4 +56,7 @@ class User extends \TCG\Voyager\Models\User
     public function answers(){
         return $this->hasMany('App\Answer');
     }
+    public function setSettingsAttribute($value){
+        $this->attributes['settings'] = $value ? $value->toJson() : null; 
+    }
 }

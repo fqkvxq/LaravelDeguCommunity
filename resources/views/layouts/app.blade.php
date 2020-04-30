@@ -165,7 +165,7 @@
         </nav>
         {{-- Navbarここまで --}}
 
-        <main class="pb-4">
+        <main>
             @yield('content')
         </main>
 
