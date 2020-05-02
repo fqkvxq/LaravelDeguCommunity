@@ -48,8 +48,8 @@
                                         @auth
                                         <div class="modal-body p-1">
                                             <div class="form-group mb-1">
-                                                <select class="form-control" id="exampleFormControlSelect1" name="category">
-                                                <option value="null">タップして質問カテゴリを選択</option>
+                                                <select class="form-control" name="category" id="exampleFormControlSelect1">
+                                                <option>タップして質問カテゴリを選択</option>
                                                 <option value="1">食事</option>
                                                 <option value="2">飼育環境</option>
                                                 <option value="3">掃除</option>
@@ -112,6 +112,7 @@
                             @if(date("d") - date("d",strtotime($question->created_at)) <= 1)
                             <span class="new">新着</span>
                             @endif
+                            <span>{{ $question->category->name }}</span>
                         </div>
                     </div>
                     <div class="row">

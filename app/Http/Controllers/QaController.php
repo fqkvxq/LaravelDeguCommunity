@@ -20,7 +20,7 @@ class QaController extends Controller
     // ================================================
     public function index()
     {
-        $questions = DB::table('questions')->orderBy('created_at', 'desc')->paginate(10); //取得順番を逆に
+        $questions = Question::with('category')->orderBy('created_at', 'desc')->paginate(10); //取得順番を逆に
         return view('qa/index', ['questions' => $questions]);
     }
 
@@ -30,7 +30,7 @@ class QaController extends Controller
     public function page($id)
     {
         $questions = DB::table('questions')->orderBy('created_at', 'desc')->get(); //取得順番を逆に
-        $question = Question::with('user')->find($id);
+        $question = Question::with(['user','category'])->find($id);
         $answers = Answer::with('user')->where('question_id',$id)->get();
         $user = User::find($id);
         return view('qa/page', compact('questions', 'question', 'answers', 'user'));
@@ -54,7 +54,7 @@ class QaController extends Controller
         ];
         $message = [
             'question_text.required' => '質問文を入力してください。',
-            'category.required' =>'カテゴリーを選んでください。',
+            'category.required' => 'カテゴリーを選んでください。'
         ];
         $validator = Validator::make($form, $rules, $message);
 
@@ -69,7 +69,7 @@ class QaController extends Controller
             $question->text = $request->question_text;
             $question->user_id = $user->id;
             $question->answer_flg = $request->answer_flg;
-            $question->category = $request->category;
+            $question->category_id = $request->category;
             $question->save();
             return redirect('qa')->with('success', '新しく質問を登録しました！');
         }

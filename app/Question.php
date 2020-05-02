@@ -19,5 +19,8 @@ class Question extends Model
         return $this->belongsTo('App\User');
     }
 
-
+    // 質問：カテゴリー=N:1
+    public function category(){
+        return $this->belongsTo('App\Category');
+    }
 }
