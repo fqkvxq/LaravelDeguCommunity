@@ -31,7 +31,7 @@ class CategoryTableSeeder extends Seeder
             [
                 'id' => 4,
                 'name' => 'ふれあい',
-                'slug' => 'pray'
+                'slug' => 'play'
             ],
             [
                 'id' => 5,

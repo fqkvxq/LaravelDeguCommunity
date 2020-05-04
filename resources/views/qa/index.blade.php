@@ -50,11 +50,9 @@
                                             <div class="form-group mb-1">
                                                 <select class="form-control" name="category" id="exampleFormControlSelect1">
                                                 <option>タップして質問カテゴリを選択</option>
-                                                <option value="1">食事</option>
-                                                <option value="2">飼育環境</option>
-                                                <option value="3">掃除</option>
-                                                <option value="4">ふれあい</option>
-                                                <option value="5">健康</option>
+                                                @foreach($categories as $category)
+                                                    <option value="{{ $category->id }}">{{ $category->name }}</option>
+                                                @endforeach
                                                 </select>
                                             </div>
                                             <div class="form-group mb-1">
@@ -98,17 +96,6 @@
                             <span class="noanswertag">未回答の質問</span>
                             @endif
                             <span class="viewcount">閲覧数：333</span>
-                            @if($question->category == 1)
-                            <span>食事</span>
-                            @elseif($question->category == 2)
-                            <span>飼育環境</span>
-                            @elseif($question->category == 3)
-                            <span>掃除</span>
-                            @elseif($question->category == 4)
-                            <span>ふれあい</span>
-                            @elseif($question->category == 5)
-                            <span>健康</span>
-                            @endif
                             @if(date("d") - date("d",strtotime($question->created_at)) <= 1)
                             <span class="new">新着</span>
                             @endif

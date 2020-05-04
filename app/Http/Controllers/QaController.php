@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Question;
 use App\Answer;
 use App\User;
+use App\Category;
 use Carbon\Carbon;
 use Auth;
 use Socialite;
@@ -21,7 +22,8 @@ class QaController extends Controller
     public function index()
     {
         $questions = Question::with('category')->orderBy('created_at', 'desc')->paginate(10); //取得順番を逆に
-        return view('qa/index', ['questions' => $questions]);
+        $categories = Category::all();
+        return view('qa/index', compact('questions', 'categories'));
     }
 
     // ================================================
