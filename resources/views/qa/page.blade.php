@@ -37,7 +37,7 @@
                                     <div class="row">
                                         <div class="col-md-12 answer">
                                             <p>
-                                                {{ App\Library\BaseClass::eReplaceUrl($answer->text) }}
+                                                {{ $answer->displayText() }}
                                             </p>
                                             <div class="row mx-auto fonticons">
                                                 <div class="col-12 text-right">
