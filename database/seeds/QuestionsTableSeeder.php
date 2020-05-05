@@ -20,7 +20,7 @@ class QuestionsTableSeeder extends Seeder
                 'text' => Str::random(20),
                 'answer_flg' => 0,
                 'title' => Str::random(10),
-                'category' => $faker->numberBetween(1,5),	
+                'category_id' => $faker->numberBetween(1,5),	
                 'created_at' => new DateTime(),
                 'updated_at' => new DateTime(),
             ]);
