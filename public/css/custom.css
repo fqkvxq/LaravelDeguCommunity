@@ -144,6 +144,12 @@ body {
   bottom: -2px;
 }
 
+.qa-index .col-md-8 .tag .category {
+  background-color: #ffa726;
+  color: #fff;
+  border: none;
+}
+
 .qa-index .col-md-8 .question h2 {
   font-size: 15px;
 }
