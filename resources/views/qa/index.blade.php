@@ -99,7 +99,9 @@
                             @if(date("d") - date("d",strtotime($question->created_at)) <= 1)
                             <span class="new">新着</span>
                             @endif
+                            @if(!empty($question->category->name))
                             <span>{{ $question->category->name }}</span>
+                            @endif
                         </div>
                     </div>
                     <div class="row">
