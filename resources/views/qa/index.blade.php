@@ -79,8 +79,6 @@
                             </div>
                 </div>
             </div>
-
-            {{--  --}}
             {{-- カード --}}
             @foreach($questions as $question)
             <a href="{{ url('qa').'/'.$question->id }}">
@@ -95,12 +93,11 @@
                             @if($question->answer_flg == 0)
                             <span class="noanswertag">未回答の質問</span>
                             @endif
-                            <span class="viewcount">閲覧数：333</span>
+                            @if(!empty($question->category->name))
+                            <span class="category">{{ $question->category->name }}</span>
+                            @endif
                             @if(date("d") - date("d",strtotime($question->created_at)) <= 1)
                             <span class="new">新着</span>
-                            @endif
-                            @if(!empty($question->category->name))
-                            <span>{{ $question->category->name }}</span>
                             @endif
                         </div>
                     </div>
