@@ -55,6 +55,9 @@ body {
 // navbar下お知らせ欄
 // ======================================
 .nav-info {
+    position: sticky;
+    top: 0;
+    z-index: 1;
     a {
         text-decoration: none;
     }

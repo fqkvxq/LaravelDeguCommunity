@@ -34,6 +34,13 @@ body {
   border-radius: 5px;
 }
 
+.nav-info {
+  position: -webkit-sticky;
+  position: sticky;
+  top: 0;
+  z-index: 1;
+}
+
 .nav-info a {
   text-decoration: none;
 }
