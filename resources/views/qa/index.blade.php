@@ -155,7 +155,8 @@
                 <div class="col-md-12">
                     <div class="row p-3">
                         <div class="col-md-12">
-                            <img class="img-fluid" src="https://via.placeholder.com/336x280.png?text=Ad" alt="">
+                            @component('component/amazon_banner_300x250')
+                            @endcomponent
                         </div>
                     </div>
                 </div>
