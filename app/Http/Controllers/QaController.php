@@ -73,6 +73,7 @@ class QaController extends Controller
             $question->answer_flg = $request->answer_flg;
             $question->category_id = $request->category;
             $question->save();
+            \Slack::send("質問が投稿されました。");
             return redirect('qa')->with('success', '新しく質問を登録しました！');
         }
     }
@@ -113,6 +114,7 @@ class QaController extends Controller
             // 二重送信対策
             $request->session()->regenerateToken();
             //dd($degu->photo_url);
+            \Slack::send("回答が投稿されました。");
             return redirect('qa/'.$answer->question_id)->with('success', '新しく回答を登録しました！');
         }
     }
