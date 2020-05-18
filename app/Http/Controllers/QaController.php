@@ -13,6 +13,7 @@ use Socialite;
 use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Validator;
+use Abraham\TwitterOAuth\TwitterOAuth;
 
 class QaController extends Controller
 {
@@ -74,6 +75,18 @@ class QaController extends Controller
             $question->category_id = $request->category;
             $question->save();
             \Slack::send("質問が投稿されました。\n質問タイトル：".$request->question_title."\n質問内容：".$request->question_text);
+            //twitter
+            $twitter = new TwitterOAuth(env('TWITTER_CLIENT_ID'),
+            env('TWITTER_CLIENT_SECRET'),
+            env('TWITTER_CLIENT_ID_ACCESS_TOKEN'),
+            env('TWITTER_CLIENT_ID_ACCESS_TOKEN_SECRET'));
+            $twitter->post("statuses/update", [
+                "status" =>
+                    '質問が投稿されました!' . PHP_EOL .
+                    'タイトル「' . $request->question_title . '」' . PHP_EOL .
+                    '質問内容「'.$request->question_text.'」' . PHP_EOL .
+                    'https://degiita.com/qa'
+            ]);
             return redirect('qa')->with('success', '新しく質問を登録しました！');
         }
     }
