@@ -128,6 +128,17 @@ class QaController extends Controller
             $request->session()->regenerateToken();
             //dd($degu->photo_url);
             \Slack::send("回答が投稿されました。\n回答内容：".$request->answer_text);
+            //twitter
+            $twitter = new TwitterOAuth(env('TWITTER_CLIENT_ID'),
+            env('TWITTER_CLIENT_SECRET'),
+            env('TWITTER_CLIENT_ID_ACCESS_TOKEN'),
+            env('TWITTER_CLIENT_ID_ACCESS_TOKEN_SECRET'));
+            $twitter->post("statuses/update", [
+                "status" =>
+                    '回答が投稿されました!' . PHP_EOL .
+                    '回答内容「'.$request->answer_text.'」' . PHP_EOL .
+                    'https://degiita.com/qa'
+            ]);
             return redirect('qa/'.$answer->question_id)->with('success', '新しく回答を登録しました！');
         }
     }
