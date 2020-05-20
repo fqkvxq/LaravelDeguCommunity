@@ -14,6 +14,52 @@
                             {{-- <img src="{{ $question->user->profile_image_url }}" alt="プロフィール写真"> --}}
                             <span class="h6 questionerinfo d-block mb-3">{{ $question->user->name }}さん, @if(!empty($question->category->name))<span>{{ $question->category->name }}カテゴリー, </span>@endif {{ $question->created_at->format('n月j日') }}</span>
                             <p>{{App\Library\BaseClass::eReplaceUrl($question->text)}}</p>
+                            <!-- Button trigger modal -->
+                            @if(Auth::id() == $question->user->id)
+                            <div type="button" class="question_button btn-block" data-toggle="modal" data-target="#exampleModal">
+                                <p class="px-2 mb-0">編集<span class="text-cursor"></span></p>
+                            </div>
+                            @endif
+                            {{-- modal --}}
+                            <div class="row">
+                                <div class="col-md-12">
+                                        <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                                <form method="PUT" action="{{ route('qa/updateQuestion',$question->id) }}">
+                                                    {{ csrf_field() }}
+                                                    <div class="modal-dialog" role="document">
+                                                        <div class="modal-content">
+                                                        <div class="modal-header">
+                                                            <h5 class="modal-title" id="exampleModalLabel">質問編集</h5>
+                                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                            <span aria-hidden="true">&times;</span>
+                                                            </button>
+                                                        </div>
+                                                        <div class="modal-body p-1">
+                                                            <div class="form-group mb-1">
+                                                                <select class="form-control" name="category" id="exampleFormControlSelect1">
+                                                                <option value=''>タップして質問カテゴリを選択</option>
+                                                                @foreach($categories as $category)
+                                                                    <option value="{{ $category->id }}">{{ $category->name }}</option>
+                                                                @endforeach
+                                                                </select>
+                                                            </div>
+                                                            <div class="form-group mb-1">
+                                                                <input name="question_title" class="form-control" value="{{ $question->title }}" type="text" id="" required>
+                                                            </div>
+                                                            <div class="form-group mb-1">
+                                                                <textarea class="form-control" id="exampleFormControlTextarea1" name="question_text" rows="10" required>{{ $question->text }}</textarea>
+                                                            </div>
+                                                        </div>
+                                                        <div class="modal-footer">
+                                                            <button type="button" class="btn btn-secondary" data-dismiss="modal">閉じる</button>
+                                                            <button type="submit" class="btn btn-danger">送信</button>
+                                                        </div>
+                                                        </div>
+                                                    </div>
+                                                </form>
+                                            </div>
+                                </div>
+                            </div>
                             <div class="row mx-auto fonticons">
                                 <div class="col-12 text-right">
                                     <a href="//twitter.com/share?url={{ url('qa/'.$question->id) }}&text={{Str::limit($question->text,100)}}" class="twitter-share-button" data-text="{{ Str::limit($question->title,60) }}" data-url="{{ url('qa/'.$question->id) }}" data-lang="ja">
