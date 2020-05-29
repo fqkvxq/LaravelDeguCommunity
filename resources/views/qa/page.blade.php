@@ -37,7 +37,7 @@
                                     <div class="row">
                                         <div class="col-md-12 answer">
                                             <p>
-                                                {{ $answer->displayText() }}
+                                                {!! nl2br(e($answer->displayText())) !!}
                                             </p>
                                             <div class="row mx-auto fonticons">
                                                 <div class="col-12 text-right">
