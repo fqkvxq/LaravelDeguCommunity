@@ -15,6 +15,6 @@ class SlackService
 
     protected function routeNotificationForSlack()
     {
-        return "https://hooks.slack.com/services/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";
+        return "https://hooks.slack.com/services/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";
     }
 }
