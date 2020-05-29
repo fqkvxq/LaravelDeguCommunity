@@ -138,7 +138,7 @@ class QaController extends Controller
                 "status" =>
                     '回答が投稿されました!' . PHP_EOL .
                     '回答内容「'.$request->answer_text.'」' . PHP_EOL .
-                    'https://degiita.com/qa/'.$question->id
+                    'https://degiita.com/qa/'.$answer->question_id
             ]);
             return redirect('qa/'.$answer->question_id)->with('success', '新しく回答を登録しました！');
         }
