@@ -75,6 +75,7 @@ class QaController extends Controller
             $question->category_id = $request->category;
             $question->save();
             \Slack::send("質問が投稿されました。\n質問タイトル：".$request->question_title."\n質問内容：".$request->question_text);
+            $questionId = Question::orderBy('created_at','desc')->value('id');
             //twitter
             $twitter = new TwitterOAuth(env('TWITTER_CLIENT_ID'),
             env('TWITTER_CLIENT_SECRET'),
@@ -85,7 +86,7 @@ class QaController extends Controller
                     '質問が投稿されました!' . PHP_EOL .
                     'タイトル「' . $request->question_title . '」' . PHP_EOL .
                     '質問内容「'.$request->question_text.'」' . PHP_EOL .
-                    'https://degiita.com/qa'
+                    'https://degiita.com/qa/'.$questionId
             ]);
             return redirect('qa')->with('success', '新しく質問を登録しました！');
         }
@@ -137,7 +138,7 @@ class QaController extends Controller
                 "status" =>
                     '回答が投稿されました!' . PHP_EOL .
                     '回答内容「'.$request->answer_text.'」' . PHP_EOL .
-                    'https://degiita.com/qa'
+                    'https://degiita.com/qa/'.$answer->question_id
             ]);
             return redirect('qa/'.$answer->question_id)->with('success', '新しく回答を登録しました！');
         }
