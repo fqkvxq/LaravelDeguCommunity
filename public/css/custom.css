@@ -129,7 +129,7 @@ body {
   appearance: none;
 }
 
-.qa-index .col-md-8 .category_pulldown {
+.qa-index .col-md-8 select#category_pulldown {
   -webkit-appearance: none;
   -moz-appearance: none;
   appearance: none;
