@@ -157,7 +157,7 @@ body {
             -moz-appearance: none;
             appearance: none;
         }
-        .category_pulldown { //モーダルの「質問カテゴリを選択」のプルダウンメニュー
+        select#category_pulldown {
             -webkit-appearance: none;
             -moz-appearance: none;
             appearance: none;
