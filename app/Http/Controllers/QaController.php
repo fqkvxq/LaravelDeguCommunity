@@ -36,7 +36,8 @@ class QaController extends Controller
         $question = Question::with(['user','category'])->find($id);
         $answers = Answer::with('user')->where('question_id',$id)->get();
         $user = User::find($id);
-        return view('qa/page', compact('questions', 'question', 'answers', 'user'));
+        $categories = Category::all();
+        return view('qa/page', compact('questions', 'question', 'answers', 'user','categories'));
     }
 
     // ================================================
@@ -142,6 +143,69 @@ class QaController extends Controller
                     'https://degiita.com/qa/'.$answer->question_id
             ]);
             return redirect('qa/'.$answer->question_id)->with('success', '新しく回答を登録しました！');
+        }
+    }
+
+    // 質問編集
+    public function updateQuestion(Request $request,$id)
+    {
+        $question = Question::find($id);
+        $form = $request->all();
+         // Validation
+         $rules = [
+            'question_text' => 'required',
+            'question_title' => 'required',
+            'category' => 'required',
+        ];
+        $message = [
+            'question_text.required' => '質問文を入力してください。',
+            'question_title.required' => '質問文を入力してください。',
+            'category.required' => 'カテゴリーを選んでください。'
+        ];
+        $validator = Validator::make($form, $rules, $message);
+
+        if ($validator->fails()) {
+            // dd($validator);
+            return redirect('qa/{$id}')
+                ->withErrors($validator)
+                ->withInput();
+        } else { // バリデーションが通った時
+            unset($form['_token']);
+            $question->title = $request->question_title;
+            $question->text = $request->question_text;
+            $question->category_id = $request->category;
+            $question->update();
+            return redirect('qa')->with('success', '質問を編集しました！');
+        }
+    }
+
+    public function updateAnswer(Request $request,$id)
+    {
+        $answer = Answer::find($id);
+        $form = $request->all();
+
+        // Validation
+        $rules = [
+            'answer_text' => 'required'
+        ];
+        $message = [
+            'answer_text.required' => '回答を入力してください。'
+        ];
+        $validator = Validator::make($form, $rules, $message);
+
+        if ($validator->fails()) {
+            // dd($validator);
+            return redirect('qa/{$id}')
+                ->withErrors($validator)
+                ->withInput();
+        } else { // バリデーションが通った時
+            unset($form['_token']);
+            $answer->text = $request->answer_text; //デグーの名前
+            $answer->update();
+            // 二重送信対策
+            $request->session()->regenerateToken();
+            
+            return redirect('qa/'.$answer->question_id)->with('success', '回答を編集しました！');
         }
     }
 }
