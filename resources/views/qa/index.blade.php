@@ -48,7 +48,7 @@
                                         @auth
                                         <div class="modal-body p-1">
                                             <div class="form-group mb-1">
-                                                <select class="form-control" name="category" id="exampleFormControlSelect1">
+                                                <select class="form-control" name="category caegory_pulldown" id="exampleFormControlSelect1">
                                                 <option>タップして質問カテゴリを選択</option>
                                                 @foreach($categories as $category)
                                                     <option value="{{ $category->id }}">{{ $category->name }}</option>

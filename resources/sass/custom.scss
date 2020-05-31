@@ -152,6 +152,16 @@ body {
 // ======================================
 .qa-index {
     .col-md-8 { //メインカラム
+        .question_button { //質問追加のモーダル
+            -webkit-appearance: none;
+            -moz-appearance: none;
+            appearance: none;
+        }
+        .category_pulldown { //モーダルの「質問カテゴリを選択」のプルダウンメニュー
+            -webkit-appearance: none;
+            -moz-appearance: none;
+            appearance: none;
+        }
         a{
             color: initial;
             text-decoration: none;
