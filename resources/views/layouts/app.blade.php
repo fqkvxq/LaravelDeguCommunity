@@ -165,7 +165,17 @@
             </div>
         </nav>
         {{-- Navbarここまで --}}
-
+        <div class="container-fluid nav-info px-0">
+            <a href="http://af.moshimo.com/af/c/click?a_id=773446&p_id=170&pc_id=185&pl_id=4157&guid=ON">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12 mx-auto">
+                        <span class="d-block text-center">デグー用品のお求めはAmazonで！</span>
+                    </div>
+                </div>
+            </div>
+            </a>
+        </div>
         <main>
             @yield('content')
         </main>

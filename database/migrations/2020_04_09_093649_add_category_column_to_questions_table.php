@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class AddQuestionCategoryToQuestionsTable extends Migration
+class AddCategoryColumnToQuestionsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -14,7 +14,8 @@ class AddQuestionCategoryToQuestionsTable extends Migration
     public function up()
     {
         Schema::table('questions', function (Blueprint $table) {
-            $table->string('category');
+            // category機能の追加を実装するまでnullable
+            $table->integer('category_id')->nullable();
         });
     }
 
@@ -26,7 +27,7 @@ class AddQuestionCategoryToQuestionsTable extends Migration
     public function down()
     {
         Schema::table('questions', function (Blueprint $table) {
-            $table->dropColumn('category');
+            $table->dropColumn('category_id');
         });
     }
 }

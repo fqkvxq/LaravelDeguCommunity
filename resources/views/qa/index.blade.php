@@ -12,15 +12,9 @@
             </div>
         </div>
     </div>
-    @endif @if (session('success'))
-    <div class="row">
-        <div class="col-12">
-            <div class="alert alert-success">
-                {{ session("success") }}
-            </div>
-        </div>
-    </div>
     @endif
+    @component('component/success')
+    @endcomponent
     <div class="row">
         <div class="col-md-8">
             <div class="row">
@@ -54,13 +48,11 @@
                                         @auth
                                         <div class="modal-body p-1">
                                             <div class="form-group mb-1">
-                                                <select class="form-control" id="exampleFormControlSelect1">
+                                                <select class="form-control" name="category" id="exampleFormControlSelect1">
                                                 <option>タップして質問カテゴリを選択</option>
-                                                <option>食事</option>
-                                                <option>飼育環境</option>
-                                                <option>掃除</option>
-                                                <option>ふれあい</option>
-                                                <option>健康</option>
+                                                @foreach($categories as $category)
+                                                    <option value="{{ $category->id }}">{{ $category->name }}</option>
+                                                @endforeach
                                                 </select>
                                             </div>
                                             <div class="form-group mb-1">
@@ -87,8 +79,6 @@
                             </div>
                 </div>
             </div>
-
-            {{--  --}}
             {{-- カード --}}
             @foreach($questions as $question)
             <a href="{{ url('qa').'/'.$question->id }}">
@@ -103,7 +93,9 @@
                             @if($question->answer_flg == 0)
                             <span class="noanswertag">未回答の質問</span>
                             @endif
-                            <span class="viewcount">閲覧数：333</span>
+                            @if(!empty($question->category->name))
+                            <span class="category">{{ $question->category->name }}</span>
+                            @endif
                             @if(date("d") - date("d",strtotime($question->created_at)) <= 1)
                             <span class="new">新着</span>
                             @endif
@@ -127,7 +119,7 @@
                         <div class="col-4 text-center"><i class="far fa-comment"></i><span class="icon-count comment-count">{{count(App\Question::find($question->id)->answers)}}</span></div>
                         <div class="col-4 text-center"><i class="far fa-heart"></i><span class="icon-count fav-count">999</span></div>
                         <div class="col-4 text-center">
-                            <a href="//twitter.com/share" class="twitter-share-button" data-text="{{ Str::limit($question->title,60) }}" data-url="{{ url('qa').'/'.$question->id }}" data-lang="ja">
+                            <a href="//twitter.com/share?url={{ url('qa/'.$question->id) }}&text={{Str::limit($question->text,100)}}" class="twitter-share-button" data-text="{{ Str::limit($question->title,60) }}" data-url="{{ url('qa/'.$question->id) }}" data-lang="ja">
                                 <i class="fas fa-share-alt"></i><span class="icon-count fav-count">SHARE</span>
                             </a>
                         </div>
@@ -163,7 +155,8 @@
                 <div class="col-md-12">
                     <div class="row p-3">
                         <div class="col-md-12">
-                            <img class="img-fluid" src="https://via.placeholder.com/336x280.png?text=Ad" alt="">
+                            @component('component/amazon_banner_300x250')
+                            @endcomponent
                         </div>
                     </div>
                 </div>
