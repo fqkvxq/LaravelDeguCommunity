@@ -17,6 +17,7 @@ class CreateUserNotificationTable extends Migration
             $table->bigIncrements('id');
             $table->bigInteger('user_id')->unsigned();
             $table->longText('text');
+            $table->boolean('read')->default(0);
             $table->timestamps();
 
             $table->index('user_id');
