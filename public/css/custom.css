@@ -129,6 +129,12 @@ body {
   appearance: none;
 }
 
+.qa-index .col-md-8 .category_pulldown {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+}
+
 .qa-index .col-md-8 a {
   color: initial;
   text-decoration: none;
