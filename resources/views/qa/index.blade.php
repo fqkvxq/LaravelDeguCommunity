@@ -79,6 +79,18 @@
                             </div>
                 </div>
             </div>
+            {{-- 並び替えボタン --}}
+            <div class="row sortbutton mt-1">
+                <div class="col-4 asc bg-white py-2 mr-1">
+                    <span class="d-block text-center">昇順</span>
+                </div>
+                <div class="col-4 desc bg-white py-2 mr-1">
+                    <span class="d-block text-center">降順</span>
+                </div>
+                <div class="col-4 rand bg-white py-2 mr-n2">
+                    <span class="d-block text-center">ランダム順</span>
+                </div>
+            </div>
             {{-- カード --}}
             @foreach($questions as $question)
             <a href="{{ url('qa').'/'.$question->id }}">
