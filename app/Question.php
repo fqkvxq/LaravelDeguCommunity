@@ -25,7 +25,7 @@ class Question extends Model
         return $this->belongsTo('App\Category');
     }
 
-    public function checkNew($question,$today){
+    public function checkNewtag($question,$today){
         $createDate = Carbon::parse($question->created_at);
         return $today->diffInDays($createDate);
     }
