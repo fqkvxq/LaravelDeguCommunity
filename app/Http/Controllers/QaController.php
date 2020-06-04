@@ -19,8 +19,10 @@ class QaController extends Controller
     // ================================================
     public function index()
     {
-        $questions = DB::table('questions')->orderBy('created_at', 'desc')->paginate(10); //取得順番を逆に
-        return view('qa/index', ['questions' => $questions]);
+        $questions = Question::with('category')->orderBy('created_at', 'desc')->paginate(10); //取得順番を逆に
+        $categories = Category::all();
+        $today = Carbon::today();
+        return view('qa/index', compact('questions', 'categories','today'));
     }
 
     // ================================================

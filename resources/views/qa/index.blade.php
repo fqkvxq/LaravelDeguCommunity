@@ -82,8 +82,10 @@
                             @if($question->answer_flg == 0)
                             <span>未回答の質問</span>
                             @endif
-                            <span class="viewcount">閲覧数：333</span>
-                            @if(date("d") - date("d",strtotime($question->created_at)) <= 3)
+                            @if(!empty($question->category->name))
+                            <span class="category">{{ $question->category->name }}</span>
+                            @endif
+                            @if($question->checkNew($question,$today) <= 1)
                             <span class="new">新着</span>
                             @endif
                         </div>
