@@ -12,15 +12,9 @@
             </div>
         </div>
     </div>
-    @endif @if (session('success'))
-    <div class="row">
-        <div class="col-12">
-            <div class="alert alert-success">
-                {{ session("success") }}
-            </div>
-        </div>
-    </div>
     @endif
+    @component('component/success')
+    @endcomponent
     <div class="row">
         <div class="col-md-8">
             <div class="row">
@@ -32,42 +26,59 @@
                 </div>
             </div>
             {{-- modal --}}
-            <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                <form method="POST" action="/qa/addQuestion">
-                    {{ csrf_field() }}
-                    <input type="hidden" name="answer_flg" value="0" />
-                    <div class="modal-dialog" role="document">
-                        <div class="modal-content">
-                        <div class="modal-header">
-                            <h5 class="modal-title" id="exampleModalLabel">質問を入力してください。</h5>
-                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
-                            </button>
-                        </div>
-                        <div class="modal-body p-1">
-                            <div class="form-group mb-1">
-                                <select class="form-control" id="exampleFormControlSelect1">
-                                <option>タップして質問カテゴリを選択</option>
-                                <option>食事</option>
-                                <option>飼育環境</option>
-                                <option>掃除</option>
-                                <option>ふれあい</option>
-                                <option>健康</option>
-                                </select>
+            <div class="row">
+                <div class="col-md-12">
+                        <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                <form method="POST" action="/qa/addQuestion">
+                                    {{ csrf_field() }}
+                                    <input type="hidden" name="answer_flg" value="0" />
+                                    <div class="modal-dialog" role="document">
+                                        <div class="modal-content">
+                                        <div class="modal-header">
+                                            @auth
+                                            <h5 class="modal-title" id="exampleModalLabel">質問を入力してください。</h5>
+                                            @endauth
+                                            @guest
+                                            <h5 class="modal-title" id="exampleModalLabel">ログインしてください。</h5>
+                                            @endguest
+                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                            <span aria-hidden="true">&times;</span>
+                                            </button>
+                                        </div>
+                                        @auth
+                                        <div class="modal-body p-1">
+                                            <div class="form-group mb-1">
+                                                <select class="form-control" name="category" id="category_pulldown">
+                                                <option>タップして質問カテゴリを選択 ▼</option>
+                                                @foreach($categories as $category)
+                                                    <option value="{{ $category->id }}">{{ $category->name }}</option>
+                                                @endforeach
+                                                </select>
+                                            </div>
+                                            <div class="form-group mb-1">
+                                                <input name="question_title" class="form-control" placeholder="質問タイトルを入力してください" type="text" id="" required>
+                                            </div>
+                                            <div class="form-group mb-1">
+                                                <textarea class="form-control" id="exampleFormControlTextarea1" name="question_text" placeholder="質問文をこちらへ入力してください。" rows="10" required></textarea>
+                                            </div>
+                                        </div>
+                                        @endauth
+                                        <div class="modal-footer">
+                                            @auth
+                                            <button type="button" class="btn btn-secondary" data-dismiss="modal">閉じる</button>
+                                            <button type="submit" class="btn btn-danger">送信</button>
+                                            @endauth
+                                            @guest
+                                            <p>質問を投稿するためには、ログインが必要です。</p>
+                                            <button href="/login" class="mx-auto btn btn-primary">ログイン</button>
+                                            @endguest
+                                        </div>
+                                        </div>
+                                    </div>
+                                </form>
                             </div>
-                            <div class="form-group mb-1">
-                                <textarea class="form-control" id="exampleFormControlTextarea1" name="question_text" placeholder="質問文をこちらへ入力してください。" rows="10"></textarea>
-                            </div>
-                        </div>
-                        <div class="modal-footer">
-                            <button type="button" class="btn btn-secondary" data-dismiss="modal">閉じる</button>
-                            <button type="submit" class="btn btn-danger">送信</button>
-                        </div>
-                        </div>
-                    </div>
-                </form>
+                </div>
             </div>
-            {{--  --}}
             {{-- カード --}}
             @foreach($questions as $question)
             <a href="{{ url('qa').'/'.$question->id }}">
@@ -77,15 +88,15 @@
                         <div class="col-md-12 tag">
                             <!-- {{ $question->answer_flg }} -->
                             @if($question->answer_flg == 1)
-                            <span>回答のある質問</span>
+                            <span class="hasanswertag"><span class="answerscount mb-0">{{count(App\Question::find($question->id)->answers)}}</span>件の回答のある質問</span>
                             @endif
                             @if($question->answer_flg == 0)
-                            <span>未回答の質問</span>
+                            <span class="noanswertag">未回答の質問</span>
                             @endif
                             @if(!empty($question->category->name))
                             <span class="category">{{ $question->category->name }}</span>
                             @endif
-                            @if($question->checkNew($question,$today) <= 1)
+                            @if($question->checkNewtag($question,$today) <= 1)
                             <span class="new">新着</span>
                             @endif
                         </div>
@@ -93,25 +104,37 @@
                     <div class="row">
                         <div class="col-md-12 question">
                             <h2>
-                                {{ Str::limit($question->text,60) }}
+                                {{ Str::limit($question->title,60) }}
                             </h2>
                         </div>
                     </div>
                     <div class="row">
                         <div class="col-md-12 answer">
                             <p>
-                                質問内容をここに入力　質問内容をここに入力　質問内容をここに入力　質問内容をここに入力　質問内容をここに入力　質問内容をここに入力　質問内容をここに入力　質問内容をここに入力　
+                                {{ Str::limit($question->text,300) }}
                             </p>
                         </div>
                     </div>
-                    <span class="details d-block text-right readdetail">続きを読む</span>
+                    <div class="row mx-auto fonticons">
+                        <div class="col-4 text-center"><i class="far fa-comment"></i><span class="icon-count comment-count">{{count(App\Question::find($question->id)->answers)}}</span></div>
+                        <div class="col-4 text-center"><i class="far fa-heart"></i><span class="icon-count fav-count">999</span></div>
+                        <div class="col-4 text-center">
+                            <a href="//twitter.com/share?url={{ url('qa/'.$question->id) }}&text={{Str::limit($question->text,100)}}" class="twitter-share-button" data-text="{{ Str::limit($question->title,60) }}" data-url="{{ url('qa/'.$question->id) }}" data-lang="ja">
+                                <i class="fas fa-share-alt"></i><span class="icon-count fav-count">SHARE</span>
+                            </a>
+                        </div>
+                    </div>
                 </div>
             </div>
             </a>
             @endforeach
             {{-- カードここまで --}}
-            {{ $questions->links('pagination::bootstrap-4') }}
+            {{-- pagination --}}
+            <div class="pagination justify-content-center my-4">
+                {{ $questions->links('pagination::bootstrap-4') }}
+            </div>
         </div>
+        {{-- 以下、サイドバー --}}
         <div class="col-md-4">
             <div class="row my-1">
                 <div class="col-md-12 bg-white shadow-sm p-3">
@@ -132,7 +155,8 @@
                 <div class="col-md-12">
                     <div class="row p-3">
                         <div class="col-md-12">
-                            <img class="img-fluid" src="https://via.placeholder.com/336x280.png?text=Ad" alt="">
+                            @component('component/amazon_banner_300x250')
+                            @endcomponent
                         </div>
                     </div>
                 </div>
