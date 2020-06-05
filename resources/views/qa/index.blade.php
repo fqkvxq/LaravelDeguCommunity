@@ -81,13 +81,13 @@
             </div>
             {{-- 並び替えボタン --}}
             <div class="row sortbutton mt-1">
-                <div class="col-4 asc bg-white py-2 mr-1">
-                    <span class="d-block text-center">昇順</span>
+                <div class="col-4 asc bg-white py-2 mr-1" onclick="location.href='?sort=asc'">
+                    <span class="d-block text-center">昇順(古い順)</span>
                 </div>
-                <div class="col-4 desc bg-white py-2 mr-1">
-                    <span class="d-block text-center">降順</span>
+                <div class="col-4 desc bg-white py-2 mr-1" onclick="location.href='?sort=desc'">
+                    <span class="d-block text-center">降順(新しい順)</span>
                 </div>
-                <div class="col-4 rand bg-white py-2 mr-n2">
+                <div class="col-4 rand bg-white py-2 mr-n2" onclick="location.href='?sort=rand'">
                     <span class="d-block text-center">ランダム順</span>
                 </div>
             </div>
