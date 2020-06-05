@@ -48,13 +48,11 @@
                                         @auth
                                         <div class="modal-body p-1">
                                             <div class="form-group mb-1">
-                                                <select class="form-control" id="exampleFormControlSelect1">
-                                                <option>タップして質問カテゴリを選択</option>
-                                                <option>食事</option>
-                                                <option>飼育環境</option>
-                                                <option>掃除</option>
-                                                <option>ふれあい</option>
-                                                <option>健康</option>
+                                                <select class="form-control" name="category" id="category_pulldown">
+                                                <option>タップして質問カテゴリを選択 ▼</option>
+                                                @foreach($categories as $category)
+                                                    <option value="{{ $category->id }}">{{ $category->name }}</option>
+                                                @endforeach
                                                 </select>
                                             </div>
                                             <div class="form-group mb-1">
@@ -81,8 +79,18 @@
                             </div>
                 </div>
             </div>
-
-            {{--  --}}
+            {{-- 並び替えボタン --}}
+            <div class="row sortbutton mt-1">
+                <div class="col-4 asc bg-white py-2 mr-1" onclick="location.href='?sort=asc'">
+                    <span class="d-block text-center">昇順(古い順)</span>
+                </div>
+                <div class="col-4 desc bg-white py-2 mr-1" onclick="location.href='?sort=desc'">
+                    <span class="d-block text-center">降順(新しい順)</span>
+                </div>
+                <div class="col-4 rand bg-white py-2 mr-n2" onclick="location.href='?sort=rand'">
+                    <span class="d-block text-center">ランダム順</span>
+                </div>
+            </div>
             {{-- カード --}}
             @foreach($questions as $question)
             <a href="{{ url('qa').'/'.$question->id }}">
@@ -97,7 +105,9 @@
                             @if($question->answer_flg == 0)
                             <span class="noanswertag">未回答の質問</span>
                             @endif
-                            <span class="viewcount">閲覧数：333</span>
+                            @if(!empty($question->category->name))
+                            <span class="category">{{ $question->category->name }}</span>
+                            @endif
                             @if(date("d") - date("d",strtotime($question->created_at)) <= 1)
                             <span class="new">新着</span>
                             @endif
@@ -157,7 +167,8 @@
                 <div class="col-md-12">
                     <div class="row p-3">
                         <div class="col-md-12">
-                            <img class="img-fluid" src="https://via.placeholder.com/336x280.png?text=Ad" alt="">
+                            @component('component/amazon_banner_300x250')
+                            @endcomponent
                         </div>
                     </div>
                 </div>

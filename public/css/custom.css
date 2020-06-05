@@ -34,6 +34,31 @@ body {
   border-radius: 5px;
 }
 
+.nav-info {
+  position: -webkit-sticky;
+  position: sticky;
+  top: 0;
+  z-index: 1;
+}
+
+.nav-info a {
+  text-decoration: none;
+}
+
+.nav-info .container .row .col-md-12 {
+  background: -webkit-gradient(linear, left top, right top, from(#FF9800), to(#E91E63));
+  background: linear-gradient(to right, #FF9800, #E91E63);
+  color: #fff;
+  font-size: 17px;
+  padding: 12px 0;
+}
+
+.nav-info .container .row:hover {
+  opacity: .8;
+  -webkit-transition: all 0.3s ease 0s;
+  transition: all 0.3s ease 0s;
+}
+
 .header-area {
   background: -webkit-gradient(linear, left top, right top, from(#FF9800), to(#E91E63));
   background: linear-gradient(to right, #FF9800, #E91E63);
@@ -98,6 +123,18 @@ body {
   margin-bottom: 0;
 }
 
+.qa-index .col-md-8 .question_button {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+}
+
+.qa-index .col-md-8 select#category_pulldown {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+}
+
 .qa-index .col-md-8 a {
   color: initial;
   text-decoration: none;
@@ -142,6 +179,12 @@ body {
   padding: 0;
   position: relative;
   bottom: -2px;
+}
+
+.qa-index .col-md-8 .tag .category {
+  background-color: #ffa726;
+  color: #fff;
+  border: none;
 }
 
 .qa-index .col-md-8 .question h2 {
