@@ -76,7 +76,7 @@ class QaController extends Controller
             $question->category_id = $request->category;
             $question->save();
             $questionId = Question::orderBy('created_at','desc')->value('id');
-            \Slack::send("質問が投稿されました。\n質問タイトル：".$request->question_title."\n質問内容：".$request->question_text."\nhttps://degiita.com/qa/".$question->id);
+            // \Slack::send("質問が投稿されました。\n質問タイトル：".$request->question_title."\n質問内容：".$request->question_text."\nhttps://degiita.com/qa/".$question->id);
             //twitter
             $twitter = new TwitterOAuth(env('TWITTER_CLIENT_ID'),
             env('TWITTER_CLIENT_SECRET'),
@@ -130,7 +130,7 @@ class QaController extends Controller
             // 二重送信対策
             $request->session()->regenerateToken();
             //dd($degu->photo_url);
-            \Slack::send("回答が投稿されました。\n回答内容：".$request->answer_text."\nhttps://degiita.com/qa/".$answer->question_id);
+            // \Slack::send("回答が投稿されました。\n回答内容：".$request->answer_text."\nhttps://degiita.com/qa/".$answer->question_id);
             //twitter
             $twitter = new TwitterOAuth(env('TWITTER_CLIENT_ID'),
             env('TWITTER_CLIENT_SECRET'),
