@@ -86,7 +86,6 @@
                 <div class="col-md-12 bg-white shadow-sm p-3">
                     <div class="row">
                         <div class="col-md-12 tag">
-                            <!-- {{ $question->answer_flg }} -->
                             @if($question->answer_flg == 1)
                             <span class="hasanswertag"><span class="answerscount mb-0">{{count(App\Question::find($question->id)->answers)}}</span>件の回答のある質問</span>
                             @endif
@@ -96,7 +95,9 @@
                             @if(!empty($question->category->name))
                             <span class="category">{{ $question->category->name }}</span>
                             @endif
-                            @if(date("d") - date("d",strtotime($question->created_at)) <= 1)
+                            @php
+                            @endphp
+                            @if ($question->created_at->diffInDays($carbon->today()) <= 3)
                             <span class="new">新着</span>
                             @endif
                         </div>

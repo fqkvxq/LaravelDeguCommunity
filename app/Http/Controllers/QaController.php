@@ -22,9 +22,10 @@ class QaController extends Controller
     // ================================================
     public function index()
     {
+        $carbon = new Carbon;
         $questions = Question::with('category')->orderBy('created_at', 'desc')->paginate(10); //取得順番を逆に
         $categories = Category::all();
-        return view('qa/index', compact('questions', 'categories'));
+        return view('qa/index', compact('questions', 'categories','carbon'));
     }
 
     // ================================================
