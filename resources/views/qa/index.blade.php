@@ -96,7 +96,7 @@
                             @if(!empty($question->category->name))
                             <span class="category">{{ $question->category->name }}</span>
                             @endif
-                            @if(date("d") - date("d",strtotime($question->created_at)) <= 1)
+                            @if($question->checkNewtag($question,$today) <= 1)
                             <span class="new">新着</span>
                             @endif
                         </div>

@@ -6,14 +6,11 @@ use Illuminate\Http\Request;
 use App\Question;
 use App\Answer;
 use App\User;
-use App\Category;
-use Carbon\Carbon;
 use Auth;
 use Socialite;
 use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Validator;
-use Abraham\TwitterOAuth\TwitterOAuth;
 
 class QaController extends Controller
 {
@@ -24,7 +21,8 @@ class QaController extends Controller
     {
         $questions = Question::with('category')->orderBy('created_at', 'desc')->paginate(10); //取得順番を逆に
         $categories = Category::all();
-        return view('qa/index', compact('questions', 'categories'));
+        $today = Carbon::today();
+        return view('qa/index', compact('questions', 'categories','today'));
     }
 
     // ================================================
@@ -33,11 +31,15 @@ class QaController extends Controller
     public function page($id)
     {
         $questions = DB::table('questions')->orderBy('created_at', 'desc')->get(); //取得順番を逆に
-        $question = Question::with(['user','category'])->find($id);
-        $answers = Answer::with('user')->where('question_id',$id)->get();
+        $question = Question::find($id);
+        $answer = Answer::find($id);
         $user = User::find($id);
+<<<<<<< HEAD
         $categories = Category::all();
         return view('qa/page', compact('questions', 'question', 'answers', 'user','categories'));
+=======
+        return view('qa/page', compact('questions', 'question', 'answer', 'user'));
+>>>>>>> 195eee0d846cb10aaaa794dfaf379367d7b4ca40
     }
 
     // ================================================
@@ -52,13 +54,10 @@ class QaController extends Controller
 
         // Validation
         $rules = [
-            'question_text' => 'required',
-            'question_title' => 'required',
-            'category' => 'required',
+            'question_text' => 'required'
         ];
         $message = [
-            'question_text.required' => '質問文を入力してください。',
-            'category.required' => 'カテゴリーを選んでください。'
+            'question_text.required' => '質問文を入力してください。'
         ];
         $validator = Validator::make($form, $rules, $message);
 
@@ -69,12 +68,11 @@ class QaController extends Controller
                 ->withInput();
         } else { // バリデーションが通った時
             unset($form['_token']);
-            $question->title = $request->question_title;
             $question->text = $request->question_text;
             $question->user_id = $user->id;
             $question->answer_flg = $request->answer_flg;
-            $question->category_id = $request->category;
             $question->save();
+<<<<<<< HEAD
             $questionId = Question::orderBy('created_at','desc')->value('id');
             // \Slack::send("質問が投稿されました。\n質問タイトル：".$request->question_title."\n質問内容：".$request->question_text."\nhttps://degiita.com/qa/".$question->id);
             //twitter
@@ -89,6 +87,9 @@ class QaController extends Controller
                     '質問内容「'.$request->question_text.'」' . PHP_EOL .
                     'https://degiita.com/qa/'.$question->id
             ]);
+=======
+            //dd($degu->photo_url);
+>>>>>>> 195eee0d846cb10aaaa794dfaf379367d7b4ca40
             return redirect('qa')->with('success', '新しく質問を登録しました！');
         }
     }
@@ -98,7 +99,6 @@ class QaController extends Controller
     // ================================================
     public function addAnswer(Request $request)
     {
-        $question = new Question;
         $answer = new Answer;
         $user = Auth::user();
         $form = $request->all();
@@ -130,6 +130,7 @@ class QaController extends Controller
             // 二重送信対策
             $request->session()->regenerateToken();
             //dd($degu->photo_url);
+<<<<<<< HEAD
             // \Slack::send("回答が投稿されました。\n回答内容：".$request->answer_text."\nhttps://degiita.com/qa/".$answer->question_id);
             //twitter
             $twitter = new TwitterOAuth(env('TWITTER_CLIENT_ID'),
@@ -143,6 +144,9 @@ class QaController extends Controller
                     'https://degiita.com/qa/'.$answer->question_id
             ]);
             return redirect('qa/'.$answer->question_id)->with('success', '新しく回答を登録しました！');
+=======
+            return redirect('qa')->with('success', '新しく回答を登録しました！');
+>>>>>>> 195eee0d846cb10aaaa794dfaf379367d7b4ca40
         }
     }
 
