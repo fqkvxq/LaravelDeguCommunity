@@ -48,7 +48,8 @@ Route::group(['middleware' => 'basicauth'], function() {
     Route::get('/qa/{id}', 'QaController@page'); //一覧画面
     Route::post('/qa/addQuestion', 'QaController@addQuestion')->name('qa/addQuestion')->middleware('auth');
     Route::post('/qa/addAnswer', 'QaController@addAnswer')->name('qa/addAnswer')->middleware('auth');
-
+    Route::put('/qa/editQuestion/{id}','QaController@updateQuestion')->name('qa/updateQuestion')->middleware('auth');
+    Route::put('/qa/editAnswer/{id}','QaController@updateAnswer')->name('qa/updateAnswer')->middleware('auth');
 
     Route::group(['prefix' => 'admin'], function () {
         Voyager::routes();
