@@ -135,6 +135,10 @@ body {
   appearance: none;
 }
 
+.qa-index .col-md-8 .sort-border-right {
+  border-right: 5px solid #F6F6F4 !important;
+}
+
 .qa-index .col-md-8 a {
   color: initial;
   text-decoration: none;
