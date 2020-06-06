@@ -162,6 +162,9 @@ body {
             -moz-appearance: none;
             appearance: none;
         }
+        .sort-border-right { 
+            border-right: 5px solid #F6F6F4 !important;
+        }
         a{
             color: initial;
             text-decoration: none;
