@@ -27,7 +27,6 @@ body {
 }
 
 .navbar .navbar-nav .nav-link .nav-text .register {
-  background: -webkit-gradient(linear, left top, right top, from(#FF9800), to(#E91E63));
   background: linear-gradient(to right, #FF9800, #E91E63);
   color: #fff;
   padding: 10px;
@@ -46,7 +45,6 @@ body {
 }
 
 .nav-info .container .row .col-md-12 {
-  background: -webkit-gradient(linear, left top, right top, from(#FF9800), to(#E91E63));
   background: linear-gradient(to right, #FF9800, #E91E63);
   color: #fff;
   font-size: 17px;
@@ -54,13 +52,11 @@ body {
 }
 
 .nav-info .container .row:hover {
-  opacity: .8;
-  -webkit-transition: all 0.3s ease 0s;
+  opacity: 0.8;
   transition: all 0.3s ease 0s;
 }
 
 .header-area {
-  background: -webkit-gradient(linear, left top, right top, from(#FF9800), to(#E91E63));
   background: linear-gradient(to right, #FF9800, #E91E63);
 }
 
@@ -115,8 +111,7 @@ body {
 .register-degu button:hover {
   background-color: #ffa726;
   color: #fff;
-  -webkit-transform: translateY(1px);
-          transform: translateY(1px);
+  transform: translateY(1px);
 }
 
 .register-degu .alert ul {
@@ -147,7 +142,7 @@ body {
 
 .qa-index .col-md-8 .tag span {
   margin: 0 3px;
-  border: .5px solid #000;
+  border: 0.5px solid #000;
   border-radius: 5px;
   padding: 5px;
 }
@@ -166,7 +161,6 @@ body {
 }
 
 .qa-index .col-md-8 .tag .hasanswertag {
-  background: -webkit-gradient(linear, left top, right top, from(#FF9800), to(#E91E63));
   background: linear-gradient(to right, #FF9800, #E91E63);
   color: #fff;
   font-weight: bold;
@@ -210,6 +204,7 @@ body {
   0%, 100% {
     opacity: 1;
   }
+
   50% {
     opacity: 0;
   }
@@ -219,6 +214,7 @@ body {
   0%, 100% {
     opacity: 1;
   }
+
   50% {
     opacity: 0;
   }
@@ -227,16 +223,12 @@ body {
 .qa-index .col-md-8 .fonticons svg {
   font-size: 15px;
   color: #616161;
-  -webkit-transform: scale(1);
-          transform: scale(1);
-  -webkit-transition: all 0.3s ease;
+  transform: scale(1);
   transition: all 0.3s ease;
 }
 
 .qa-index .col-md-8 .fonticons svg:hover {
-  -webkit-transform: scale(1.2);
-          transform: scale(1.2);
-  -webkit-transition: all 0.3s ease;
+  transform: scale(1.2);
   transition: all 0.3s ease;
 }
 
@@ -296,4 +288,4 @@ footer .services {
   background-color: #ffa151;
   border-color: #ffa151;
 }
-/*# sourceMappingURL=custom.css.map */
+
