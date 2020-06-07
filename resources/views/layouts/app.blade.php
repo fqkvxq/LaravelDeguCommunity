@@ -12,7 +12,7 @@
     <title>@yield('title') | {{ config('app.title') }}</title>
 
     <!-- Scripts -->
-    <script src="{{ asset('js/app.js') }}" defer></script>
+    <script src="{{ mix('js/app.js') }}" defer></script>
     <script src="{{ asset('js/custom.js') }}" defer></script>
     <script src="{{ asset('js/croppie.js') }}" defer></script>
     @stack('js')
@@ -34,9 +34,9 @@
     <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
 
     <!-- Styles -->
-    <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    <link href="{{ mix('css/app.css') }}" rel="stylesheet">
     {{-- Custom CSS --}}
-    <link href="{{ asset('css/custom.css') }}" rel="stylesheet">
+    <link href="{{ mix('css/custom.css') }}" rel="stylesheet">
     <link href="{{ asset('css/croppie.css') }}" rel="stylesheet">
     @stack('css')
 
