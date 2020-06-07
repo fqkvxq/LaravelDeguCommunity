@@ -1,3 +1,6 @@
+<div id="app">
+<example-component></example-component>
+</div>
 @extends('layouts.app') @section('title', 'デグーQ&A') @section('content')
 <div class="container qa-index">
     @if ($errors->any())
@@ -177,5 +180,4 @@
         </div>
     </div>
 </div>
-
 @endsection
