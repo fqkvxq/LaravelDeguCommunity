@@ -29,6 +29,7 @@
     },
     "dependencies": {
         "acorn": ">=6.4.1",
+        "bootstrap-vue": "^2.15.0",
         "croppie": "^2.6.4",
         "minimist": ">=1.2.3"
     }
