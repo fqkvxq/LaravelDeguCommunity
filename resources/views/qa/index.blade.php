@@ -48,8 +48,8 @@
                                         @auth
                                         <div class="modal-body p-1">
                                             <div class="form-group mb-1">
-                                                <select class="form-control" name="category" id="exampleFormControlSelect1">
-                                                <option>タップして質問カテゴリを選択</option>
+                                                <select class="form-control" name="category" id="category_pulldown">
+                                                <option>タップして質問カテゴリを選択 ▼</option>
                                                 @foreach($categories as $category)
                                                     <option value="{{ $category->id }}">{{ $category->name }}</option>
                                                 @endforeach
@@ -79,6 +79,18 @@
                             </div>
                 </div>
             </div>
+            {{-- 並び替えボタン --}}
+            <div class="row sortbutton mt-1">
+                <div class="col-4 asc bg-white py-2 mr-1" onclick="location.href='?sort=asc'">
+                    <span class="d-block text-center">昇順(古い順)</span>
+                </div>
+                <div class="col-4 desc bg-white py-2 mr-1" onclick="location.href='?sort=desc'">
+                    <span class="d-block text-center">降順(新しい順)</span>
+                </div>
+                <div class="col-4 rand bg-white py-2 mr-n2" onclick="location.href='?sort=rand'">
+                    <span class="d-block text-center">ランダム順</span>
+                </div>
+            </div>
             {{-- カード --}}
             @foreach($questions as $question)
             <a href="{{ url('qa').'/'.$question->id }}">
@@ -86,7 +98,6 @@
                 <div class="col-md-12 bg-white shadow-sm p-3">
                     <div class="row">
                         <div class="col-md-12 tag">
-                            <!-- {{ $question->answer_flg }} -->
                             @if($question->answer_flg == 1)
                             <span class="hasanswertag"><span class="answerscount mb-0">{{count(App\Question::find($question->id)->answers)}}</span>件の回答のある質問</span>
                             @endif
@@ -96,7 +107,9 @@
                             @if(!empty($question->category->name))
                             <span class="category">{{ $question->category->name }}</span>
                             @endif
-                            @if(date("d") - date("d",strtotime($question->created_at)) <= 1)
+                            @php
+                            @endphp
+                            @if ($question->created_at->diffInDays($carbon->today()) <= 3)
                             <span class="new">新着</span>
                             @endif
                         </div>
