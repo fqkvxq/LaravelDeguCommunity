@@ -159,16 +159,18 @@ class QaController extends Controller
     {
         $question = Question::find($id);
         $form = $request->all();
-         // Validation
-         $rules = [
+        // Validation
+        $rules = [
             'question_text' => 'required',
             'question_title' => 'required',
             'category' => 'required',
+            'category' => 'numeric',
         ];
         $message = [
+            'question_title.required' => '質問タイトルを入力してください。',
             'question_text.required' => '質問文を入力してください。',
-            'question_title.required' => '質問文を入力してください。',
-            'category.required' => 'カテゴリーを選んでください。'
+            'category.required' => 'カテゴリーを選んでください。',
+            'category.numeric' => 'カテゴリーを選んでください。'
         ];
         $validator = Validator::make($form, $rules, $message);
 
