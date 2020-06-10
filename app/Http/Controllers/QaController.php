@@ -13,17 +13,25 @@ use Socialite;
 use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Validator;
+use Abraham\TwitterOAuth\TwitterOAuth;
 
 class QaController extends Controller
 {
     // ================================================
     // 質問一覧画面
     // ================================================
-    public function index()
+    public function index(Request $request)
     {
+        $carbon = new Carbon;
         $questions = Question::with('category')->orderBy('created_at', 'desc')->paginate(10); //取得順番を逆に
         $categories = Category::all();
-        return view('qa/index', compact('questions', 'categories'));
+        $sort = $request->sort;
+        if($sort=="rand"){
+            $questions = Question::with('category')->inRandomOrder()->paginate(10); //取得順番を逆に
+        }elseif(!empty($sort)){
+            $questions = Question::with('category')->orderBy('created_at', $sort)->paginate(10); //取得順番を逆に
+        }
+        return view('qa/index', compact('questions', 'categories','carbon'));
     }
 
     // ================================================
@@ -54,18 +62,19 @@ class QaController extends Controller
             'question_text' => 'required',
             'question_title' => 'required',
             'category' => 'required',
+            'category' => 'numeric',
         ];
         $message = [
+            'question_title.required' => '質問タイトルを入力してください。',
             'question_text.required' => '質問文を入力してください。',
-            'category.required' => 'カテゴリーを選んでください。'
+            'category.required' => 'カテゴリーを選んでください。',
+            'category.numeric' => 'カテゴリーを選んでください。'
         ];
         $validator = Validator::make($form, $rules, $message);
 
         if ($validator->fails()) {
             // dd($validator);
-            return redirect('qa/index')
-                ->withErrors($validator)
-                ->withInput();
+            return redirect('qa')->withErrors($validator)->withInput();
         } else { // バリデーションが通った時
             unset($form['_token']);
             $question->title = $request->question_title;
@@ -74,7 +83,20 @@ class QaController extends Controller
             $question->answer_flg = $request->answer_flg;
             $question->category_id = $request->category;
             $question->save();
-            \Slack::send("質問が投稿されました。\n質問タイトル：".$request->question_title."\n質問内容：".$request->question_text);
+            $questionId = Question::orderBy('created_at','desc')->value('id');
+            \Slack::send("質問が投稿されました。\n質問タイトル：".$request->question_title."\n質問内容：".$request->question_text."\nhttps://degiita.com/qa/".$question->id);
+            //twitter
+            $twitter = new TwitterOAuth(env('TWITTER_CLIENT_ID'),
+            env('TWITTER_CLIENT_SECRET'),
+            env('TWITTER_CLIENT_ID_ACCESS_TOKEN'),
+            env('TWITTER_CLIENT_ID_ACCESS_TOKEN_SECRET'));
+            $twitter->post("statuses/update", [
+                "status" =>
+                    '質問が投稿されました!' . PHP_EOL .
+                    'タイトル「' . $request->question_title . '」' . PHP_EOL .
+                    '質問内容「'.$request->question_text.'」' . PHP_EOL .
+                    'https://degiita.com/qa/'.$question->id
+            ]);
             return redirect('qa')->with('success', '新しく質問を登録しました！');
         }
     }
@@ -84,6 +106,7 @@ class QaController extends Controller
     // ================================================
     public function addAnswer(Request $request)
     {
+        $question = new Question;
         $answer = new Answer;
         $user = Auth::user();
         $form = $request->all();
@@ -115,7 +138,18 @@ class QaController extends Controller
             // 二重送信対策
             $request->session()->regenerateToken();
             //dd($degu->photo_url);
-            \Slack::send("回答が投稿されました。\n回答内容：".$request->answer_text);
+            \Slack::send("回答が投稿されました。\n回答内容：".$request->answer_text."\nhttps://degiita.com/qa/".$answer->question_id);
+            //twitter
+            $twitter = new TwitterOAuth(env('TWITTER_CLIENT_ID'),
+            env('TWITTER_CLIENT_SECRET'),
+            env('TWITTER_CLIENT_ID_ACCESS_TOKEN'),
+            env('TWITTER_CLIENT_ID_ACCESS_TOKEN_SECRET'));
+            $twitter->post("statuses/update", [
+                "status" =>
+                    '回答が投稿されました!' . PHP_EOL .
+                    '回答内容「'.$request->answer_text.'」' . PHP_EOL .
+                    'https://degiita.com/qa/'.$answer->question_id
+            ]);
             return redirect('qa/'.$answer->question_id)->with('success', '新しく回答を登録しました！');
         }
     }
