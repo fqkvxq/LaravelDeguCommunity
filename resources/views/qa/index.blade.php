@@ -56,10 +56,10 @@
                                                 </select>
                                             </div>
                                             <div class="form-group mb-1">
-                                                <input name="question_title" class="form-control" placeholder="質問タイトルを入力してください" type="text" id="" required>
+                                                <input name="question_title" value="{{ old('question_title') }}" class="form-control" placeholder="質問タイトルを入力してください" type="text" id="" required>
                                             </div>
                                             <div class="form-group mb-1">
-                                                <textarea class="form-control" id="exampleFormControlTextarea1" name="question_text" placeholder="質問文をこちらへ入力してください。" rows="10" required></textarea>
+                                                <textarea class="form-control" id="exampleFormControlTextarea1" name="question_text" placeholder="質問文をこちらへ入力してください。" rows="10" required>{{ old('question_text') }}</textarea>
                                             </div>
                                         </div>
                                         @endauth

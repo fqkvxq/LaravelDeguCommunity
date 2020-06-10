@@ -61,18 +61,19 @@ class QaController extends Controller
             'question_text' => 'required',
             'question_title' => 'required',
             'category' => 'required',
+            'category' => 'numeric',
         ];
         $message = [
+            'question_title.required' => '質問タイトルを入力してください。',
             'question_text.required' => '質問文を入力してください。',
-            'category.required' => 'カテゴリーを選んでください。'
+            'category.required' => 'カテゴリーを選んでください。',
+            'category.numeric' => 'カテゴリーを選んでください。'
         ];
         $validator = Validator::make($form, $rules, $message);
 
         if ($validator->fails()) {
             // dd($validator);
-            return redirect('qa/index')
-                ->withErrors($validator)
-                ->withInput();
+            return redirect('qa')->withErrors($validator)->withInput();
         } else { // バリデーションが通った時
             unset($form['_token']);
             $question->title = $request->question_title;
