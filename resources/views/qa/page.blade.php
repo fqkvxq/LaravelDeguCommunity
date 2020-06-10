@@ -4,6 +4,8 @@
 <div class="container">
     @component('component/success')
     @endcomponent
+    @component('component/error')
+    @endcomponent
     <div class="row">
         <div class="col-md-12">
             <div class="row px-0 pt-1">

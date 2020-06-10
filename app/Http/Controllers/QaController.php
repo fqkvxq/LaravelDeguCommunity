@@ -175,8 +175,7 @@ class QaController extends Controller
         $validator = Validator::make($form, $rules, $message);
 
         if ($validator->fails()) {
-            // dd($validator);
-            return redirect('qa/{$id}')
+            return redirect('qa/'.$id)
                 ->withErrors($validator)
                 ->withInput();
         } else { // バリデーションが通った時
@@ -185,7 +184,7 @@ class QaController extends Controller
             $question->text = $request->question_text;
             $question->category_id = $request->category;
             $question->update();
-            return redirect('qa')->with('success', '質問を編集しました！');
+            return redirect('qa/'.$id)->with('success', '質問を編集しました！');
         }
     }
 
@@ -205,7 +204,7 @@ class QaController extends Controller
 
         if ($validator->fails()) {
             // dd($validator);
-            return redirect('qa/{$id}')
+            return redirect('qa/'.$id)
                 ->withErrors($validator)
                 ->withInput();
         } else { // バリデーションが通った時
