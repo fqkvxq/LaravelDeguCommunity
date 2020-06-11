@@ -1,13 +1,11 @@
 <template>
-    <nav class="navbar navbar-expand-md navbar-light bg-white text-black shadow-sm">
-        <div class="container">
-            <a class="navbar-brand" href="#">
-                <span class="appname">
-                    DeguCommunity
-                </span>
-            </a>
-        </div>
-    </nav>
+    <div>
+        <b-navbar variant="faded" type="light">
+            <b-navbar-brand tag="h1" class="mb-0">
+                DeguCommunity
+            </b-navbar-brand>
+        </b-navbar>
+    </div>
 </template>
 
 <script>
