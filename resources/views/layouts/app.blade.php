@@ -49,7 +49,7 @@
     <meta property="og:image" content="@yield('ogp','https://degiita.s3-ap-northeast-1.amazonaws.com/degiita/ogp_default.jpeg')" />
     <meta property="og:site_name" content="@yield('title') | {{ config('app.title') }}" />
     <meta property="og:description" content="デグーのSNS。お互いのデグーを紹介したり、デグー飼育ノウハウを共有しよう。" />
-    
+
     <!-- ※Twitter共通設定 -->
     <meta name="twitter:card" content="summary_large_image" />
 </head>
@@ -108,16 +108,15 @@
                             {{-- 通知マーク(ドロップダウントグル) --}}
                             <a id="navbarDropdownNotify" class="nav-link dropdown-toggle" href="#" role="button"
                             data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                                <span class="text-right ml-auto notify-button py-1 h6">{{ __('0') }}</span>
+                                <span class="text-right ml-auto notify-button py-1 h6">{{ __($notification_count) }}</span>
                             </a>
                             {{-- ドロップダウン押下時に表示されるメニュー --}}
                             <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                                <div class="notify-header px-2">
-                                    aaaaa
-                                </div>
-                                <a class="dropdown-item" href="#">
-                                    
-                                </a>
+                                @foreach ($notification_messages as $notification_message)
+                                    <div class="notify-header px-2">
+                                        {!! $notification_message->text !!}
+                                    </div>
+                                @endforeach
                             </div>
                         </li>
                         <li class="nav-item dropdown">
@@ -313,7 +312,7 @@
                                     <li>デグーを登録する</li>
                                     <li>デグーQ&A</li>
                                     <li>プライバシーポリシー</li>
-                                </ul>   
+                                </ul>
                             </div>
                         </div>
                     </div>
