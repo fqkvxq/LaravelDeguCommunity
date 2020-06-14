@@ -14,6 +14,8 @@ use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Validator;
 use Abraham\TwitterOAuth\TwitterOAuth;
+use UserNotification;
+
 
 class QaController extends Controller
 {
@@ -95,6 +97,10 @@ class QaController extends Controller
                     '質問内容「'.$request->question_text.'」' . PHP_EOL .
                     'https://degiita.com/qa/'.$question->id
             ]);
+
+            // テキスト内からお知らせを読み取り、追加
+            UserNotification::addNotification($question->id, $request->question_text);
+
             return redirect('qa')->with('success', '新しく質問を登録しました！');
         }
     }
@@ -148,6 +154,10 @@ class QaController extends Controller
                     '回答内容「'.$request->answer_text.'」' . PHP_EOL .
                     'https://degiita.com/qa/'.$answer->question_id
             ]);
+
+            // テキスト内からお知らせを読み取り、追加
+            UserNotification::addNotification($question->id, $request->question_text);
+
             return redirect('qa/'.$answer->question_id)->with('success', '新しく回答を登録しました！');
         }
     }

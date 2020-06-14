@@ -240,6 +240,7 @@ return [
         'View' => Illuminate\Support\Facades\View::class,
         /* originals */
         'BaseClass' => 'app\Library\BaseClass',
+        'UserNotification' => App\Services\UserNotification::class
     ],
 
 ];
