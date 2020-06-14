@@ -112,11 +112,15 @@
                             </a>
                             {{-- ドロップダウン押下時に表示されるメニュー --}}
                             <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                                @foreach ($notification_messages as $notification_message)
+                                @forelse ($notification_messages as $notification_message)
                                     <div class="notify-header px-2">
                                         {!! $notification_message->text !!}
                                     </div>
-                                @endforeach
+                                @empty
+                                    <div class="notify-header px-2">
+                                        お知らせはありません
+                                    </div>
+                                @endforelse
                             </div>
                         </li>
                         <li class="nav-item dropdown">
