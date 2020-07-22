@@ -15,8 +15,6 @@
     <script src="{{ asset('js/app.js') }}" defer></script>
     <script src="{{ asset('js/custom.js') }}" defer></script>
     <script src="{{ asset('js/croppie.js') }}" defer></script>
-    <script src="{{ asset('js/login.js') }}" defer></script>
-    <script src="https://cdn.jsdelivr.net/npm/vue"></script>
     @stack('js')
 
     <!-- favicon -->
@@ -116,65 +114,7 @@
                                 </span>
                             </a>
                         </li>
-                       
-                        {{-- login modal --}}
-                        <div class="modal fade" id="loginModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
-                            <div class="modal-dialog modal-dialog-centered" role="document">
-                              <div class="modal-content">
-                                <div class="modal-header">
-                                  <h5 class="modal-title" id="exampleModalCenterTitle">ログイン</h5>
-                                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                    <span aria-hidden="true">&times;</span>
-                                  </button>
-                                </div>
-                                
-                                <div class="modal-body" id="login">
-                                  <form method="POST" action="{{ route('login') }}">
-                                    {{ csrf_field() }}
-                        
-                        
-                                    <div class="form-group">
-                                      <label for="email">メールアドレス</label>
-                                      <input type="email" class="form-control @error('email') is-invalid @enderror" id="loginEmail" aria-describedby="emailHelp" placeholder="example@email.com" name="email" value="{{ old('email') }}" required autocomplete="email" autofocus v-model="email">
-                                      <small id="emailHelp" class="form-text text-muted"></small>
-                                      <div class="mt-3">
-                                        <span class="alert alert-danger" v-text="errors.email" v-if="errors.email"></span>
-                                      </div>
-                                    </div>
-                        
-                        
-                                    <div class="form-group">
-                                      <label for="password">パスワード</label>
-                                      <input type="password" class="form-control @error('password') is-invalid @enderror" id="LoginPassword" name="password" required autocomplete="current-password" v-model="password">
-                                      <div class="mt-3">
-                                      <span class="alert alert-danger" v-text="errors.password" v-if="errors.password"></span>
-                                      </div>
-                                    </div>
-                        
-                        
-                                    <div class="form-group form-check">
-                                      <input type="checkbox" class="form-check-input" v-model="remember">
-                                      <label class="form-check-label" for="exampleCheck1" name="remember" id="LoguinRemember" {{ old('remember') ? 'checked' : '' }} v-model="remember">次回から自動的にログイン</label>
-                                    </div>
-                        
-                        
-                                    <button type="submit" class="btn btn-primary" @click.prevent="login">ログイン</button>
-                        
-                                    @if (Route::has('password.request'))
-                                      <a class="btn btn-link" href="{{ route('password.request') }}">
-                                        パスワードをお忘れですか？
-                                      </a>
-                                    @endif
-                                  </form>
-                                </div>
-                        
-                                <div class="modal-footer">
-                                  <button type="button" class="btn btn-secondary" data-dismiss="modal">閉じる</button>
-                                </div>
-                              </div>
-                            </div>
-                          </div>
-
+                          
                         @if (Route::has('register'))
                         <li class="nav-item">
                             <a class="nav-link" href="{{ route('register') }}">
@@ -224,6 +164,69 @@
                 </div>
             </div>
         </nav>
+
+        {{-- login modal --}}                
+        <div class="modal fade" id="loginModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered" role="document">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title" id="exampleModalCenterTitle">ログイン</h5>
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                </div>
+                
+                <div class="modal-body" id="login">
+                  <form method="POST" action="{{ route('login') }}">
+                    {{ csrf_field() }}
+        
+        
+                    <div class="form-group">
+                      <label for="email">メールアドレス</label>
+                      <input type="email" class="form-control @error('email') is-invalid @enderror" id="loginEmail" aria-describedby="emailHelp" placeholder="example@email.com" name="email" value="{{ old('email') }}" required autocomplete="email" autofocus v-model="email">
+                      <small id="emailHelp" class="form-text text-muted"></small>
+                      <div class="mt-3">
+                        <span class="alert alert-danger" v-text="errors.email" v-if="errors.email"></span>
+                      </div>
+                    </div>
+        
+        
+                    <div class="form-group">
+                      <label for="password">パスワード</label>
+                      <input type="password" class="form-control @error('password') is-invalid @enderror" id="LoginPassword" name="password" required autocomplete="current-password" v-model="password">
+                      <div class="mt-3">
+                      <span class="alert alert-danger" v-text="errors.password" v-if="errors.password"></span>
+                      </div>
+                    </div>
+        
+        
+                    <div class="form-group form-check">
+                      <input type="checkbox" class="form-check-input" v-model="remember">
+                      <label class="form-check-label" for="exampleCheck1" name="remember" id="LoguinRemember" {{ old('remember') ? 'checked' : '' }} >次回から自動的にログイン</label>
+                    </div>
+        
+        
+                    <button type="submit" class="btn btn-primary" >ログイン</button>
+        
+                    <a href="{{ url('login/twitter') }}" type="" class="btn btn-primary">
+                        {{ __('Twitterログイン') }}
+                    </a>
+
+                    @if (Route::has('password.request'))
+                      <a class="btn btn-link" href="{{ route('password.request') }}">
+                        パスワードを再発行する
+                      </a>
+                    @endif
+                  </form>
+                </div>
+        
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-secondary" data-dismiss="modal">閉じる</button>
+                </div>
+              </div>
+            </div>
+          </div>
+
         {{-- Navbarここまで --}}
         <div class="container-fluid nav-info px-0">
             <a href="http://af.moshimo.com/af/c/click?a_id=773446&p_id=170&pc_id=185&pl_id=4157&guid=ON">
@@ -281,6 +284,7 @@
         </footer>
         {{-- Footerここまで --}}
     </div>
+    
 </body>
 
 </html>
